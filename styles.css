@@ -115,3 +115,15 @@ ul.clean{padding-left:20px}.source-list{columns:2;column-gap:30px}.source-list l
 .markdown-body h1{font-size:30px;margin-top:28px}.markdown-body h2{font-size:23px;margin-top:30px}.markdown-body h3{font-size:18px;margin-top:24px}
 .markdown-body p{margin:12px 0}.markdown-body code{background:var(--surface-2);border:1px solid var(--border);border-radius:4px;padding:1px 4px;font-size:.9em}.md-list{margin:10px 0 16px;padding-left:24px}.md-code{margin:14px 0;white-space:pre-wrap}
 @media(max-width:700px){.doc-page-head{display:block}.doc-page-head .pill{margin-top:8px}.evolution-card{max-width:none;flex-basis:100%}}
+.item-card{min-height:170px;position:relative;padding-right:92px}
+.item-card-img{position:absolute;right:14px;top:14px;width:72px;height:72px;object-fit:contain;image-rendering:auto}
+.item-detail-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(220px,.38fr);gap:24px;align-items:start}
+.item-detail-side{display:grid;gap:12px;padding:14px;border:1px solid var(--border);border-radius:10px;background:var(--surface-2)}
+.item-detail-side p,.recipe-card p{margin:.35rem 0 0;color:var(--muted);line-height:1.5}
+.item-description{max-width:900px}
+.recipe-card{display:grid;gap:14px;padding:16px;border:1px solid var(--border);border-radius:12px;background:var(--surface-2)}
+.recipe-ingredients{font-weight:650;color:var(--text)!important}
+@media(max-width:700px){.item-detail-grid{grid-template-columns:1fr}.item-card{padding-right:90px}}
+
+.skill-xp{padding:14px 16px;border:1px solid var(--border);border-radius:10px;background:var(--surface-2);margin:12px 0 18px}.skill-xp h3{margin:0 0 6px;font-size:14px}.skill-xp p{margin:0;color:var(--muted);line-height:1.6}.data-table-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:10px;background:var(--surface)}.data-table{width:100%;border-collapse:collapse}.data-table th,.data-table td{padding:10px 12px;border-bottom:1px solid var(--border);text-align:left;vertical-align:top}.data-table tr:last-child th,.data-table tr:last-child td{border-bottom:0}.data-table th{width:120px;color:var(--muted);font-weight:700}.skill-tree{display:grid;gap:12px;margin-top:12px}.skill-tree-level{border-left:2px solid var(--border);padding-left:14px}.skill-tree-level>span{display:inline-block;margin-bottom:8px;font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:800}.skill-tree-branches{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.skill-branch{padding:14px;border:1px solid var(--border);border-radius:10px;background:var(--surface)}.skill-branch h3,.skill-branch h4{margin:0 0 6px}.skill-branch p{margin:0;color:var(--muted);line-height:1.5}.skill-branch>.skill-tree-level{margin-top:14px}.skill-section h3{margin-top:18px}.skill-section+.skill-section{margin-top:18px}
+@media(max-width:700px){.skill-tree-branches{grid-template-columns:1fr}.data-table th{width:90px}}

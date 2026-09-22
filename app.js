@@ -1,6 +1,8 @@
 (function(){
 'use strict';
 const DATA=window.PELIPPER_DATA||{};
+const ITEM_DATA=Array.isArray(window.PELIPPER_ITEMS)?window.PELIPPER_ITEMS:[];
+const itemIndex=new Map(ITEM_DATA.map(x=>[x.id,x]));
 const $=s=>document.querySelector(s);
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const slug=s=>String(s??'').toLowerCase().trim().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
@@ -82,6 +84,7 @@ function allSearch(){
   for(const [id,x] of trainers) out.push({kind:'trainer',id,name:firstDisplay(x),meta:'Trainer',desc:'Trainer battle data',img:imageFor(x)});
   for(const [id,x] of companions) out.push({kind:'companion',id,name:firstDisplay(x),meta:'Villager companion',desc:'Villager companion data',img:imageFor(x)});
   for(const [id,x] of forms) out.push({kind:'form',id,name:firstDisplay(x),meta:'Form / evolution',desc:x.Presentation?.DisplayName||'',img:imageFor(x)});
+  for(const x of ITEM_DATA) out.push({kind:'item',id:x.id,name:x.name,meta:'Item',desc:x.description||x.effect||'',img:x.image});
   return out;
 }
 const SEARCH=allSearch();
@@ -286,6 +289,7 @@ for(const [speciesIdValue,x] of species){
 }
 for(const users of abilityUsers.values()) users.sort((a,b)=>a.name.localeCompare(b.name));
 for(const [id,x] of moveIndex) if(!genericRefs.has(id)) genericRefs.set(id,{kind:'move',id,x});
+for(const x of ITEM_DATA) if(!genericRefs.has(x.id)) genericRefs.set(x.id,{kind:'item',id:x.id,x});
 function refName(ref){
   const x=ref?.x||{};
   return x.DisplayName||x.Name||x.NpcName||x.Presentation?.DisplayName||title(ref?.id||'');
@@ -294,7 +298,7 @@ function refLink(id){
   const ref=genericRefs.get(id);
   if(!ref) return `<span class="pill">${esc(id)}</span>`;
   const name=refName(ref);
-  if(ref.kind==='species'||ref.kind==='form'||ref.kind==='trainer'||ref.kind==='companion'||ref.kind==='move'||ref.kind==='ability') return `<a class="xref" href="${href(ref.kind,ref.id)}">${esc(name)} <small>${esc(ref.id)}</small></a>`;
+  if(ref.kind==='species'||ref.kind==='form'||ref.kind==='trainer'||ref.kind==='companion'||ref.kind==='move'||ref.kind==='ability'||ref.kind==='item') return `<a class="xref" href="${href(ref.kind,ref.id)}">${esc(name)} <small>${esc(ref.id)}</small></a>`;
   return esc(name);
 }
 function abilityIdsFor(x){ return Array.isArray(x?.AbilityIds)?x.AbilityIds.filter(Boolean):[]; }
@@ -388,17 +392,52 @@ function renderLearnset(x){
   const defaultRows=defaults.filter(id=>!known.has(id)).map(id=>renderMoveLine(id,'Default')).join('');
   return `<section class="section learnset-section"><div class="section-heading"><div><h2>Learnset & Moves</h2><p class="muted">Only move data present in the supplied Pelipper Town JSON files is shown.</p></div><span class="pill">${learn.length} level-up moves</span></div>${defaultRows?`<h3 class="subheading">Default moves</h3><div class="move-list">${defaultRows}</div>`:''}${learn.length?`<h3 class="subheading">Level-up learnset</h3><div class="move-list">${rows}</div>`:''}</section>`;
 }
+const skillUnlocksByLevel={Training:new Map(),Battling:new Map(),Breeding:new Map()};
+for(const item of ITEM_DATA){
+  const src=String(item.source||'');
+  for(const skill of Object.keys(skillUnlocksByLevel)){
+    const m=src.match(new RegExp('\\b'+skill+'\\s+(\\d+)\\b','i'));
+    if(m){const level=Number(m[1]); if(!skillUnlocksByLevel[skill].has(level)) skillUnlocksByLevel[skill].set(level,[]); skillUnlocksByLevel[skill].get(level).push(item.name);}
+  }
+}
+// Additional level unlocks explicitly tabulated in the supplied Player Guide.
+const documentedSlateUnlocks={1:['Stone Slate','Grass Plate'],2:['Electric Plate'],3:['Flame Slate','Earth Slate'],4:['Water Plate','Fist Slate'],5:['Sky Slate','Iron Slate'],6:['Icicle Slate','Psychic Plate'],7:['Insect Slate','Ghost Plate'],8:['Dark Plate','Fairy Plate'],9:['Draco Slate'],10:['Toxic Slate']};
+for(const [level,names] of Object.entries(documentedSlateUnlocks)){
+  const n=Number(level); if(!skillUnlocksByLevel.Training.has(n)) skillUnlocksByLevel.Training.set(n,[]);
+  skillUnlocksByLevel.Training.get(n).push(...names);
+}
+function skillLevelRows(skill){
+  const map=skillUnlocksByLevel[skill];
+  return [...map.entries()].sort((a,b)=>a[0]-b[0]).map(([level,names])=>`<tr><th>Level ${level}</th><td>${[...new Set(names)].map(n=>`<a class="xref" href="${itemIndex.has(slug(n))?href('item',slug(n)):'#/category/item'}">${esc(n)}</a>`).join(', ')}</td></tr>`).join('');
+}
+function renderBattlingProfessionTree(){
+  return `<div class="skill-tree"><div class="skill-tree-level"><span>Level 5</span><div class="skill-tree-branches"><article class="skill-branch"><h3>Ace Trainer</h3><p>Active Pokémon gain 25% more battle XP.</p><div class="skill-tree-level"><span>Level 10</span><div class="skill-tree-branches"><article class="skill-branch"><h4>Champion</h4><p>The party-share baseline rises from 20% to 40% before level bonuses.</p></article><article class="skill-branch"><h4>Power Trainer</h4><p>Damaging moves deal 15% more damage.</p></article></div></div></article><article class="skill-branch"><h3>Tactician</h3><p>Super-effective moves deal 10% more damage.</p><div class="skill-tree-level"><span>Level 10</span><div class="skill-tree-branches"><article class="skill-branch"><h4>Specialist</h4><p>Moves matching one of the user's types deal another 10% damage.</p></article><article class="skill-branch"><h4>Survivor</h4><p>Owned Pokémon take 20% less damage from opposing Pokémon attacks.</p></article></div></div></article></div></div></div>`;
+}
+function skillCard(name,xp,notes,levels,professionHtml){
+  return `<section class="section skill-section"><div class="section-heading"><div><h2>${esc(name)}</h2><p class="muted">${esc(notes)}</p></div><span class="pill">10 levels</span></div><div class="skill-xp"><h3>How to gain XP</h3><p>${xp}</p></div><h3>Documented level unlocks</h3>${levels?`<div class="data-table-wrap"><table class="data-table"><thead><tr><th>Level</th><th>Unlocks</th></tr></thead><tbody>${levels}</tbody></table></div>`:'<div class="notice">No level-by-level unlock details were present in the supplied mod documentation.</div>'}${professionHtml?`<h3>Professions</h3>${professionHtml}`:''}</section>`;
+}
+function skillsPage(){
+  const training=skillLevelRows('Training'), breeding=skillLevelRows('Breeding');
+  const battlingLevels=`<tr><th>Level 1</th><td>Antidote and VS Seeker recipes</td></tr><tr><th>Level 2</th><td>Ether recipe</td></tr><tr><th>Level 3</th><td><strong>Trophy Hunter</strong>: 30% of victories salvage a crafting material, rising 4% per level to 58% at level 10; half of those drops are doubled</td></tr><tr><th>Level 4</th><td>Super Potion recipe</td></tr><tr><th>Level 5</th><td>Ace Trainer or Tactician profession; King's Rock recipe</td></tr><tr><th>Level 6</th><td>Full Heal and Metal Coat recipes</td></tr><tr><th>Level 7</th><td>Revive and Up-Grade recipes</td></tr><tr><th>Level 8</th><td><strong>Day Care Rotation</strong>; Razor Claw, Electirizer, and Protector recipes</td></tr><tr><th>Level 9</th><td>Max Ether recipe</td></tr><tr><th>Level 10</th><td>Branch-specific final profession; <strong>Rally</strong></td></tr>`;
+  return `${breadcrumbs([{label:'Skills & Professions'}])}<article><h1>Skills & Professions</h1><p class="lead">Training, Battling, and Breeding are separate ten-level SpaceCore skills for the farmer. This page uses only progression information explicitly present in the supplied Pelipper Town documentation.</p>${skillCard('Training','First sightings and catches, chores, affection, and evolution.','Training advances mainly through discovery, catching, affection, evolution, and a limited amount of daily chore credit.',training,'')} ${skillCard('Battling','Whenever an owned Pokémon is credited with a victory: 8 XP plus one per five defeated levels, capped at 20. The first credited victory against each wild species adds 15 XP.','Battling XP comes from credited victories; damage, attacks attempted, changing moves, and party-share XP do not grant Battling skill XP.',battlingLevels,renderBattlingProfessionTree())} ${skillCard('Breeding','Producing and hatching Eggs.','Breeding advances through pair and Egg progression.',breeding,'')}<div class="notice">Profession names and effects for Training and Breeding were not present in the supplied documentation, so they are not inferred or added here.</div></article>`;
+}
 function renderEntity(kind,id){
-  const map={species,trainer:trainers,companion:companions,form:forms,move:moveIndex,ability:abilityIndex}[kind], x=map?.get(id);
+  const map={species,trainer:trainers,companion:companions,form:forms,move:moveIndex,ability:abilityIndex,item:itemIndex}[kind], x=map?.get(id);
   if(!x)return `<div class="empty"><h2>Entity not found</h2><p>The requested identifier is not present in the supplied data.</p><a href="#/">Return to home</a></div>`;
-  const name=firstDisplay(x), img=imageFor(x), intro=x.Description||x.description||'';
+  const name=firstDisplay(x), img=kind==='item'?x.image:imageFor(x), intro=kind==='item'?'Item from the Pelipper Town expansion.':(x.Description||x.description||'');
   let body=`${breadcrumbs([{label:title(kind)},{label:name}])}<div class="entity-head"><div><h1>${esc(name)}</h1><p class="lead">${esc(intro)}</p></div>${infobox(x,name,img)}</div>`;
   if(kind==='species'){
     body+=renderJobs(x)+renderAbilities(x)+renderLearnset(x)+renderEvolutionSection(id)+renderMegaEvolutionSection(id)+`<div class="section"><h2>Information</h2>${renderImportant(x)}</div>`;
-  } else {
+  } else if(kind!=='item') {
     body+=`<div class="section"><h2>Information</h2>${renderImportant(x)}</div>`;
   }
   if(kind==='move'){ body+=`<section class="section"><h2>Move data</h2>${renderMoveCard(id,'')}</section>`; }
+  if(kind==='item'){
+    const recipe=x.recipe;
+    body+=`<section class="section item-detail-section"><div class="item-detail-grid"><div><h2>Description</h2><p class="lead item-description">${esc(x.description||x.effect||'No description is present in the supplied localization data.')}</p>${x.effect&&x.description&&x.effect!==x.description?`<h3>Effect</h3><p>${esc(x.effect)}</p>`:''}</div><aside class="item-detail-side">${x.source?`<div><b>How to obtain</b><p>${esc(x.source)}</p></div>`:''}${x.gift?`<div><b>Gift</b><p>${esc(x.gift)}</p></div>`:''}</aside></div></section>`;
+    if(recipe) body+=`<section class="section"><div class="section-heading"><div><h2>Recipe</h2><p class="muted">Recipe information explicitly documented by the supplied mod guide.</p></div></div><div class="recipe-card">${recipe.unlock?`<div><b>Unlock / source</b><p>${esc(recipe.unlock)}</p></div>`:''}${recipe.ingredients?`<div><b>Ingredients</b><p class="recipe-ingredients">${esc(recipe.ingredients)}</p></div>`:''}${recipe.note?`<div><b>Notes</b><p>${esc(recipe.note)}</p></div>`:''}</div></section>`;
+    body+=`<section class="section"><h2>Item data</h2><div class="code">${esc(JSON.stringify(x,null,2))}</div></section>`;
+  }
   if(kind==='ability'){
     const users=abilityUsers.get(id)||[];
     body+=`<section class="section"><h2>Ability data</h2><article class="ability-card"><div class="ability-head"><h3>${esc(x.DisplayName||title(id))}</h3><span class="pill">${esc(id)}</span></div>${x.Description?`<p>${esc(x.Description)}</p>`:''}${x.Trigger?`<div class="move-meta"><span>Trigger</span><b>${esc(title(x.Trigger))}</b></div>`:''}${x.Scope?`<div class="move-meta"><span>Scope</span><b>${esc(title(x.Scope))}</b></div>`:''}</article></section>`;
@@ -421,6 +460,8 @@ function categoryCards(){
     ['trainer','Trainers',trainers.size,'Trainer battle records found in the dataset.'],
     ['companion','Villager Companions',companions.size,'Villager partner assignments and choices.'],
     ['form','Forms & Evolutions',forms.size,'Form records and transformation variants.'],
+    ['item','Items',ITEM_DATA.length,'Items from the expansion, with descriptions, documented acquisition methods and recipes.'],
+    ['skills','Skills & Professions',3,'Training, Battling, and Breeding progression, XP sources, documented unlocks and professions.'],
   ];
   return cats.map(c=>`<a class="card" href="#/category/${c[0]}"><div class="card-title">${c[1]}</div><div class="card-meta">${c[2].toLocaleString()} records</div><div class="card-desc">${c[3]}</div></a>`).join('');
 }
@@ -428,22 +469,23 @@ function home(){
   const totalRefs=[...new Set([...records.flatMap(r=>r.path)])].length;
   return `<div class="hero">${breadcrumbs([])}<h1>Pelipper Town Wiki</h1><p class="lead">A data-driven reference built from the supplied Pelipper Town README and JSON datasets. The interface exposes structured records, cross-references and source data without inventing missing content.</p><div class="stats"><div class="stat"><b>${species.size.toLocaleString()}</b><span>Pokémon indexed</span></div><div class="stat"><b>${trainers.size}</b><span>trainer records</span></div><div class="stat"><b>${companions.size}</b><span>villager records</span></div><div class="stat"><b>${Object.keys(DATA).length}</b><span>JSON datasets</span></div></div></div>
   <h2>Browse the Wiki</h2><div class="grid">${categoryCards()}</div>
-  <h2>Data sources</h2><div class="notice">The wiki indexes the supplied JSON files and preserves source values. The original README is available under <a href="#/documentation">Documentation</a>.</div>`;
+  <h2>Data sources</h2><div class="notice">The wiki indexes the supplied JSON files and preserves source values. The original mod README is available under <a href="#/documentation">Documentation</a>.</div>`;
 }
 function listCategory(kind){
-  const map={species,trainer:trainers,companion:companions,form:forms}[kind];
+  if(kind==='skills') return skillsPage();
+  const map={species,trainer:trainers,companion:companions,form:forms,item:itemIndex}[kind];
   if(!map)return `<div class="empty">Unknown category.</div>`;
-  const items=[...map.entries()].map(([id,x])=>({id,name:firstDisplay(x),desc:x.Description||x.description||'',img:imageFor(x)}));
+  const items=[...map.entries()].map(([id,x])=>({id,name:kind==='item'?x.name:firstDisplay(x),desc:kind==='item'?(x.description||x.effect||''):x.Description||x.description||'',img:kind==='item'?x.image:imageFor(x),category:kind==='item'?(x.category||'Other'):''}));
   items.sort((a,b)=>a.name.localeCompare(b.name));
   let page=1; const size=60;
   const render=()=>{const q=($('#catFilter')?.value||'').toLowerCase(); const filtered=items.filter(x=>(x.name+' '+x.id+' '+x.desc).toLowerCase().includes(q)); const pages=Math.max(1,Math.ceil(filtered.length/size)); page=Math.min(page,pages); const slice=filtered.slice((page-1)*size,page*size);
-    const cards=slice.map(x=>`<a class="card" href="${href(kind,x.id)}">${x.img?`<img src="${esc(x.img)}" alt="" style="width:72px;height:72px;object-fit:contain;float:right" onerror="this.style.display='none'">`:''}<div class="card-title">${esc(x.name)}</div><div class="card-meta">${esc(x.id)}</div><div class="card-desc">${esc(x.desc)}</div></a>`).join('');
+    const cards=slice.map(x=>`<a class="card item-card" href="${href(kind,x.id)}">${x.img?`<img src="${esc(x.img)}" alt="" class="item-card-img" onerror="this.style.display='none'">`:''}<div class="card-title">${esc(x.name)}</div><div class="card-meta">${esc(x.id)}${x.category?` · ${esc(x.category)}`:''}</div><div class="card-desc">${esc(x.desc)}</div></a>`).join('');
     $('#catResults').innerHTML=cards||'<div class="empty">No matching records.</div>';
     $('#pager').innerHTML=`<button ${page<=1?'disabled':''} data-p="-1">Previous</button><span class="pill">Page ${page} of ${pages}</span><button ${page>=pages?'disabled':''} data-p="1">Next</button>`;
     $('#pager').querySelectorAll('button').forEach(b=>b.onclick=()=>{page+=Number(b.dataset.p);render();window.scrollTo(0,0)});
   };
   setTimeout(()=>{const el=$('#catFilter');if(el)el.oninput=()=>{page=1;render()};render()},0);
-  return `${breadcrumbs([{label:title(kind)}])}<h1>${esc(title(kind))}</h1><p class="lead">${items.length.toLocaleString()} indexed records.</p><div class="filters"><input id="catFilter" placeholder="Filter this category…"></div><div id="catResults" class="grid"></div><div id="pager" class="pager"></div>`;
+  return `${breadcrumbs([{label:kind==='item'?'Items':title(kind)}])}<h1>${esc(kind==='item'?'Items':title(kind))}</h1><p class="lead">${items.length.toLocaleString()} indexed records.</p><div class="filters"><input id="catFilter" placeholder="Filter this category…"></div><div id="catResults" class="grid"></div><div id="pager" class="pager"></div>`;
 }
 function markdownToHtml(md){
   let src=esc(String(md||'')).replace(/\r/g,'');
@@ -482,7 +524,7 @@ function documentationDoc(slugValue){
 }
 function documentation(){
   const md=window.PELIPPER_README;
-  const txt=md?String(md):`The README is included in the project as README.md.`;
+  const txt=md?String(md):`The supplied mod README is included in the project as MOD_README.md.`;
   // Basic Markdown rendering for the supplied README; source text remains available below.
   let h=esc(txt);
   h=h.replace(/^###### (.*)$/gm,'<h6>$1</h6>').replace(/^##### (.*)$/gm,'<h5>$1</h5>').replace(/^#### (.*)$/gm,'<h4>$1</h4>').replace(/^### (.*)$/gm,'<h3>$1</h3>').replace(/^## (.*)$/gm,'<h2>$1</h2>').replace(/^# (.*)$/gm,'<h1>$1</h1>');
@@ -510,7 +552,7 @@ function route(){
   $('#sidebar').classList.remove('open');
 }
 function buildNav(){
-  $('#nav').innerHTML=`<div class="nav-title">Wiki</div><a class="nav-link" href="#/">Home</a><a class="nav-link" href="#/documentation">Documentation</a><a class="nav-link" href="#/sources">Source datasets</a><div class="nav-title">Browse</div>${[['species','Pokémon'],['trainer','Trainers'],['companion','Villager Companions'],['form','Forms & Evolutions']].map(x=>`<a class="nav-link" href="#/category/${x[0]}">${x[1]}</a>`).join('')}`;
+  $('#nav').innerHTML=`<div class="nav-title">Wiki</div><a class="nav-link" href="#/">Home</a><a class="nav-link" href="#/documentation">Documentation</a><a class="nav-link" href="#/sources">Source datasets</a><div class="nav-title">Browse</div>${[['species','Pokémon'],['trainer','Trainers'],['companion','Villager Companions'],['form','Forms & Evolutions'],['item','Items'],['skills','Skills & Professions']].map(x=>`<a class="nav-link" href="#/category/${x[0]}">${x[1]}</a>`).join('')}`;
 }
 function doSearch(q){
   const box=$('#searchResults'); q=q.trim().toLowerCase();
