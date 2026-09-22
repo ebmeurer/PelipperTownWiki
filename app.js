@@ -133,6 +133,7 @@ function allSearch(){
 const SEARCH=allSearch();
 
 function href(kind,id){return `#/wiki/${kind}/${encodeURIComponent(id)}`}
+function sectionHref(kind,id,section){return `${href(kind,id)}#${encodeURIComponent(section)}`}
 function linkForId(id){ return genericRefs.has(id) ? refLink(id) : `<span class="pill">${esc(id)}</span>`; }
 function primitive(v){
   if(v===null||v===undefined)return '—';
@@ -279,7 +280,7 @@ function renderEvolutionSection(id){
     }).join('');
     return `<div class="evolution-stage"><div class="evolution-stage-label">Stage ${stage.number}</div><div class="evolution-stage-cards">${cards}</div></div>${index<stages.length-1?'<div class="evolution-stage-arrow" aria-hidden="true">→</div>':''}`;
   }).join('');
-  return `<section class="section evolution-section"><div class="section-heading"><div><h2>Evolution Line</h2><p class="muted">Evolution stages are aligned horizontally; branching evolutions are kept at the same stage and each destination shows its recorded condition.</p></div></div><div class="evolution-tree">${columns}</div></section>`;
+  return `<section id="evolution-line" class="section evolution-section"><div class="section-heading"><div><h2>Evolution Line</h2><p class="muted">Evolution stages are aligned horizontally; branching evolutions are kept at the same stage and each destination shows its recorded condition.</p></div></div><div class="evolution-tree">${columns}</div></section>`;
 }
 function renderMegaEvolutionSection(id){
   const megas=megaFormsBySpecies.get(id)||[];
@@ -289,7 +290,7 @@ function renderMegaEvolutionSection(id){
     const img=imageFor(x);
     return `<a class="card mega-card" href="${href('form',m.id)}">${img?`<img class="mega-card-img" src="${esc(img)}" alt="" onerror="this.style.display='none'">`:''}<div class="card-title">${esc(m.name)}</div><div class="card-meta">${esc(m.id)}</div></a>`;
   }).join('');
-  return `<section class="section mega-evolution-section"><div class="section-heading"><div><h2>Mega Evolutions</h2><p class="muted">Mega forms available for this Pokémon in the supplied mod data.</p></div><span class="pill">${megas.length} mega form${megas.length===1?'':'s'}</span></div><div class="grid mega-grid">${cards}</div></section>`;
+  return `<section id="mega-evolutions" class="section mega-evolution-section"><div class="section-heading"><div><h2>Mega Evolutions</h2><p class="muted">Mega forms available for this Pokémon in the supplied mod data.</p></div><span class="pill">${megas.length} mega form${megas.length===1?'':'s'}</span></div><div class="grid mega-grid">${cards}</div></section>`;
 }
 function extractJobs(x){
   const jobs=[];
@@ -310,7 +311,7 @@ function extractJobs(x){
 function renderJobs(x){
   const jobs=extractJobs(x); if(!jobs.length)return '';
   const grouped={}; jobs.forEach(([k,v])=>{const label=title(k.replace(/Ids?$|Values?$/i,''));(grouped[label]??=[]).push(String(v));});
-  return `<section class="section jobs-section"><h2>Jobs & Work</h2><p class="muted">Work capabilities recorded in the supplied dataset.</p><div class="job-grid">${Object.entries(grouped).map(([k,vals])=>`<div class="job-card"><div class="job-icon">✦</div><div><h3>${esc(k)}</h3><div class="job-values">${vals.map(v=>`<span class="pill">${esc(title(v))}</span>`).join('')}</div></div></div>`).join('')}</div></section>`;
+  return `<section id="jobs-work" class="section jobs-section"><h2>Jobs & Work</h2><p class="muted">Work capabilities recorded in the supplied dataset.</p><div class="job-grid">${Object.entries(grouped).map(([k,vals])=>`<div class="job-card"><div class="job-icon">✦</div><div><h3>${esc(k)}</h3><div class="job-values">${vals.map(v=>`<span class="pill">${esc(title(v))}</span>`).join('')}</div></div></div>`).join('')}</div></section>`;
 }
 // Build cross-dataset indexes for abilities and moves. IDs are the stable link between
 // a species' AbilityIds/DefaultMoveIds/Learnset and the full definitions in the datasets.
@@ -381,7 +382,7 @@ function renderTypeAffinities(x){
     const a=TYPE_AFFINITY_BY_TYPE.get(key); if(!a)return '';
     return `<article class="ability-card affinity-card"><div class="ability-head"><h3>${esc(a.name)}</h3><span class="pill">${esc(key==='all'?'All Types':title(key))}</span></div><p>${esc(a.description)}</p></article>`;
   }).join('');
-  return cards?`<section class="section affinities-section"><div class="section-heading"><div><h2>Type Affinity</h2><p class="muted">The Type Affinity granted by this Pokémon while it is deployed and conscious.</p></div></div><div class="ability-grid">${cards}</div></section>`:'';
+  return cards?`<section id="type-affinity" class="section affinities-section"><div class="section-heading"><div><h2>Type Affinity</h2><p class="muted">The Type Affinity granted by this Pokémon while it is deployed and conscious.</p></div></div><div class="ability-grid">${cards}</div></section>`:'';
 }
 function formatMoveValue(v){
   if(v===null || v===undefined) return '';
@@ -409,7 +410,7 @@ function renderAbilities(x){
     const name=a.DisplayName||title(id);
     return `<article class="ability-card"><div class="ability-head"><h3><a href="${href('ability',id)}">${esc(name)}</a></h3><a class="pill link" href="${href('ability',id)}">${esc(id)}</a></div>${a.Description?`<p>${esc(a.Description)}</p>`:''}${a.Trigger?`<div class="move-meta"><span>Trigger</span><b>${esc(title(a.Trigger))}</b></div>`:''}${a.Scope?`<div class="move-meta"><span>Scope</span><b>${esc(title(a.Scope))}</b></div>`:''}</article>`;
   }).join('');
-  return cards?`<section class="section abilities-section"><h2>Abilities</h2><div class="ability-grid">${cards}</div></section>`:'';
+  return cards?`<section id="abilities" class="section abilities-section"><h2>Abilities</h2><div class="ability-grid">${cards}</div></section>`:'';
 }
 function chanceLabel(v){
   if(v===undefined||v===null||v==='') return '';
@@ -466,7 +467,7 @@ function renderBaseStats(x){
   const max=Math.max(...entries.map(([,value])=>value),1);
   const total=entries.reduce((sum,[,value])=>sum+value,0);
   const bars=entries.map(([label,value])=>`<div class="base-stat-row"><div class="base-stat-label"><span>${esc(label)}</span><strong>${esc(value)}</strong></div><div class="base-stat-track" role="progressbar" aria-label="${esc(label)} base stat" aria-valuemin="0" aria-valuemax="${esc(max)}" aria-valuenow="${esc(value)}"><span class="base-stat-fill" style="width:${Math.max(0,Math.min(100,(value/max)*100))}%"></span></div></div>`).join('');
-  return `<section class="section base-stats-section"><div class="section-heading"><div><h2>Base Stats</h2><p class="muted">Base Stats recorded for this Pokémon in the supplied mod data.</p></div><span class="pill">Total ${total}</span></div><div class="base-stats-chart">${bars}</div></section>`;
+  return `<section id="base-stats" class="section base-stats-section"><div class="section-heading"><div><h2>Base Stats</h2><p class="muted">Base Stats recorded for this Pokémon in the supplied mod data.</p></div><span class="pill">Total ${total}</span></div><div class="base-stats-chart">${bars}</div></section>`;
 }
 function renderLearnset(x){
   const learn=Array.isArray(x?.Learnset)?x.Learnset.filter(l=>l?.MoveId):[];
@@ -475,7 +476,7 @@ function renderLearnset(x){
   const rows=learn.map(l=>renderMoveLine(l.MoveId,l.Level)).join('');
   const known=new Set(learn.map(l=>l.MoveId));
   const defaultRows=defaults.filter(id=>!known.has(id)).map(id=>renderMoveLine(id,'Default')).join('');
-  return `<section class="section learnset-section"><div class="section-heading"><div><h2>Learnset & Moves</h2><p class="muted">Only move data present in the supplied Pelipper Town JSON files is shown.</p></div><span class="pill">${learn.length} level-up moves</span></div>${defaultRows?`<h3 class="subheading">Default moves</h3><div class="move-list">${defaultRows}</div>`:''}${learn.length?`<h3 class="subheading">Level-up learnset</h3><div class="move-list">${rows}</div>`:''}</section>`;
+  return `<section id="learnset-moves" class="section learnset-section"><div class="section-heading"><div><h2>Learnset & Moves</h2><p class="muted">Only move data present in the supplied Pelipper Town JSON files is shown.</p></div><span class="pill">${learn.length} level-up moves</span></div>${defaultRows?`<h3 class="subheading">Default moves</h3><div class="move-list">${defaultRows}</div>`:''}${learn.length?`<h3 class="subheading">Level-up learnset</h3><div class="move-list">${rows}</div>`:''}</section>`;
 }
 const skillUnlocksByLevel={Training:new Map(),Battling:new Map(),Breeding:new Map()};
 for(const item of ITEM_DATA){
@@ -526,9 +527,24 @@ function renderEntity(kind,id){
   const map={species,trainer:trainers,companion:companions,form:forms,move:moveIndex,ability:abilityIndex,item:itemIndex}[kind], x=map?.get(id);
   if(!x)return `<div class="empty"><h2>Entity not found</h2><p>The requested identifier is not present in the supplied data.</p><a href="#/">Return to home</a></div>`;
   const name=firstDisplay(x), img=kind==='item'?x.image:imageFor(x), intro=kind==='item'?'Item from the Pelipper Town expansion.':(x.Description||x.description||'');
-  let body=`${breadcrumbs([{label:title(kind)},{label:name}])}<div class="entity-head"><div><h1>${esc(name)}</h1><p class="lead">${esc(intro)}</p></div>${infobox(x,name,img)}</div>`;
+  let speciesSections=[];
+  let jumpNav='';
   if(kind==='species'){
-    body+=renderJobs(x)+renderAbilities(x)+renderTypeAffinities(x)+renderLearnset(x)+renderEvolutionSection(id)+renderMegaEvolutionSection(id)+renderBaseStats(x)+`<div class="section"><h2>Information</h2>${renderImportant(x)}</div>`;
+    speciesSections=[
+      ['jobs-work','Jobs & Work',renderJobs(x)],
+      ['abilities','Abilities',renderAbilities(x)],
+      ['type-affinity','Type Affinity',renderTypeAffinities(x)],
+      ['learnset-moves','Learnset & Moves',renderLearnset(x)],
+      ['evolution-line','Evolution Line',renderEvolutionSection(id)],
+      ['mega-evolutions','Mega Evolutions',renderMegaEvolutionSection(id)],
+      ['base-stats','Base Stats',renderBaseStats(x)]
+    ];
+    const jumpLinks=speciesSections.filter(([,label,html])=>html).map(([target,label])=>`<a class="section-jump-link" href="${sectionHref('species',id,target)}">${esc(label)}</a>`).join('');
+    jumpNav=jumpLinks?`<nav class="species-section-nav" aria-label="Jump to Pokémon section">${jumpLinks}</nav>`:'';
+  }
+  let body=`${breadcrumbs([{label:title(kind)},{label:name}])}<div class="entity-head"><div><h1>${esc(name)}</h1><p class="lead">${esc(intro)}</p>${jumpNav}</div>${infobox(x,name,img)}</div>`;
+  if(kind==='species'){
+    body+=speciesSections.map(([,label,html])=>html).join('')+`<div class="section"><h2>Information</h2>${renderImportant(x)}</div>`;
   } else if(kind!=='item') {
     body+=`<div class="section"><h2>Information</h2>${renderImportant(x)}</div>`;
   }
@@ -679,7 +695,18 @@ function route(){
   const m=hash.match(/^#\/wiki\/([^/]+)\/(.+)$/);
   const c=hash.match(/^#\/category\/([^/]+)$/);
   let html;
-  if(m) html=renderEntity(m[1],decodeURIComponent(m[2]));
+  if(m){
+    const fragmentIndex=m[2].indexOf('#');
+    const rawId=fragmentIndex>=0?m[2].slice(0,fragmentIndex):m[2];
+    const target=fragmentIndex>=0?decodeURIComponent(m[2].slice(fragmentIndex+1)):'';
+    html=renderEntity(m[1],decodeURIComponent(rawId));
+    requestAnimationFrame(()=>{
+      if(target){
+        const el=document.getElementById(target);
+        if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+      }
+    });
+  }
   else if(c) html=listCategory(c[1]);
   else if(hash==='#/documentation') html=documentation();
   else if(hash.startsWith('#/documentation/')) html=documentationDoc(decodeURIComponent(hash.slice('#/documentation/'.length)));

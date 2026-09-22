@@ -139,3 +139,9 @@ ul.clean{padding-left:20px}.source-list{columns:2;column-gap:30px}.source-list l
 .base-stat-track{height:13px;border-radius:999px;background:var(--surface-2);overflow:hidden;border:1px solid var(--border)}
 .base-stat-fill{display:block;height:100%;border-radius:999px;background:var(--accent);transition:width .18s ease}
 @media(max-width:560px){.base-stat-row{grid-template-columns:100px minmax(0,1fr);gap:9px}.base-stats-chart{padding:12px}}
+
+/* Pokémon section jump links */
+.species-section-nav{display:flex;flex-wrap:wrap;gap:7px;margin-top:16px;margin-bottom:4px}
+.section-jump-link{display:inline-flex;align-items:center;padding:6px 10px;border:1px solid var(--border);border-radius:7px;background:var(--surface-2);color:var(--text);font-size:13px;font-weight:650;line-height:1.2;transition:.12s}
+.section-jump-link:hover{border-color:var(--accent);background:var(--accent-soft);color:var(--accent);text-decoration:none}
+.section[id]{scroll-margin-top:84px}
