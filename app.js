@@ -3,6 +3,49 @@
 const DATA=window.PELIPPER_DATA||{};
 const ITEM_DATA=Array.isArray(window.PELIPPER_ITEMS)?window.PELIPPER_ITEMS:[];
 const itemIndex=new Map(ITEM_DATA.map(x=>[x.id,x]));
+const TYPE_AFFINITIES={
+  normal:{name:'Good Appetite',description:'Food restores 10% more health and energy, except full-refill items.'},
+  fire:{name:'Lantern Body',description:'Casts a larger partner or mount light at night and in mines, dungeons, and caves.'},
+  water:{name:'Emergency Reservoir',description:'Once daily, using a watering can below 15% capacity refills it to 50%.'},
+  electric:{name:'Static Field',description:'Increases item-attraction range by 25% and casts a compact partner or mount light.'},
+  grass:{name:'Verdant Harvest',description:'Single-yield crops have a 6% chance to produce one extra primary crop.'},
+  ice:{name:'Cold Focus',description:'The fishing catch meter drains 12% more slowly while the fish is outside the bar.'},
+  fighting:{name:'Second Wind',description:'Restores 8 Energy each whole in-game hour, up to 96 Energy per day.'},
+  poison:{name:'Composter',description:'Cut weeds roll 15% for Fiber and 3% for Mixed Seeds.'},
+  ground:{name:'Rich Earth',description:'Clay-producing tilling rolls 10% for extra Clay; ordinary rocks roll 3% for Stone.'},
+  flying:{name:"Bird's-Eye Survey",description:'Entering an outdoor map briefly sparkles nearby forage, dig spots, panning spots, and fishing bubbles.'},
+  psychic:{name:'Mind Reader',description:'Near a giftable villager, the partner emotes how they feel about your held item.'},
+  bug:{name:'Pollinator',description:'Collected Bee House Honey has a 10% chance to produce an identical extra Honey.'},
+  rock:{name:'Quarry Nose',description:'Ordinary rocks roll 8% for Stone; ore nodes roll 3% for their primary ore.'},
+  ghost:{name:'Phase Walk',description:'After pushing for 0.25 seconds, you can pass through villagers and farm animals.'},
+  dragon:{name:'Ancient Vitality',description:'Once daily, grants +25 maximum and current health and energy for the rest of the day.'},
+  dark:{name:'Mischief',description:'Witnessed garbage searches lose no friendship; normal finds roll 15% for another item.'},
+  steel:{name:'Ore Resonance',description:'Standard ore nodes have a 6% chance to produce one extra primary ore.'},
+  fairy:{name:'Kind Aura',description:'The first daily conversation gives +2 friendship; liked or loved gifts gain 10% more.'},
+  all:{name:'All Type Affinities',description:'Grants all 18 Type Affinity effects instead of only the affinity of its first listed type.'}
+};
+const TYPE_AFFINITY_BY_TYPE=new Map(Object.entries(TYPE_AFFINITIES));
+const HABITAT_DATA=DATA['assets/data/habitat_zones.json']||{};
+const SPECIES_HABITATS=HABITAT_DATA.SpeciesHabitatTags||{};
+const RIDEABLE_DATA=DATA['assets/data/rideable_species.json']||{};
+const RIDEABLE_SPECIES=RIDEABLE_DATA.Species||RIDEABLE_DATA.RideableSpecies||RIDEABLE_DATA||{};
+const habitatSpecies=new Map();
+for(const [sid,tags] of Object.entries(SPECIES_HABITATS)){
+  for(const tag of (Array.isArray(tags)?tags:[])){
+    if(!habitatSpecies.has(tag)) habitatSpecies.set(tag,[]);
+    habitatSpecies.get(tag).push(sid);
+  }
+}
+for(const list of habitatSpecies.values()) list.sort((a,b)=>String(a).localeCompare(String(b)));
+function habitatTagsFor(x){
+  const id=String(x?.Id||'');
+  return Array.isArray(SPECIES_HABITATS[id])?SPECIES_HABITATS[id]:[];
+}
+function mountProfileFor(id){
+  return RIDEABLE_SPECIES?.[id] || RIDEABLE_SPECIES?.[String(id).toLowerCase()] || null;
+}
+function isRideable(id){ return !!mountProfileFor(id); }
+function habitatLabel(tag){ return title(tag); }
 const $=s=>document.querySelector(s);
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const slug=s=>String(s??'').toLowerCase().trim().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
@@ -125,11 +168,19 @@ function genderRateLabel(v){
   }
   return String(v);
 }
+function renderSpeciesInfo(x){
+  const habitats=habitatTagsFor(x);
+  const rideable=isRideable(String(x?.Id||''));
+  const rows=[];
+  rows.push(`<div class="kv"><dt>Mount</dt><dd>${rideable?'Yes':'No'}</dd></div>`);
+  if(habitats.length) rows.push(`<div class="kv"><dt>Habitats</dt><dd>${habitats.map(tag=>`<a class="xref" href="${href('habitat',tag)}">${esc(habitatLabel(tag))}</a>`).join(' ')}</dd></div>`);
+  return rows.join('');
+}
 function infobox(x,name,img){
   const keys=['NationalDex','Generation','Types','GenderRate','BaseSpeciesId','FormId','Tier','MarriageCandidate','Season','Rung'];
   const rows=[];
   for(const k of keys) if(x?.[k]!==undefined) { const value=k==='GenderRate'?esc(genderRateLabel(x[k])):pretty(x[k]); rows.push(`<div class="kv"><dt>${esc(k==='GenderRate'?'Gender':title(k))}</dt><dd>${value}</dd></div>`); }
-  return `<aside class="infobox"><div class="infobox-title">${esc(name)}</div>${img?`<img class="infobox-img" src="${esc(img)}" alt="${esc(name)}" onerror="this.style.display='none'">`:''}${rows.join('')}</aside>`;
+  return `<aside class="infobox"><div class="infobox-title">${esc(name)}</div>${img?`<img class="infobox-img" src="${esc(img)}" alt="${esc(name)}" onerror="this.style.display='none'">`:''}${rows.join('')}${x?.Types?renderSpeciesInfo(x):''}</aside>`;
 }
 function breadcrumbs(parts){return `<div class="breadcrumbs"><a href="#/">Home</a>${parts.map((p,i)=>`<span>›</span>${p.href?`<a href="${p.href}">${esc(p.label)}</a>`:esc(p.label)}`).join('')}</div>`}
 function entityLinksFrom(x){
@@ -309,6 +360,29 @@ function moveIdsFor(x){
   return [...new Set(ids)];
 }
 function abilityDescription(a){ return a?.Description || ''; }
+function typeAffinityKeysFor(x){
+  const id=String(x?.Id||'').toLowerCase();
+  const abilityIds=abilityIdsFor(x);
+  const hasProtean=abilityIds.some(a=>String(a).toLowerCase()==='protean') || id==='mew';
+  const isArceus=id==='arceus';
+  if(hasProtean || isArceus) return ['all'];
+  const types=Array.isArray(x?.Types)?x.Types:[];
+  if(types.length){
+    const first=String(types[0]).toLowerCase();
+    const normalized=first.replace(/[^a-z]/g,'');
+    if(normalized==='normal' && types.some(t=>String(t).toLowerCase()==='flying')) return ['flying'];
+    if(TYPE_AFFINITY_BY_TYPE.has(normalized)) return [normalized];
+  }
+  return [];
+}
+function renderTypeAffinities(x){
+  const keys=typeAffinityKeysFor(x); if(!keys.length)return '';
+  const cards=keys.map(key=>{
+    const a=TYPE_AFFINITY_BY_TYPE.get(key); if(!a)return '';
+    return `<article class="ability-card affinity-card"><div class="ability-head"><h3>${esc(a.name)}</h3><span class="pill">${esc(key==='all'?'All Types':title(key))}</span></div><p>${esc(a.description)}</p></article>`;
+  }).join('');
+  return cards?`<section class="section affinities-section"><div class="section-heading"><div><h2>Type Affinity</h2><p class="muted">The Type Affinity granted by this Pokémon while it is deployed and conscious.</p></div></div><div class="ability-grid">${cards}</div></section>`:'';
+}
 function formatMoveValue(v){
   if(v===null || v===undefined) return '';
   if(Array.isArray(v) || (typeof v==='object' && v!==null)) return JSON.stringify(v,null,2);
@@ -375,13 +449,24 @@ function renderMoveLine(id,level){
   const fields=moveFields(m).filter(f=>!['EffectId','Type','Category','Power','StatusId','StatusChance','StatChanges','StatChangeChance'].includes(f.key));
   const highlighted=moveHighlighted(m).map(v=>`<span class="move-highlight">${esc(v)}</span>`).join('');
   const compact=fields.map(f=>`<span class="move-field"><b>${esc(f.label)}:</b> ${esc(f.value)}</span>`).join('');
-  return `<div class="move-row"><span class="level-badge">${esc(level===undefined||level===''?'—':(level==='Default'?'Default':`Lv. ${level}`))}</span><a class="move-name" href="${href('move',id)}">${esc(name)}</a><span class="move-id">${esc(id)}</span><div class="move-highlight-fields">${highlighted||'<span class="muted">—</span>'}</div><div class="move-inline-fields">${compact}</div></div>`;
+  return `<div class="move-row"><span class="level-badge">${esc(level===undefined||level===''?'—':(level==='Default'?'Default':`Lv. ${level}`))}</span><a class="move-name" href="${href('move',id)}">${esc(name)}</a><div class="move-highlight-fields">${highlighted||'<span class="muted">—</span>'}</div><div class="move-inline-fields">${compact}</div></div>`;
 }
 function renderMoveCard(id,level){
   const m=moveFor(id); if(!m) return '';
   const name=m.DisplayName||title(id);
   const fields=moveFields(m).filter(f=>f.key!=='EffectId');
   return `<article class="move-card"><div class="move-head"><div><h3>${esc(name)}</h3><span class="pill">${esc(id)}</span></div>${level!==undefined?`<span class="level-badge">${esc(level==='Default'?'Default':`Lv. ${level}`)}</span>`:''}</div>${m.Description?`<p class="move-description">${esc(m.Description)}</p>`:''}<dl class="move-stats">${fields.map(f=>`<div><dt>${esc(f.label)}</dt><dd class="move-value${/JSON/.test(f.value)?' move-json':''}">${esc(f.value)}</dd></div>`).join('')}</dl></article>`;
+}
+function renderBaseStats(x){
+  const stats=x?.BaseStats;
+  if(!stats || typeof stats!=='object' || Array.isArray(stats)) return '';
+  const order=[['Health','HP'],['Attack','Attack'],['Defense','Defense'],['SpecialAttack','Sp. Atk'],['SpecialDefense','Sp. Def'],['Speed','Speed']];
+  const entries=order.map(([key,label])=>[label,Number(stats[key])]).filter(([,value])=>Number.isFinite(value));
+  if(!entries.length)return '';
+  const max=Math.max(...entries.map(([,value])=>value),1);
+  const total=entries.reduce((sum,[,value])=>sum+value,0);
+  const bars=entries.map(([label,value])=>`<div class="base-stat-row"><div class="base-stat-label"><span>${esc(label)}</span><strong>${esc(value)}</strong></div><div class="base-stat-track" role="progressbar" aria-label="${esc(label)} base stat" aria-valuemin="0" aria-valuemax="${esc(max)}" aria-valuenow="${esc(value)}"><span class="base-stat-fill" style="width:${Math.max(0,Math.min(100,(value/max)*100))}%"></span></div></div>`).join('');
+  return `<section class="section base-stats-section"><div class="section-heading"><div><h2>Base Stats</h2><p class="muted">Base Stats recorded for this Pokémon in the supplied mod data.</p></div><span class="pill">Total ${total}</span></div><div class="base-stats-chart">${bars}</div></section>`;
 }
 function renderLearnset(x){
   const learn=Array.isArray(x?.Learnset)?x.Learnset.filter(l=>l?.MoveId):[];
@@ -421,13 +506,29 @@ function skillsPage(){
   const battlingLevels=`<tr><th>Level 1</th><td>Antidote and VS Seeker recipes</td></tr><tr><th>Level 2</th><td>Ether recipe</td></tr><tr><th>Level 3</th><td><strong>Trophy Hunter</strong>: 30% of victories salvage a crafting material, rising 4% per level to 58% at level 10; half of those drops are doubled</td></tr><tr><th>Level 4</th><td>Super Potion recipe</td></tr><tr><th>Level 5</th><td>Ace Trainer or Tactician profession; King's Rock recipe</td></tr><tr><th>Level 6</th><td>Full Heal and Metal Coat recipes</td></tr><tr><th>Level 7</th><td>Revive and Up-Grade recipes</td></tr><tr><th>Level 8</th><td><strong>Day Care Rotation</strong>; Razor Claw, Electirizer, and Protector recipes</td></tr><tr><th>Level 9</th><td>Max Ether recipe</td></tr><tr><th>Level 10</th><td>Branch-specific final profession; <strong>Rally</strong></td></tr>`;
   return `${breadcrumbs([{label:'Skills & Professions'}])}<article><h1>Skills & Professions</h1><p class="lead">Training, Battling, and Breeding are separate ten-level SpaceCore skills for the farmer. This page uses only progression information explicitly present in the supplied Pelipper Town documentation.</p>${skillCard('Training','First sightings and catches, chores, affection, and evolution.','Training advances mainly through discovery, catching, affection, evolution, and a limited amount of daily chore credit.',training,'')} ${skillCard('Battling','Whenever an owned Pokémon is credited with a victory: 8 XP plus one per five defeated levels, capped at 20. The first credited victory against each wild species adds 15 XP.','Battling XP comes from credited victories; damage, attacks attempted, changing moves, and party-share XP do not grant Battling skill XP.',battlingLevels,renderBattlingProfessionTree())} ${skillCard('Breeding','Producing and hatching Eggs.','Breeding advances through pair and Egg progression.',breeding,'')}<div class="notice">Profession names and effects for Training and Breeding were not present in the supplied documentation, so they are not inferred or added here.</div></article>`;
 }
+function abilitiesPage(){
+  const abilities=[...abilityIndex.entries()].map(([id,x])=>({id,name:x.DisplayName||title(id),desc:x.Description||'',users:abilityUsers.get(id)||[]}));
+  abilities.sort((a,b)=>a.name.localeCompare(b.name)||a.id.localeCompare(b.id));
+  const cards=abilities.map(a=>`<article class="ability-card"><div class="ability-head"><h3><a href="${href('ability',a.id)}">${esc(a.name)}</a></h3><span class="pill">${a.users.length} Pokémon</span></div>${a.desc?`<p>${esc(a.desc)}</p>`:''}<div class="ability-users">${a.users.slice(0,12).map(u=>`<a class="xref" href="${href('species',u.id)}">${esc(u.name)}</a>`).join(' ')}${a.users.length>12?`<span class="muted">+${a.users.length-12} more</span>`:''}</div></article>`).join('');
+  return `${breadcrumbs([{label:'Abilities'}])}<article><div class="section-heading"><div><h1>Abilities</h1><p class="lead">Passive abilities recorded in the supplied Pelipper Town data, with links to their Pokémon users and individual ability pages.</p></div><span class="pill">${abilities.length} abilities</span></div><div class="ability-grid">${cards}</div></article>`;
+}
+function habitatsPage(){
+  const habitats=[...habitatSpecies.entries()].map(([tag,ids])=>({tag,name:habitatLabel(tag),count:ids.length})).sort((a,b)=>a.name.localeCompare(b.name));
+  return `${breadcrumbs([{label:'Habitats'}])}<article><div class="section-heading"><div><h1>Habitats</h1><p class="lead">Habitat tags assigned to Pokémon in the supplied habitat dataset. Open a habitat to see its associated species.</p></div><span class="pill">${habitats.length} habitats</span></div><div class="grid habitat-grid">${habitats.map(h=>`<a class="card" href="${href('habitat',h.tag)}"><div class="card-title">${esc(h.name)}</div><div class="card-meta">${h.count} Pokémon</div></a>`).join('')}</div></article>`;
+}
+function habitatEntity(tag){
+  const ids=habitatSpecies.get(tag)||[];
+  const cards=ids.map(id=>{const x=species.get(id); if(!x)return ''; const name=firstDisplay(x); const img=imageFor(x); return `<a class="card item-card" href="${href('species',id)}">${img?`<img src="${esc(img)}" alt="" class="item-card-img" onerror="this.style.display='none'">`:''}<div class="card-title">${esc(name)}</div><div class="card-meta">${esc(id)}</div>${Array.isArray(x.Types)?`<div class="card-tags">${x.Types.map(t=>`<span class="pill">${esc(t)}</span>`).join('')}</div>`:''}</a>`;}).join('');
+  return `${breadcrumbs([{label:'Habitats',href:'#/category/habitat'},{label:habitatLabel(tag)}])}<article><h1>${esc(habitatLabel(tag))}</h1><p class="lead">Pokémon assigned to the <strong>${esc(habitatLabel(tag))}</strong> habitat tag in the supplied mod data.</p><div class="section"><div class="section-heading"><h2>Pokémon</h2><span class="pill">${ids.length}</span></div><div class="grid">${cards||'<div class="empty">No Pokémon are associated with this habitat.</div>'}</div></div></article>`;
+}
 function renderEntity(kind,id){
+  if(kind==='habitat') return habitatEntity(id);
   const map={species,trainer:trainers,companion:companions,form:forms,move:moveIndex,ability:abilityIndex,item:itemIndex}[kind], x=map?.get(id);
   if(!x)return `<div class="empty"><h2>Entity not found</h2><p>The requested identifier is not present in the supplied data.</p><a href="#/">Return to home</a></div>`;
   const name=firstDisplay(x), img=kind==='item'?x.image:imageFor(x), intro=kind==='item'?'Item from the Pelipper Town expansion.':(x.Description||x.description||'');
   let body=`${breadcrumbs([{label:title(kind)},{label:name}])}<div class="entity-head"><div><h1>${esc(name)}</h1><p class="lead">${esc(intro)}</p></div>${infobox(x,name,img)}</div>`;
   if(kind==='species'){
-    body+=renderJobs(x)+renderAbilities(x)+renderLearnset(x)+renderEvolutionSection(id)+renderMegaEvolutionSection(id)+`<div class="section"><h2>Information</h2>${renderImportant(x)}</div>`;
+    body+=renderJobs(x)+renderAbilities(x)+renderTypeAffinities(x)+renderLearnset(x)+renderEvolutionSection(id)+renderMegaEvolutionSection(id)+renderBaseStats(x)+`<div class="section"><h2>Information</h2>${renderImportant(x)}</div>`;
   } else if(kind!=='item') {
     body+=`<div class="section"><h2>Information</h2>${renderImportant(x)}</div>`;
   }
@@ -462,6 +563,8 @@ function categoryCards(){
     ['form','Forms & Evolutions',forms.size,'Form records and transformation variants.'],
     ['item','Items',ITEM_DATA.length,'Items from the expansion, with descriptions, documented acquisition methods and recipes.'],
     ['skills','Skills & Professions',3,'Training, Battling, and Breeding progression, XP sources, documented unlocks and professions.'],
+    ['ability','Abilities',abilityIndex.size,'Explore Pokémon passive abilities and the Pokémon that share them.'],
+    ['habitat','Habitats',habitatSpecies.size,'Browse habitat tags and the Pokémon associated with each habitat.'],
   ];
   return cats.map(c=>`<a class="card" href="#/category/${c[0]}"><div class="card-title">${c[1]}</div><div class="card-meta">${c[2].toLocaleString()} records</div><div class="card-desc">${c[3]}</div></a>`).join('');
 }
@@ -473,19 +576,51 @@ function home(){
 }
 function listCategory(kind){
   if(kind==='skills') return skillsPage();
+  if(kind==='ability') return abilitiesPage();
+  if(kind==='habitat') return habitatsPage();
   const map={species,trainer:trainers,companion:companions,form:forms,item:itemIndex}[kind];
   if(!map)return `<div class="empty">Unknown category.</div>`;
-  const items=[...map.entries()].map(([id,x])=>({id,name:kind==='item'?x.name:firstDisplay(x),desc:kind==='item'?(x.description||x.effect||''):x.Description||x.description||'',img:kind==='item'?x.image:imageFor(x),category:kind==='item'?(x.category||'Other'):''}));
+  const items=[...map.entries()].map(([id,x])=>({
+    id,
+    name:kind==='item'?x.name:firstDisplay(x),
+    desc:kind==='item'?(x.description||x.effect||''):x.Description||x.description||'',
+    img:kind==='item'?x.image:imageFor(x),
+    category:kind==='item'?(x.category||'Other'):'',
+    types:kind==='species'?(Array.isArray(x.Types)?x.Types:[]):[],
+    jobs:kind==='species'?(Array.isArray(x.Jobs)?x.Jobs.map(v=>String(v)):[]):[],
+    mount:kind==='species'?isRideable(String(id)):false
+  }));
   items.sort((a,b)=>a.name.localeCompare(b.name));
+  const typeOptions=kind==='species'?[...new Set(items.flatMap(x=>x.types.map(t=>String(t))))].sort((a,b)=>a.localeCompare(b)):[];
+  const jobOptions=kind==='species'?[...new Set(items.flatMap(x=>x.jobs))].sort((a,b)=>title(a).localeCompare(title(b))):[];
   let page=1; const size=60;
-  const render=()=>{const q=($('#catFilter')?.value||'').toLowerCase(); const filtered=items.filter(x=>(x.name+' '+x.id+' '+x.desc).toLowerCase().includes(q)); const pages=Math.max(1,Math.ceil(filtered.length/size)); page=Math.min(page,pages); const slice=filtered.slice((page-1)*size,page*size);
-    const cards=slice.map(x=>`<a class="card item-card" href="${href(kind,x.id)}">${x.img?`<img src="${esc(x.img)}" alt="" class="item-card-img" onerror="this.style.display='none'">`:''}<div class="card-title">${esc(x.name)}</div><div class="card-meta">${esc(x.id)}${x.category?` · ${esc(x.category)}`:''}</div><div class="card-desc">${esc(x.desc)}</div></a>`).join('');
+  const render=()=>{
+    const q=($('#catFilter')?.value||'').toLowerCase();
+    const type=($('#typeFilter')?.value||'').toLowerCase();
+    const job=($('#jobFilter')?.value||'').toLowerCase();
+    const mount=($('#mountFilter')?.value||'').toLowerCase();
+    const filtered=items.filter(x=>{
+      const textMatch=(x.name+' '+x.id+' '+x.desc).toLowerCase().includes(q);
+      const typeMatch=!type || x.types.some(t=>String(t).toLowerCase()===type);
+      const jobMatch=!job || x.jobs.some(j=>String(j).toLowerCase()===job);
+      const mountMatch=!mount || (mount==='yes' ? x.mount : !x.mount);
+      return textMatch&&typeMatch&&jobMatch&&mountMatch;
+    });
+    const pages=Math.max(1,Math.ceil(filtered.length/size)); page=Math.min(page,pages);
+    const slice=filtered.slice((page-1)*size,page*size);
+    const cards=slice.map(x=>`<a class="card item-card" href="${href(kind,x.id)}">${x.img?`<img src="${esc(x.img)}" alt="" class="item-card-img" onerror="this.style.display='none'">`:''}<div class="card-title">${esc(x.name)}</div><div class="card-meta">${esc(x.id)}${x.category?` · ${esc(x.category)}`:''}</div>${kind==='species'&&x.types.length?`<div class="card-tags">${x.types.map(t=>`<span class="pill">${esc(t)}</span>`).join('')}</div>`:''}<div class="card-desc">${esc(x.desc)}</div></a>`).join('');
     $('#catResults').innerHTML=cards||'<div class="empty">No matching records.</div>';
+    $('#catCount').textContent=`${filtered.length.toLocaleString()} matching records`;
     $('#pager').innerHTML=`<button ${page<=1?'disabled':''} data-p="-1">Previous</button><span class="pill">Page ${page} of ${pages}</span><button ${page>=pages?'disabled':''} data-p="1">Next</button>`;
     $('#pager').querySelectorAll('button').forEach(b=>b.onclick=()=>{page+=Number(b.dataset.p);render();window.scrollTo(0,0)});
   };
-  setTimeout(()=>{const el=$('#catFilter');if(el)el.oninput=()=>{page=1;render()};render()},0);
-  return `${breadcrumbs([{label:kind==='item'?'Items':title(kind)}])}<h1>${esc(kind==='item'?'Items':title(kind))}</h1><p class="lead">${items.length.toLocaleString()} indexed records.</p><div class="filters"><input id="catFilter" placeholder="Filter this category…"></div><div id="catResults" class="grid"></div><div id="pager" class="pager"></div>`;
+  setTimeout(()=>{
+    const el=$('#catFilter'), typeEl=$('#typeFilter'), jobEl=$('#jobFilter'), mountEl=$('#mountFilter');
+    [el,typeEl,jobEl,mountEl].filter(Boolean).forEach(control=>control.oninput=control.onchange=()=>{page=1;render()});
+    render();
+  },0);
+  const speciesFilters=kind==='species'?`<select id="typeFilter" aria-label="Filter by type"><option value="">All types</option>${typeOptions.map(t=>`<option value="${esc(t)}">${esc(t)}</option>`).join('')}</select><select id="jobFilter" aria-label="Filter by job"><option value="">All jobs</option>${jobOptions.map(j=>`<option value="${esc(j)}">${esc(title(j))}</option>`).join('')}</select><select id="mountFilter" aria-label="Filter by mount"><option value="">All mounts</option><option value="yes">Mountable</option><option value="no">Not mountable</option></select>`:'';
+  return `${breadcrumbs([{label:kind==='item'?'Items':title(kind)}])}<h1>${esc(kind==='item'?'Items':title(kind))}</h1><p class="lead">${items.length.toLocaleString()} indexed records.</p><div class="filters"><input id="catFilter" placeholder="Filter this category…">${speciesFilters}</div><div class="category-result-meta"><span id="catCount">${items.length.toLocaleString()} matching records</span></div><div id="catResults" class="grid"></div><div id="pager" class="pager"></div>`;
 }
 function markdownToHtml(md){
   let src=esc(String(md||'')).replace(/\r/g,'');
@@ -532,6 +667,9 @@ function documentation(){
   h=h.split(/\n{2,}/).map(p=>p.trim().startsWith('<h')?p:`<p>${p.replace(/\n/g,'<br>')}</p>`).join('');
   return `${breadcrumbs([{label:'Documentation'}])}<article><h1>Documentation</h1><div class="notice warning">This page reproduces the supplied README as documentation for interpreting the dataset. It is not supplemented with external claims.</div>${docsCards()}<section class="section"><h2>Dataset README</h2>${h}</section></article>`;
 }
+function thirdPartyNotices(){
+  return `${breadcrumbs([{label:'Third-party notices'}])}<article><h1>Third-party notices</h1><p class="lead">Credits, source links, license notes, and redistribution notices carried over from the supplied Pelipper Town mod package. This Wiki is an unofficial reference project and does not claim ownership of third-party artwork.</p><div class="notice warning">The Wiki bundles copies of assets extracted from the supplied mod package. Their original third-party terms and attribution remain applicable; this page does not grant additional rights.</div><div class="section"><p><a class="pill link" href="THIRD_PARTY_NOTICES.md" target="_blank" rel="noopener">Open raw THIRD_PARTY_NOTICES.md</a></p></div><div class="section"><h2>Included notice</h2><pre class="code md-code">${esc(window.PELIPPER_THIRD_PARTY_NOTICES||'')}</pre></div></article>`;
+}
 function sources(){
   const paths=Object.keys(DATA).sort();
   return `${breadcrumbs([{label:'Sources'}])}<h1>Source datasets</h1><p class="lead">The following JSON datasets were supplied with the mod package and are indexed by this wiki.</p><ul class="source-list">${paths.map(p=>`<li><span class="pill">${esc(p)}</span></li>`).join('')}</ul>`;
@@ -546,13 +684,14 @@ function route(){
   else if(hash==='#/documentation') html=documentation();
   else if(hash.startsWith('#/documentation/')) html=documentationDoc(decodeURIComponent(hash.slice('#/documentation/'.length)));
   else if(hash==='#/sources') html=sources();
+  else if(hash==='#/notices') html=thirdPartyNotices();
   else html=home();
   $('#content').innerHTML=html; $('#content').focus();
-  document.querySelectorAll('.nav-link').forEach(a=>{const hrefValue=a.getAttribute('href'); const active=hrefValue===hash || (hrefValue==='#/documentation' && hash.startsWith('#/documentation')); a.classList.toggle('active',active);});
+  document.querySelectorAll('.nav-link').forEach(a=>{const hrefValue=a.getAttribute('href'); const active=hrefValue===hash || (hrefValue==='#/documentation' && hash.startsWith('#/documentation')) || (hrefValue==='#/category/habitat' && hash.startsWith('#/wiki/habitat/')) || (hrefValue==='#/category/ability' && hash.startsWith('#/wiki/ability/')); a.classList.toggle('active',active);});
   $('#sidebar').classList.remove('open');
 }
 function buildNav(){
-  $('#nav').innerHTML=`<div class="nav-title">Wiki</div><a class="nav-link" href="#/">Home</a><a class="nav-link" href="#/documentation">Documentation</a><a class="nav-link" href="#/sources">Source datasets</a><div class="nav-title">Browse</div>${[['species','Pokémon'],['trainer','Trainers'],['companion','Villager Companions'],['form','Forms & Evolutions'],['item','Items'],['skills','Skills & Professions']].map(x=>`<a class="nav-link" href="#/category/${x[0]}">${x[1]}</a>`).join('')}`;
+  $('#nav').innerHTML=`<div class="nav-title">Wiki</div><a class="nav-link" href="#/">Home</a><a class="nav-link" href="#/documentation">Documentation</a><a class="nav-link" href="#/sources">Source datasets</a><a class="nav-link" href="#/notices">Third-party notices</a><div class="nav-title">Browse</div>${[['species','Pokémon'],['trainer','Trainers'],['companion','Villager Companions'],['form','Forms & Evolutions'],['item','Items'],['ability','Abilities'],['habitat','Habitats'],['skills','Skills & Professions']].map(x=>`<a class="nav-link" href="#/category/${x[0]}">${x[1]}</a>`).join('')}`;
 }
 function doSearch(q){
   const box=$('#searchResults'); q=q.trim().toLowerCase();
