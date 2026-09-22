@@ -1,6 +1,8 @@
 # Pelipper Town Wiki
 
 This is a self-contained static wiki generated from the supplied Pelipper Town dataset.
+Made to have a better view of the Pokemon data from the Mod.
+Data from PelipperTown 1.2.1
 
 ## Run
 
