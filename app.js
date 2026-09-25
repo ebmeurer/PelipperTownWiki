@@ -125,7 +125,7 @@ function allSearch(){
   const out=[];
   for(const [id,x] of species) out.push({kind:'species',id,name:firstDisplay(x),meta:'Pokémon',desc:x.Description||'',img:imageFor(x)});
   for(const [id,x] of trainers) out.push({kind:'trainer',id,name:firstDisplay(x),meta:'Trainer',desc:'Trainer battle data',img:imageFor(x)});
-  for(const [id,x] of companions) out.push({kind:'companion',id,name:firstDisplay(x),meta:'Villager companion',desc:'Villager companion data',img:imageFor(x)});
+  for(const [id,x] of companions) out.push({kind:'companion',id,name:firstDisplay(x),meta:'Villager',desc:'Villager data',img:imageFor(x)});
   for(const [id,x] of forms) out.push({kind:'form',id,name:firstDisplay(x),meta:'Form / evolution',desc:x.Presentation?.DisplayName||'',img:imageFor(x)});
   for(const x of ITEM_DATA) out.push({kind:'item',id:x.id,name:x.name,meta:'Item',desc:x.description||x.effect||'',img:x.image});
   return out;
@@ -522,6 +522,43 @@ function habitatEntity(tag){
   const cards=ids.map(id=>{const x=species.get(id); if(!x)return ''; const name=firstDisplay(x); const img=imageFor(x); return `<a class="card item-card" href="${href('species',id)}">${img?`<img src="${esc(img)}" alt="" class="item-card-img" onerror="this.style.display='none'">`:''}<div class="card-title">${esc(name)}</div><div class="card-meta">${esc(id)}</div>${Array.isArray(x.Types)?`<div class="card-tags">${x.Types.map(t=>`<span class="pill">${esc(t)}</span>`).join('')}</div>`:''}</a>`;}).join('');
   return `${breadcrumbs([{label:'Habitats',href:'#/category/habitat'},{label:habitatLabel(tag)}])}<article><h1>${esc(habitatLabel(tag))}</h1><p class="lead">Pokémon assigned to the <strong>${esc(habitatLabel(tag))}</strong> habitat tag in the supplied mod data.</p><div class="section"><div class="section-heading"><h2>Pokémon</h2><span class="pill">${ids.length}</span></div><div class="grid">${cards||'<div class="empty">No Pokémon are associated with this habitat.</div>'}</div></div></article>`;
 }
+
+function villagerGiftLink(name){
+  const needle=String(name||'').trim().toLowerCase();
+  const match=[...itemIndex.entries()].find(([,item])=>String(item?.name||'').trim().toLowerCase()===needle);
+  return match ? `<a class="xref" href="${href('item',match[0])}">${esc(name)}</a>` : `<span class="gift-name">${esc(name)}</span>`;
+}
+function villagerGiftList(items){
+  return items?.length ? `<div class="gift-list">${items.map(v=>villagerGiftLink(v)).join('')}</div>` : '<div class="notice">No gifts in this category are documented by the source.</div>';
+}
+function renderVillagerGifts(x){
+  const data=window.PELIPPER_VILLAGER_GIFTS?.villagers?.[x?.NpcName||x?.DisplayName];
+  if(!data) return '';
+  const universal=window.PELIPPER_VILLAGER_GIFTS?.universal||{};
+  const source=window.PELIPPER_VILLAGER_GIFTS?.source||'';
+  return `<section class="section villager-gifts" id="gifts"><div class="section-heading"><div><h2>Gifts</h2><p class="muted">Gift preferences recovered from the Stardew Valley Wiki. Individual preferences are shown separately from universal gift rules.</p></div></div><div class="gift-grid"><article class="gift-card gift-love"><h3>❤️ Loves</h3>${villagerGiftList(data.loves)}</article><article class="gift-card gift-like"><h3>👍 Likes</h3>${villagerGiftList(data.likes)}</article></div><div class="gift-universal"><h3>Universal gift rules</h3><p class="muted">These apply broadly to villagers, but the source notes that individual villager tastes can override universal tastes. They are kept separate here rather than silently merging them with the individual lists.</p><div class="gift-grid"><article class="gift-card"><h4>❤️ Universal Loves</h4>${villagerGiftList(universal.loves)}</article><article class="gift-card"><h4>👍 Universal Likes</h4>${villagerGiftList(universal.likes)}</article></div></div>${source?`<p class="source-note">Source: <a href="${esc(source)}" target="_blank" rel="noopener noreferrer">Stardew Valley Wiki — List of All Gifts</a></p>`:''}</section>`;
+}
+function renderVillagerCompanions(x){
+  const choices=Array.isArray(x?.Choices)?x.Choices:[];
+  const current=x?.SpeciesId ? species.get(x.SpeciesId) : null;
+  const currentName=x?.SpeciesId ? (current?firstDisplay(current):x.SpeciesId) : '';
+  const currentLink=x?.SpeciesId ? `<a class="xref" href="${href('species',x.SpeciesId)}">${esc(currentName)}</a>` : '<span class="muted">Not documented</span>';
+  const choiceCards=choices.map(c=>{
+    const sid=c?.SpeciesId||c?.Id;
+    const sx=sid?species.get(sid):null;
+    const name=c?.DisplayName|| (sx?firstDisplay(sx):sid);
+    return sid?`<a class="card villager-companion-card" href="${href('species',sid)}">${sx&&imageFor(sx)?`<img src="${esc(imageFor(sx))}" alt="" class="item-card-img" onerror="this.style.display='none'">`:''}<div class="card-title">${esc(name)}</div>${c?.IsShiny?'<div class="card-meta">Shiny</div>':''}</a>`:`<div class="card"><div class="card-title">${esc(name||'Unknown')}</div></div>`;
+  }).join('');
+  return `<section class="section villager-companions"><div class="section-heading"><div><h2>Pokémon Companions</h2><p class="muted">Partner choices documented by the supplied Pelipper Town data.</p></div>${x?.Tier?`<span class="pill">${esc(x.Tier)}</span>`:''}</div><div class="companion-primary"><strong>Current / default companion</strong><div>${currentLink}</div></div>${choiceCards?`<h3>Available choices</h3><div class="grid">${choiceCards}</div>`:'<div class="notice">No companion choices are documented for this villager.</div>'}</section>`;
+}
+function renderVillagerMeta(x){
+  const rows=[];
+  if(x?.Tier!==undefined) rows.push(`<div class="kv"><dt>Companion tier</dt><dd>${esc(x.Tier)}</dd></div>`);
+  if(x?.MarriageCandidate!==undefined) rows.push(`<div class="kv"><dt>Marriage candidate</dt><dd>${x.MarriageCandidate?'Yes':'No'}</dd></div>`);
+  if(Array.isArray(x?.NpcAliases)&&x.NpcAliases.length) rows.push(`<div class="kv"><dt>Aliases</dt><dd>${x.NpcAliases.map(esc).join(', ')}</dd></div>`);
+  return rows.length?`<section class="section"><h2>Information</h2><dl class="kv">${rows.join('')}</dl></section>`:`<section class="section"><h2>Information</h2><div class="notice">No additional villager metadata is documented in the supplied companion data.</div></section>`;
+}
+
 function renderEntity(kind,id){
   if(kind==='habitat') return habitatEntity(id);
   const map={species,trainer:trainers,companion:companions,form:forms,move:moveIndex,ability:abilityIndex,item:itemIndex}[kind], x=map?.get(id);
@@ -539,12 +576,14 @@ function renderEntity(kind,id){
       ['mega-evolutions','Mega Evolutions',renderMegaEvolutionSection(id)],
       ['base-stats','Base Stats',renderBaseStats(x)]
     ];
-    const jumpLinks=speciesSections.filter(([,label,html])=>html).map(([target,label])=>`<a class="section-jump-link" href="${sectionHref('species',id,target)}">${esc(label)}</a>`).join('');
+    const jumpLinks=speciesSections.filter(([,label,html])=>typeof html==='string' && html.trim().length>0).map(([target,label])=>`<a class="section-jump-link" href="${sectionHref('species',id,target)}">${esc(label)}</a>`).join('');
     jumpNav=jumpLinks?`<nav class="species-section-nav" aria-label="Jump to Pokémon section">${jumpLinks}</nav>`:'';
   }
   let body=`${breadcrumbs([{label:title(kind)},{label:name}])}<div class="entity-head"><div><h1>${esc(name)}</h1><p class="lead">${esc(intro)}</p>${jumpNav}</div>${infobox(x,name,img)}</div>`;
   if(kind==='species'){
     body+=speciesSections.map(([,label,html])=>html).join('')+`<div class="section"><h2>Information</h2>${renderImportant(x)}</div>`;
+  } else if(kind==='companion') {
+    body+=renderVillagerGifts(x)+renderVillagerCompanions(x)+renderVillagerMeta(x);
   } else if(kind!=='item') {
     body+=`<div class="section"><h2>Information</h2>${renderImportant(x)}</div>`;
   }
@@ -575,7 +614,7 @@ function categoryCards(){
   const cats=[
     ['species','Pokémon',species.size,'Browse species and their data.'],
     ['trainer','Trainers',trainers.size,'Trainer battle records found in the dataset.'],
-    ['companion','Villager Companions',companions.size,'Villager partner assignments and choices.'],
+    ['companion','Villagers',companions.size,'Villagers, their documented gift preferences and Pokémon companion assignments.'],
     ['form','Forms & Evolutions',forms.size,'Form records and transformation variants.'],
     ['item','Items',ITEM_DATA.length,'Items from the expansion, with descriptions, documented acquisition methods and recipes.'],
     ['skills','Skills & Professions',3,'Training, Battling, and Breeding progression, XP sources, documented unlocks and professions.'],
@@ -636,7 +675,9 @@ function listCategory(kind){
     render();
   },0);
   const speciesFilters=kind==='species'?`<select id="typeFilter" aria-label="Filter by type"><option value="">All types</option>${typeOptions.map(t=>`<option value="${esc(t)}">${esc(t)}</option>`).join('')}</select><select id="jobFilter" aria-label="Filter by job"><option value="">All jobs</option>${jobOptions.map(j=>`<option value="${esc(j)}">${esc(title(j))}</option>`).join('')}</select><select id="mountFilter" aria-label="Filter by mount"><option value="">All mounts</option><option value="yes">Mountable</option><option value="no">Not mountable</option></select>`:'';
-  return `${breadcrumbs([{label:kind==='item'?'Items':title(kind)}])}<h1>${esc(kind==='item'?'Items':title(kind))}</h1><p class="lead">${items.length.toLocaleString()} indexed records.</p><div class="filters"><input id="catFilter" placeholder="Filter this category…">${speciesFilters}</div><div class="category-result-meta"><span id="catCount">${items.length.toLocaleString()} matching records</span></div><div id="catResults" class="grid"></div><div id="pager" class="pager"></div>`;
+  const categoryLabel=kind==='item'?'Items':(kind==='companion'?'Villagers':title(kind));
+  const categoryLead=kind==='companion'?'Villagers found in the supplied Pelipper Town companion datasets. Gift preferences are added only where a verified Stardew Valley Wiki source exists.':`${items.length.toLocaleString()} indexed records.`;
+  return `${breadcrumbs([{label:categoryLabel}])}<h1>${esc(categoryLabel)}</h1><p class="lead">${categoryLead}</p><div class="filters"><input id="catFilter" placeholder="Filter this category…">${speciesFilters}</div><div class="category-result-meta"><span id="catCount">${items.length.toLocaleString()} matching records</span></div><div id="catResults" class="grid"></div><div id="pager" class="pager"></div>`;
 }
 function markdownToHtml(md){
   let src=esc(String(md||'')).replace(/\r/g,'');
@@ -718,7 +759,7 @@ function route(){
   $('#sidebar').classList.remove('open');
 }
 function buildNav(){
-  $('#nav').innerHTML=`<div class="nav-title">Wiki</div><a class="nav-link" href="#/">Home</a><a class="nav-link" href="#/documentation">Documentation</a><a class="nav-link" href="#/sources">Source datasets</a><a class="nav-link" href="#/notices">Third-party notices</a><div class="nav-title">Browse</div>${[['species','Pokémon'],['trainer','Trainers'],['companion','Villager Companions'],['form','Forms & Evolutions'],['item','Items'],['ability','Abilities'],['habitat','Habitats'],['skills','Skills & Professions']].map(x=>`<a class="nav-link" href="#/category/${x[0]}">${x[1]}</a>`).join('')}`;
+  $('#nav').innerHTML=`<div class="nav-title">Wiki</div><a class="nav-link" href="#/">Home</a><a class="nav-link" href="#/documentation">Documentation</a><a class="nav-link" href="#/sources">Source datasets</a><a class="nav-link" href="#/notices">Third-party notices</a><div class="nav-title">Browse</div>${[['species','Pokémon'],['trainer','Trainers'],['companion','Villagers'],['form','Forms & Evolutions'],['item','Items'],['ability','Abilities'],['habitat','Habitats'],['skills','Skills & Professions']].map(x=>`<a class="nav-link" href="#/category/${x[0]}">${x[1]}</a>`).join('')}`;
 }
 function doSearch(q){
   const box=$('#searchResults'); q=q.trim().toLowerCase();
