@@ -1,8 +1,6 @@
 # Pelipper Town Wiki
 
-This is a self-contained static wiki generated from the supplied Pelipper Town dataset.
-Made to have a better view of the Pokemon data from the Mod.
-Data from PelipperTown 1.2.1
+This is a self-contained static wiki generated from the supplied Pelipper Town 1.2.6 dataset.
 
 ## Run
 
@@ -14,8 +12,9 @@ Data from PelipperTown 1.2.1
 - `index.html` — application shell
 - `app.js` — routing, search, rendering and cross-reference logic
 - `styles.css` — responsive Wiki styling
-- `wiki-data.js` — supplied JSON datasets bundled for browser use
-- `assets/` — image assets referenced by the supplied JSON
+- `wiki-data.js` — Pelipper Town 1.2.6 JSON datasets bundled for browser use
+- `assets/` — image assets from the supplied mod package
+- `docs/` — supplied guides, release notes, and master lists
 - `MOD_README.md` — supplied Pelipper Town README
 - `source-meta.json` — generation metadata
 

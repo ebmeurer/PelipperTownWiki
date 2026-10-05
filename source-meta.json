@@ -1,8 +1,9 @@
 {
   "source": "Pelipper Town mod dataset",
-  "jsonFiles": 46,
-  "referencedImages": 10592,
-  "generatedFrom": "PelipperTown 1.2.1 dataset supplied by user",
+  "jsonFiles": 51,
+  "referencedImages": 12228,
+  "generatedFrom": "PelipperTown 1.2.6 dataset supplied by user",
   "dataPolicy": "UI content is derived from the supplied JSON and README; unresolved values are not fabricated.",
-  "includesLocalization": true
+  "includesLocalization": true,
+  "modVersion": "1.2.6"
 }

@@ -40,8 +40,14 @@ For missing partners, full parties, quest locations and bug-report details, see
   later
 
 [Generic Mod Config Menu](https://www.nexusmods.com/stardewvalley/mods/5098)
-1.16 or later is optional. It provides the in-game menu for Pelipper Town's
-controls and settings.
+is optional. It provides the in-game menu for Pelipper Town's controls and
+settings; 1.16 or later shows every option. Stardew Valley Expanded and Quick
+Save are optional too, and no particular version of either is required.
+
+SpaceCore is the only hard requirement. If it is older than 1.28.4, SMAPI skips
+Pelipper Town entirely and nothing from the mod appears in game. See
+[troubleshooting](docs/TROUBLESHOOTING.md#pelipper-town-is-missing-from-the-game-and-the-config-menu)
+if the mod does not show up.
 
 ## Install
 
@@ -87,8 +93,27 @@ trainer battles, and scripted or legendary encounters remain intact.
 6. Press `P` to open the Partner Journal, where you can manage your party,
    moves, work policies, skills, and Pokédex.
 
+To stop one Pokémon's passive abilities, select it as your active partner and
+choose **Disable passives** on the Journal's Commands tab. **Enable passives**
+restores them. The choice is saved for that individual, including in multiplayer,
+and suppresses its field and team abilities while leaving it available for
+chores, moves, and riding. For Kyogre, this prevents future forced-rain days;
+weather already applied today remains until the next day. Other Pokémon can
+still supply their own passives. The **Pokémon passives** mod setting turns off
+passives globally.
+
 If your backpack is full during the opening, Marnie keeps the remaining items
 for you until there is room.
+
+Server hosts can set **Starting preset** in Mod Options or `StartingPreset` in
+the host's `config.json`: `0` lets each player choose (default), `1` requires
+Starters, `2` Pikachu or Eevee, `3` Bootstraps, `4` Hardcore, and `5` Custom.
+For a supplies-only server start, use `"StartingPreset": 3`: each new farmer
+receives ten Poké Balls and Marnie's Ranch Guide, with no starter Pokémon.
+The host enforces the preset for online and split-screen farmhands. Farmers who
+have already chosen a journey keep it. Presets 1 and 5 still let players choose
+regions or Pokémon within that opening. A nonzero preset takes precedence over
+**Required starter species**; leave the preset at 0 to use that species setting.
 
 ## Controls
 
@@ -195,12 +220,28 @@ farmer without disabling watering or other partner chores. The default-on
 **Protect giant crops** switch instead leaves only giant-capable crop types
 untouched, including crops added by other mods. Near-black Pokémon outlines are
 softened by default using
-the neighboring body color. The Appearance page offers optimized soft outlines
-with a 128 MiB session budget, uncapped normal soft outlines, or the original
+the neighboring body color. New configs use optimized soft outlines, which
+keep the softened copies within a 256 MiB session budget. The Appearance page
+also offers uncapped normal soft outlines, or the original
 black outlines. **Soft item outlines** on that page uses the same treatment for custom
 item sprites, and is off by default. The same page has a **Pokémon text size**
 slider for Journey Setup, the Partner Journal, and Pelipper Town hover details.
+Turn off **Pokémon in cutscenes** under **Appearance** to hide deployed partners
+and villagers' ambient Pokémon during story scenes. Partners reappear when the
+scene ends. This local setting is on by default, works for multiplayer guests,
+and preserves festival settings and Pokémon that belong to the scene.
 Debug and cheat settings are labeled separately.
+
+Under **Wild Pokémon**, **Wild Pokémon damage** adjusts wild attacks against
+farmers and Pokémon from 10–200% (default 100%). **Farmer damage reduction**
+reduces Pokémon attack damage taken by farmers from 0–100% (default 30%),
+before armor and other defenses. All Pokémon attacks now deal 10% less damage;
+the two reductions stack, so a former 100-damage attack becomes 63 before
+the farmer's defenses at the default settings. **Dungeon Pokémon density**
+adjusts ordinary Mines, Skull Cavern, and Volcano groups from 0–200% (default
+100%); groups also scale to reachable floor area. Set damage and density to
+50% for gentler fights with fewer opponents. The host controls these options
+in multiplayer. Scripted spawns keep their own population rules.
 
 Most replaceable supplies can be given to villagers through Stardew's normal
 gift system. Quest items, relics, fossils, Eggs, the DexNav, the Ranch Guide,
@@ -229,7 +270,16 @@ Each player can turn off **Farmer trade & PvP interactions** in Mod Options to
 stop opening the interaction menu and automatically decline incoming requests.
 
 The host and every farmhand must use the same Pelipper Town version. For this
-release, install version 1.2.1 for every player before connecting.
+release, install version 1.2.6 for every player before connecting.
+
+By default, first catches of fixed legendaries such as Latias and Solgaleo are
+shared across the farm. The host can enable **Legends per farmer**
+(`LegendaryCatchesPerFarmer`) on GMCM's Wild Pokémon page to give each farmer
+their own first catch and encounter cooldowns. Existing personal Pokédex history
+counts, so turning it on does not reset catches. Story unlocks and encounter
+schedules still apply, and farmers share the live encounter. A farmer who has
+already caught that species needs their own eligible Champion's Crown rematch
+(or the existing recovery opportunity) to catch another.
 
 ## Guides
 
@@ -243,9 +293,11 @@ release, install version 1.2.1 for every player before connecting.
   quest. The entire guide contains spoilers.
 - [Excel Master List](Pelipper_Town_Master_List.xlsx) is a filterable list of
   the built-in Pokémon, habitats, passives, chores, evolutions, encounters,
-  mounts, and villager partners.
+  mounts, villager partners, and Barn produce.
+- [Barn Produce Master List](docs/BARN_PRODUCE_MASTER_LIST.md) lists every
+  Pokémon's goods, species products, seasonal forage, and care-based quality.
 - [Release Notes](docs/RELEASE_NOTES.md) list changes, compatibility notes, and
-  known issues for version 1.2.1.
+  known issues for version 1.2.6.
 
 ## Console commands and "Nice try"
 
@@ -259,6 +311,58 @@ Pelipper Town's **Pokémon spawn commands** setting controls its own Pokémon
 and item spawning commands. Enable it in Mod Options to use commands such as
 `pokemon_spawn psyduck 20` in SMAPI or `/pokemon spawn psyduck 20` in game
 chat. It does not change Stardew's chat-cheat setting.
+
+For ranch toys, enter `/pokemon item RanchBall 1` and
+`/pokemon item RanchPunchingBag 1` separately in game chat. Use
+`/pokemon item RanchPunchingBagRed 1` for the red bag. These commands require
+the host and add the toys to your inventory.
+
+Use `/pokemon item RanchFrisbee 1` to preview the White Ranch Frisbee.
+Its recipe unlocks at Breeding level 2. Hold the action or tool button to
+charge, then release to throw. Steer it in flight with the movement keys or a
+mouse sweep. It sails over fences and low clutter when it's high and bounces
+off them when it's low; tall things like trees and buildings always bounce it.
+An awake Pokémon runs to meet it, leaping for great catches in midair, and
+brings it back to your backpack. Your own partner gets first claim on your
+throws. Walk near a disc once it stops to pick it up automatically. A full
+backpack leaves it on the ground.
+Play fetch with your deployed partner in any outdoor location or inside a
+breeding Barn. Pokémon can't catch a throw during its first second in the air.
+A disc that lands on water floats slowly toward reachable shore, giving
+Water-type Pokémon time to swim out and retrieve it.
+
+Friendship letters give a purple frisbee from Jas at 3 hearts, a red frisbee
+from Vincent at 3 hearts, and Alex's blue frisbee with a yellow circle at 4 hearts.
+Preview them with `/pokemon item RanchFrisbeePurple 1`,
+`/pokemon item RanchFrisbeeRed 1`, and `/pokemon item RanchFrisbeeBlue 1`.
+
+Ball play varies by Pokémon: lively and curious residents are more likely to
+join in, while others prefer their usual ranch activities. Morning ranch and
+breeding results appear as one short summary in game chat; reopen chat to
+review it. Use the ranch marker, Barn breeding menu, or Pokémon Journal for
+individual details.
+
+Hit or walk into a ball near an interested ranch Pokémon to start a pass or
+fetch game. The same partner stays with you for up to 60 seconds, with 15
+seconds to return each pass. Helpful Pokémon fetch; bold ones send the ball
+back. Other residents leave that ball alone during your game. Leave the farm,
+move away, or stop returning the ball to end the session.
+
+Catch the ball dead center in your swing to smash it farther, or hit it in
+midair to volley it back up for a juggle. Hits in a row build a rally counter
+over the ball. Pokémon pass to friends, lob returns for you to volley, and
+cheer big hits. Barn Pokémon join in too, and so does your own partner when
+it isn't fighting, doing a chore, or told to wait. It answers your hits
+before any ranch Pokémon does. Keep a rally going for 30 touches and a
+level 50 Victini appears nearby, at most once a day. It won't fight unless you
+attack it, which starts its boss battle.
+
+Hosts can also run `pokemon_bossrush` in the SMAPI console to fight every
+authored boss one at a time at level 50. Use `pokemon_bossrush start 75` to
+choose a level, `pokemon_bossrush start 50 moltres gyarados palkia` for a
+custom route, and `pokemon_bossrush status`, `stop`, or `list` to manage it.
+Rush bosses cannot be captured, and each next wave begins only after the
+current boss is defeated.
 
 ## Reporting a problem
 

@@ -2,7 +2,7 @@
 
 The VS Seeker supports all **54 Ridgeside Village partner profiles** and all
 **six Star Crossed children** defined in Pelipper Town's integration packs.
-Together with the original 82 trainers, this provides **142 NPCs and 568 teams**.
+Together with the original 82 trainers plus George, this provides **143 NPCs and 572 teams**.
 The expansions themselves must be installed and their NPCs loaded in the save.
 This update does not install either expansion or unlock their story events.
 

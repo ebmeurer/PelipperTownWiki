@@ -15,12 +15,14 @@ rewards, and late-game objectives are revealed below.
 - [Before starting a quest](#before-starting-a-quest)
 - [How Pelipper Town quests work](#how-pelipper-town-quests-work)
 - [Recommended quest route](#recommended-quest-route)
+- [Robin's Pokémon homes](#robins-pokémon-homes)
 - [Friendship and story quests](#friendship-and-story-quests)
 - [One-time mail favors](#one-time-mail-favors)
 - [Pokémon request board](#pokémon-request-board)
 - [Pelican Town Battle League](#pelican-town-battle-league)
 - [Four Signs in the Sky](#four-signs-in-the-sky)
 - [Legendary favor follow-ups](#legendary-favor-follow-ups)
+- [The Sword and Shield Trial](#the-sword-and-shield-trial)
 - [Multiplayer quest rules](#multiplayer-quest-rules)
 - [Troubleshooting an unfinished quest](#troubleshooting-an-unfinished-quest)
 - [Completion checklist](#completion-checklist)
@@ -149,6 +151,23 @@ This route reduces waiting without forcing every quest into one year.
 5. Use the Crown at the Summit and at resolved legendary landmarks for the
    post-quest challenges described in the Player Guide.
 
+## Robin's Pokémon homes
+
+Robin sends these letters the morning after you reach each personal catch total.
+Repeat wild catches count; gifts, trades, hatches, and evolutions do not. Each
+player receives their own letters and quests, including existing saves already
+past the milestones.
+
+| Catches | Letter contents | Quest |
+| --- | --- | --- |
+| 15 | One PokéRanch Marker and its recipe | **A Place to Roam:** enclose a farm yard with at least four interior tiles using fences, buildings, or farm edges, place the marker inside, and assign one of your boxed Pokémon. |
+| 20 | Pokémon Hut recipe | **A Home for a Helper:** craft a hut with **100 Wood and 100 Stone**, place it on the farm, and assign one of your boxed Pokémon. |
+
+Opening the letter starts the quest. Its journal objective updates as you work.
+The gifted marker is enough for the ranch quest; you don't need to craft a
+second one. The hut quest requires at least one hut crafted by you. An assignment
+belonging to another player does not complete either quest.
+
 ## Friendship and story quests
 
 ### A Friendly Rival
@@ -188,6 +207,16 @@ repeated until it is won.
 
 **Reward:** 5 Ethers, 250 additional Haley friendship, and a Cosmog Egg through
 the follow-up letter.
+
+**Repeating Cosmog:** Once the favor is finished, challenge Haley with the VS
+Seeker and win her tier 4, level 60 match. Every win hands over another Cosmog
+Egg, so the family can be farmed and shiny-hunted on one save. The battle
+journal's seven-day rematch lock is the limit; the challenge screen lists the
+Egg alongside the usual balls, medicine, and gold.
+
+Both the letter and rematch Cosmog Eggs have a 1-in-256 base shiny chance.
+Training level 10, Shiny Charm, and Shiny Specialist each double the chance,
+up to 1-in-32 with all three. Willy's Phione reward Eggs use the same odds.
 
 ### A Face in the Glass
 
@@ -392,7 +421,9 @@ appears on safe ground near the player.
 **Walkthrough:**
 
 1. Pick up the Moldy Cheese. This adds the quest and teaches its recipe.
-2. Select the cheese and throw it onto safe reachable land.
+2. Select the cheese in your toolbar. Hold your Poké Ball throw key (`G` by
+   default), aim at safe reachable land, then release. On controller, hold
+   Action/Check and release. Dropping it from the inventory does not summon Raticate.
 3. Catch or defeat the oversized level 10 Raticate it summons.
 
 **Reward:** Completion of the introductory threat and permanent access to the
@@ -406,7 +437,10 @@ Willy's letter.
 **Walkthrough:**
 
 1. Speak to Willy. He gives the first Smelly Bait and teaches its recipe.
-2. Stay on the Beach and throw the bait onto safe reachable land.
+2. Stay on the Beach and select the bait in your toolbar. Hold your Poké Ball
+   throw key (`G` by default), aim at safe reachable land, then release. On
+   controller, hold Action/Check and release. Dropping bait from the inventory
+   does not summon Gyarados.
 3. Catch or defeat the forced-shiny level 30 Gyarados.
 4. Return to Willy and report the result. Winning the encounter alone does not
    finish the Journal entry.
@@ -438,7 +472,9 @@ enter Town to see the event outside the clinic.
 **Walkthrough:**
 
 1. Finish the event and receive Harvey's Spare Suit.
-2. Throw the suit on open reachable land with room for a battle.
+2. Select the suit in your hotbar and press the normal action button to throw
+   it on open reachable land with room for a battle. Hold the button to aim
+   farther, then release. Dropping it from the inventory does not summon Mr. Mime.
 3. Catch or defeat the oversized level 30 Mr. Mime.
 
 **Reward:** Harvey's clinic companion moves outside the clinic after hours so
@@ -503,7 +539,8 @@ ordinary Help Wanted day with a Pokémon job.
 ### Posting schedule
 
 - A Pelipper Town posting appears only when Stardew has not already selected a
-  quest of the day.
+  quest of the day. With the original **Help Wanted** mod (0.9.3), it joins that
+  mod's expanded board even when Stardew has selected another quest.
 - The mod can post up to three requests per season, in the day 2 to 9, day 10
   to 18, and day 19 to 27 portions of the season.
 - It does not post on day 1, day 28, a festival day, or the day before a
@@ -610,9 +647,10 @@ The Journal tracks two independent requirements:
 1. Defeat all three trainer rungs in Spring, Summer, Fall, and Winter.
 2. Register 200 distinct caught species.
 
-When both conditions are complete, the quest awards the Champion's Crown. Wear
-or carry the Crown and enter the Summit to challenge level 100 Arceus. Wearing
-the Crown at a resolved legendary landmark also enables one daily rematch. The
+When both conditions are complete, the quest awards the Champion's Crown. The
+Giratina fight after the space-time rivals can also award one. Wear or carry
+the Crown and enter the Summit to challenge level 100 Arceus. Wearing the
+Crown at a resolved legendary landmark also enables one daily rematch. The
 farm's trainer ladders and world encounter history are shared, while the quest
 and personal Crown settlement belong to the relevant farmer.
 
@@ -649,6 +687,13 @@ level 70.
 6. After all four signs have been caught or defeated, visit the Beach during
    days 1 to 3 of any season. Lugia appears on the shoreline at level 75.
 
+Articuno, Zapdos, and Moltres each have a one-in-three chance to appear in
+their Galarian form, even without incense. Catching either form ends that
+bird's ordinary visits. To catch the other form, wear a Champion's Crown and
+return to its landmark for a daily rematch; the form is rolled again each time.
+The Crown can be earned through the Battle League journal or the space-time
+Giratina fight.
+
 The Lugia clue arrives only during an eligible day 1 to 3 window. If the four
 signs are resolved on day 4 or later, wait for the next season to begin. A
 defeated Lugia is unavailable for the rest of that three-day opening window;
@@ -684,6 +729,22 @@ quests:
   Space-Time Band and its Diamond plus Pearl recipe. Throw it outdoors to face
   level 65 Dialga and Palkia, followed by level 70 Giratina. Resolving Giratina
   awards a Champion's Crown and a Prismatic Shard.
+
+## The Sword and Shield Trial
+
+**Unlock:** Own a Pokémon at level 55 or higher in your party or storage. The
+quest enters your log automatically; you do not need to speak to Marlon.
+
+**Objective:** Defeat 300 wild Pokémon from that point onward. Keep at least
+one level-55 Pokémon while working on it. Earlier defeats, captures, and VS
+Seeker or other trainer victories do not count. The quest log tracks your
+progress, and each farmer completes their own trial.
+
+**Reward:** Both ball recipes unlock on the final defeat. Marlon also mails
+them the next morning. Craft a Sword Ball with 1 Ultra Ball, 1 Fairy Plate,
+and 1 Steel Plate to summon level-70 Zacian. Craft a Shield Ball with 1 Ultra
+Ball, 1 Fighting Plate, and 1 Steel Plate to summon level-70 Zamazenta. Throw
+either ball onto open reachable land; craft another for a repeat attempt.
 
 ## Multiplayer quest rules
 

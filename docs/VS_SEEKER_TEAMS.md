@@ -15,11 +15,11 @@ The repository's vanilla, SVE, East Scarp, Ridgeside Village and Star Crossed vi
 
 Community discussion supports Maru's Magnemite family, Demetrius's Paras and fungus research, and Sebastian's frog/dark theme. Suggestions differ, so these are design influences, not claims of consensus. [Stardew Valley Forums: For Pokémon Fans](https://forums.stardewvalley.net/threads/for-pok%C3%A9mon-fans.48297/). Abigail's Sableye also appears in [community trainer designs](https://www.reddit.com/r/StardewValley/comments/17qq44d). Smeargle and Ditto are replaced by thematic teammates because the seasonal attack picker cannot use their status-only learnsets; Wizard opens with Espurr instead of a Teleport-only Abra. Level-15 Lapras and Wooloo slots use Seel and Mareep; level-45/60 Clefable slots retain Clefairy as retained thematic choices from the original roster. The final six-member rosters and compatibility-character extensions are original adaptations of the local partner choices.
 
-The base-game sprite sheets were inspected: Dwarf, Krobus, Wizard, Birdie, Henchman and Professor Snail have walking frames and are included. Only authored walking characters are eligible; Marlon and Gunther are always excluded, including with expansion mods. Stationary/special actors (including George, Gil, Bouncer, Fizz, Governor, Grandpa, Mr. Qi, Junimos, Bear and Mermaid) are omitted. Optional SVE, East Scarp, Ridgeside Village and Star Crossed characters require the NPC and every team species to be available, plus a normal four-direction, three-frame walking sheet.
+The base-game sprite sheets were inspected: Dwarf, Krobus, Wizard, Birdie, Henchman and Professor Snail have walking frames and are included. Authored walking characters and George are eligible; Marlon and Gunther are always excluded, including with expansion mods. George stays in his wheelchair without formation walking. Other stationary/special actors (including Gil, Bouncer, Fizz, Governor, Grandpa, Mr. Qi, Junimos, Bear and Mermaid) are omitted. Optional SVE, East Scarp, Ridgeside Village and Star Crossed characters require the NPC and every team species to be available, plus a normal four-direction, three-frame walking sheet.
 
-Combat uses the existing story-battle entry point and seasonal trainer move selection: up to four distinct level-eligible moves with type coverage, including at least two damaging moves whenever the learned pool allows. Trainer attacks favor damage, same-type bonuses, and the current target’s type matchup. The villager walks behind the player with the existing collision-aware walking animation, offers encouragement, and returns to the original position/controller on cleanup. Victory grants normal trainer experience without advancing the seasonal ladder.
+Combat uses the existing story-battle entry point and seasonal trainer move selection: up to four distinct level-eligible moves with type coverage, including at least two damaging moves whenever the learned pool allows. Trainer attacks favor damage, same-type bonuses, and the current target’s type matchup. Walking villagers move behind the player with the existing collision-aware walking animation, offers encouragement, and returns to the original position/controller on cleanup. Victory grants normal trainer experience without advancing the seasonal ladder.
 
-Ridgeside and Star Crossed add 60 trainers (54 and 6 respectively), for 142 trainers and 568 teams total. Every new opening trio includes at least one family from that NPC’s partner options. The build picks from reviewed thematic candidates while enforcing the overall limit; it does not assign arbitrary Pokémon at runtime. See [add-on design and walking audit](VS_SEEKER_ADDONS.md).
+Ridgeside and Star Crossed add 60 trainers (54 and 6 respectively), for 143 trainers and 572 teams total. Every new opening trio includes at least one family from that NPC’s partner options. The build picks from reviewed thematic candidates while enforcing the overall limit; it does not assign arbitrary Pokémon at runtime. See [add-on design and walking audit](VS_SEEKER_ADDONS.md).
 
 See the [diversity review](VS_SEEKER_DIVERSITY.md) for the reviewed evolution alternatives and remaining concentrations.
 
@@ -1302,3 +1302,12 @@ Forest seedlings and tiny guardians.
 - Level 30: Quilladin, Sudowoodo, Ivysaur, Simisage
 - Level 45: Chesnaught, Sudowoodo, Venusaur, Simisage, Ribombee
 - Level 60: Chesnaught, Sudowoodo, Venusaur, Simisage, Ribombee, Furret
+
+### George
+
+Stubborn strength, stonework, leeks and dependable old friends.
+
+- Level 15: Geodude, Farfetchd, Mankey
+- Level 30: Graveler, Farfetchd, Primeape, Torkoal
+- Level 45: Golem, Farfetchd, Primeape, Torkoal, Slowbro
+- Level 60: Golem, Farfetchd, Primeape, Torkoal, Slowbro, Drampa

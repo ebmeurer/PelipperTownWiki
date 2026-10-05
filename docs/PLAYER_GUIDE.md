@@ -22,6 +22,7 @@ checklists, use the [Complete Quest Guide](QUEST_GUIDE.md).
 - [Your first catches](#your-first-catches)
 - [The Partner Journal](#the-partner-journal)
 - [Building and caring for a party](#building-and-caring-for-a-party)
+- [Natures and temperament](#natures-and-temperament)
 - [Passives and Type Affinities](#passives-and-type-affinities)
 - [Farm work and travel](#farm-work-and-travel)
 - [Combat, moves, and progression](#combat-moves-and-progression)
@@ -31,12 +32,13 @@ checklists, use the [Complete Quest Guide](QUEST_GUIDE.md).
 - [Suggested progression route](#suggested-progression-route)
 - [Full story walkthrough](#full-story-walkthrough)
 - [Boss and legendary walkthrough](#boss-and-legendary-walkthrough)
+- [The Sword and Shield Trial](#the-sword-and-shield-trial)
 - [Late-game checklist](#late-game-checklist)
 - [Reference tables and quick lookup](#reference-tables-and-quick-lookup)
 
 ## Before you begin
 
-Follow the [README installation steps](../MOD_README.md) and back up any save you
+Follow the [README installation steps](../README.md) and back up any save you
 care about before starting or updating the mod. Generic Mod Config Menu is
 optional, but it is the easiest way to change controls, encounter pacing,
 capture assistance, combat, stamina, chores, fainting, accessibility options,
@@ -84,6 +86,22 @@ interchangeable:
 This distinction matters most in multiplayer. A farmhand can build a different
 party and skill path from the host, while both players still see the same
 host-simulated wild population and help with the same visiting-trainer fight.
+
+By default, first catches of fixed legendaries, including Latias and Solgaleo,
+resolve the encounter for the whole farm. The host can enable **Legends per
+farmer** (`LegendaryCatchesPerFarmer`) on GMCM's Wild Pokémon page. Each farmer
+then uses their own personal Pokédex history and encounter cooldowns, so a
+friend's catch or defeat does not spend your opportunity. Farmers still share
+the live encounter; another eligible farmer can trigger a new visit by leaving
+and returning while its schedule is active. Existing personal catches count,
+and story unlocks and encounter dates still apply.
+
+A farmer who has already caught the species can catch another through an
+eligible Champion's Crown rematch, the existing recovery opportunity, or a
+trade. Latias follows the daily roaming route; Solgaleo's Crown rematches return
+at the Beach from noon even outside Summer 13–15. Crown rematches are one
+opportunity per species per day, shared with the option off and per farmer with
+it on.
 
 If the guide and your save disagree, use the Partner Journal. Its Wild Pokémon,
 Skills, Milestones, Summary, Chores, and Evolution pages are calculated from
@@ -147,13 +165,40 @@ existing Pokémon keep their saved gender, and catches and eggs use species odds
 Your choice affects only the opening. It does not close off wild species,
 quests, skills, bosses, or later progression.
 
+### Host starting preset
+
+The host can require one opening for new farmers using **Mod Options → Starting
+preset**, or the `StartingPreset` field in the host's `config.json`. This also
+works on dedicated servers and in single-player.
+
+| Value | Required opening |
+| --- | --- |
+| 0 (default) | Each player chooses from all five journeys |
+| 1 | Starters; players choose their three regions and starters |
+| 2 | Pikachu or Eevee; players choose their partner when Marnie arrives |
+| 3 | Bootstraps; ten Poké Balls and Marnie's Ranch Guide, no starter Pokémon |
+| 4 | Hardcore; the Ranch Guide, no starter Pokémon or free Poké Balls |
+| 5 | Custom; players choose one to three installed Pokémon |
+
+For example, set `"StartingPreset": 3` on the server for a supplies-only start.
+Farmhands inherit the host's preset regardless of their own config. They cannot
+switch to another journey during setup. Presets 2–4 skip the journey choice menu;
+Marnie's introduction still completes the opening and delivers its rewards.
+The host's first Farm Nuzlocke choice remains available.
+
+This setting applies only to farmers who have not chosen their journey yet;
+saved choices and existing partners stay intact. A nonzero preset takes
+precedence over **Required starter species** (`ForcedStarterSpeciesId`). To
+require a particular species instead, keep `StartingPreset` at 0 and set that
+species ID. Values outside 0–5 fall back to 0.
+
 ### Optional Farm Nuzlocke
 
 During the host's first journey setup, a dedicated screen asks about **Farm
 Nuzlocke** after the host chooses their start. This is one decision for the
 save, not a separate farmer setting: all current and future farmhands inherit
-it while the challenge is active. Choosing Back returns to the previous starter
-screen without committing either choice.
+it while the challenge is active. When a starter selection screen is available,
+choosing Back returns there without committing either choice.
 
 - Each farmer gets one successful ordinary wild-Pokémon catch per in-game day.
   One farmer's catch does not spend another's. Failed catches do not spend it.
@@ -267,6 +312,12 @@ from the matching base-species encounter. This preserves the base species'
 habitat, season, time, level, rarity, and story conditions instead of creating
 a second ecology entry.
 
+The **Regional forms by base** setting is on by default. When a
+base species is enabled for wild encounters, its regional form can appear even
+if the generation that introduced the form is disabled. Turn the setting off
+to require both generations. It does not change independent regional species
+or scripted encounters.
+
 Alolan Incense and Galarian Incense raise the matching chance to two in three
 for the current outdoor area through the end of the day. They do not increase
 spawn frequency, make an ineligible species valid, or affect the other region.
@@ -331,6 +382,32 @@ Buizel evolves at level 26. Their **Swift Swim** works during rain: Buizel
 shortens fish bite times by 15% and adds 0.25 outdoor movement speed; Floatzel
 shortens bite times by 25% and adds 0.5 outdoor movement speed. Both can water,
 forage, fish, and collect crab pots; Floatzel can also transport machine output.
+
+### Klefki
+
+Klefki is a standalone Steel/Fairy Pokémon with no evolutions. Look for rare
+level-10–16 encounters in Pelican Town and at the Railroad, in any season and
+at any time of day. It can breed to hatch more Klefki, and helps with foraging,
+mining, animal care, and transport. Its Prankster passive gives nondamaging
+moves 25% shorter cooldowns and recovery.
+
+### Marill, Whiscash, and Dedenne families
+
+Azurill appears near the Forest and Mountain waterways in spring and summer.
+Bond with it to evolve it into Marill; Marill evolves into Azumarill at level
+18. Marill can also appear on those shores, while Azumarill is a rare Island
+West encounter. Breeding Marill or Azumarill can produce Azurill Eggs.
+
+Barboach swims in Forest, Mountain, and Island West freshwater in spring through
+fall. It evolves into Whiscash at level 30; Whiscash can also appear rarely in
+Island West water. Dedenne appears on the Farm, in Town, and in the Forest in
+spring through fall.
+
+Croagunk appears on freshwater shores in the Forest and Secret Woods in spring
+through fall, and around Island West's freshwater shores year-round. It evolves
+into Toxicroak at level 37. Toxicroak is also a rare, hostile shore encounter in
+the Secret Woods and Island West. Both have Dry Skin, and breeding either form
+produces Croagunk Eggs.
 
 ### Habitat chains, outbreaks, and the DexNav
 
@@ -397,7 +474,14 @@ hunted at a time, beginning at four times its encounter weight. Each successful
 non-target ambient spawn raises that preference; after 20 such misses, the next
 feasible ambient spawn is guaranteed to be the hunted species. Changing or
 clearing the target resets the streak. Any number of species can be protected
-from companion damage below 10 percent HP. Spawned hunted species use
+from companion damage below 10 percent HP; that floor covers your Pokémon's
+attacks and their lingering Poison, Burn, and Leech Seed, but not your own
+weapon, so a swing of your sword can still finish a rare target. Species you
+can only reach with a summon relic, such as Marshadow with the Umbral Ball,
+are listed while that relic is in your backpack so they can be protected
+before you throw it. Those entries read "Summon" instead of a spawn chance
+and cannot be hunted, because hunt weighting only changes the ambient roll
+they never enter. Spawned hunted species use
 double-size red arrows, or double-size purple arrows when shiny; other shiny
 targets retain blue arrows.
 
@@ -442,7 +526,7 @@ outline permanently replace the regular picture in every view. Click the
 region control repeatedly to choose all regions or Kanto through Paldea,
 including Hisui as its own collection.
 
-The Chest's **Saved Teams** menu has six numbered tabs. Each tab can have a
+The Chest's **Saved Teams** menu has twelve numbered tabs. Each tab can have a
 custom name and stores up to six party members plus the active-partner choice.
 The menu places the current party beside the selected saved team, so you can
 review the difference before choosing **Save Current Party** or **Use Team**.
@@ -472,6 +556,89 @@ wild targets, and Peaceful ignores ordinary combat. Optional keyboard and
 controller bindings in Mod Options cycle these stances without opening the
 Partner Journal.
 
+### Natures and temperament
+
+Each Pokémon has a Nature and a separate Temperament, shown in the Partner
+Journal's Summary. Nature modifies stats; Temperament is the mod's custom
+behaviour system. The six temperament names are separate from the canonical
+Nature names. Existing Pokémon and Eggs keep their personalities when the old
+temperament names are renamed: Calm becomes Mellow, Bold becomes Daring, and
+Gentle becomes Loyal. Their Nature is unaffected by these renames.
+
+#### Nature and stats
+
+A non-neutral Nature raises one of Attack, Defense, Special Attack, Special
+Defense, or Speed by 10 percent and lowers another by 10 percent. Hardy,
+Docile, Serious, Bashful, and Quirky are neutral and leave stats unchanged.
+These modifiers apply to the Pokémon's calculated stats at its current level;
+they do not change its experience requirements, maximum HP, or maximum energy.
+Gus's [Nature Mints](#nature-mints) change Nature without changing Temperament.
+
+Chore field tiers depend on level and species limits. A Nature does not change
+watering footprints or the tier needed to break a stump or boulder. A
+Speed-raising or Speed-lowering Nature also applies its 10 percent modifier to
+field movement. However, the displayed Speed stat is not used directly as a
+walking-speed value: field movement has separate species and level bonuses.
+Job selection, travel distance, energy, and breaks also affect how quickly a
+partner completes work.
+
+#### The six temperaments
+
+Temperament adjusts the species' existing curiosity, bravery, helpfulness,
+sociability, and restlessness. Bond further increases bravery, helpfulness,
+and sociability. The table describes tendencies relative to the same species
+with the same bond, rather than fixed behaviour shared by every Pokémon with
+that temperament.
+
+| Temperament | Behaviour tendencies |
+| --- | --- |
+| Mellow | Less restless, so idle choices lean towards resting rather than wandering. Also slightly braver, more helpful, and more sociable. |
+| Daring | A strong increase in bravery, with smaller increases in curiosity, sociability, and restlessness. More confident around threats and more inclined towards clearing brush, chopping wood, mining, or tilling when those jobs are available. |
+| Curious | A strong increase in curiosity and some extra restlessness. More likely to inspect objects, wander, and favour foraging or fishing. In Explore and assist, stronger bond also grants a small increase in roaming and work-search range. |
+| Loyal | Helpful and sociable, with less restlessness. Starts more cautiously, then becomes more confident, helpful, and sociable as bond grows. Favours care and collection chores from the start and is more likely to inspect crops, watch the farmer, or rest. |
+| Lively | A strong increase in restlessness, plus smaller increases in curiosity, bravery, helpfulness, and sociability. More inclined to wander or circle the farmer; its increased work drive also favours longer chore bursts. |
+| Protective | More brave, helpful, and sociable, with slightly less restlessness. More confident around threats, more inclined towards care and collection chores, and gives greater priority to enemies close to the farmer. |
+
+Helpfulness favours watering, harvesting, animal care, orchard care, crab pots,
+and transport. Curiosity favours foraging and fishing. Bravery and work drive
+favour clearing brush, chopping wood, mining, and tilling. These preferences
+adjust the order of eligible jobs alongside the species' own preferences and
+the distance to the work; they do not grant new chores or override commands,
+job policies, or safety checks.
+
+Work drive combines helpfulness, restlessness, and curiosity to influence how
+many jobs a partner attempts in a work burst. A higher work drive makes longer
+bursts more likely within the configured range. Bond separately adds jobs to
+each burst and shortens chore breaks; Temperament does not directly change
+break duration. Combat confidence affects how often a partner looks for a
+target and how far it notices threats, while protectiveness shifts target
+choice towards enemies nearer the farmer. Combat stance still controls which
+fights are allowed. Temperament does not modify battle stats or damage.
+
+The temperament itself stays the same as bond grows. Loyal partners have an
+additional gradual increase in bravery, helpfulness, and sociability as they
+build trust. They can perform their allowed chores immediately; no bond
+threshold is required to start helping.
+
+For Curious partners, **Explore and assist** grants a range bonus that grows
+smoothly from zero at no bond to at most 20 percent of each configured range,
+capped at two extra tiles at maximum bond. This applies to idle roaming,
+work searches, and the return distance, while retaining emergency return
+limits. With default settings, full bond raises idle roaming from 9 to 10.8
+tiles and work searches from 14 to 16 tiles. Follow, Assist, and Wait keep
+their normal ranges. Other temperaments receive no exploration-range bonus.
+
+Temperament also contributes to an individual's interest in Ranch Ball play.
+Lively, Curious, and Daring increase that interest; Mellow, Loyal, and Protective
+reduce it. Species traits and a stable individual preference also contribute,
+so a temperament does not guarantee that a Pokémon will enjoy the ball.
+
+Temperament is saved for the individual. Eggs have a 90 percent chance to
+inherit either parent's Temperament, with equal chances for each parent. The
+remaining 10 percent chooses from all six, which can still match a parent.
+See [Egg snapshots and inheritance](POKEMON_BREEDING.md#egg-snapshots-and-inheritance)
+for the other traits recorded when an Egg is produced.
+
 ### Health, energy, food, and bond
 
 - HP is lost in combat. A fainted partner returns to its ball.
@@ -500,7 +667,14 @@ Pokémon from your personal storage. Each farmer can establish up to three
 successful connections per day, with only one PokéLink support Pokémon deployed
 at a time. Opening the menu shows the number of connections remaining.
 
-PokéLink support follows and assists alongside the normal active party Pokémon.
+PokéLink support arrives in **Assist** stance alongside the normal active party
+Pokémon. Interact with the linked Pokémon with an empty hand to choose its
+stance. Select an empty toolbar slot or a tool first; held food feeds the
+Pokémon, and held Balls or summon items use the throwing controls. You can also
+interact with the station again and choose **Change support mode**.
+**Explore and assist** is available on the Farm and in the Mines; if
+the player leaves those maps, the linked Pokémon temporarily returns to Assist
+and resumes the chosen exploration stance on returning to an eligible map.
 Its HP and energy remain attached to the boxed Pokémon, but it does not add
 permanent HP or energy bars to the HUD. Its allied health bar appears during
 combat. Its passive abilities and Type Affinity do not apply while linked.
@@ -523,7 +697,7 @@ Hold ordinary restorative food and use Action/Check while facing the PokéLink
 support Pokémon, or right-click it, to restore the same positive HP and energy
 the food provides and apply eligible food buffs. If the linked species is
 normally rideable, face it and use Action/Check or right-click it while
-not holding food to mount it. Linked Pokémon still use their moves, stats, and
+not holding food, then choose **Ride**. Linked Pokémon still use their moves, stats, and
 normal ride eligibility; only their passive and Type Affinity are suppressed.
 
 The **Poké Flute** is currently retired from normal player progression and has
@@ -695,9 +869,13 @@ fish catches and monster defeats count for quests and tracked accomplishments.
 For each successful helper roll, the partner samples up to five eligible
 catches and prefers the first species you have caught before. If none of those
 samples are familiar, it brings back the first eligible catch, so new species
-remain possible without dominating automated fishing. Fishing cooldowns belong
-to the farmer, so changing partners or commands cannot reset them. A long cast
-can allow another attempt after the cooldown. The Pokémon's internal fishing
+remain possible without dominating automated fishing. Higher field tiers
+improve the helper's catch success rate, but do not directly increase the
+chance of rare fish. Helpers use the farmer's
+eligible fish pool at that location, season, time, and water depth.
+Fishing cooldowns belong to the farmer, so changing partners or commands cannot
+reset them. A long cast can allow another attempt after the cooldown. The
+Pokémon's internal fishing
 tool gains a tier every 20 levels, and each tier shortens that recovery by half
 a second. Each job adds one bond, up to 12 bond from chores per day. At
 Training level 1, the Soothe Bell recipe provides an early faster path: keep
@@ -737,15 +915,16 @@ partners do not claim the same work, and unreachable targets enter a cooldown
 instead of trapping a helper in a repeated path attempt.
 
 Eligible partners can also be mounted. Filter the Master List's **Rideable**
-column to see the current 95 mounts. New mounts include Corviknight, Drampa,
-Revavroom, Volcarona, Houndstone, Cresselia, Great Tusk, Roaring Moon,
-Walking Wake, Iron Leaves, Slither Wing, Stakataka, and Sneasler.
+column for the full roster. Recent additions include Talonflame, Swanna,
+Kommo-o, Dragapult, Golisopod, both Samurott forms, Xerneas, Yveltal,
+Reshiram, Zekrom, Zacian, Zamazenta, and Ursaluna.
 Regional forms inherit a regular counterpart's mount profile unless they have
 their own. Galarian Zapdos has a ground-running profile with no water crossing.
 Sneasler provides ground travel; it does not climb cliffs.
-Swimming and flying mounts can cross water,
-but they still respect obstacles and character collision. A waterborne mount
-cannot be dismissed while that would leave its rider stranded.
+Swimming and flying mounts can cross water. Flying mounts can also pass over
+ordinary one-tile stones and short outdoor ledges with open ground on both
+sides. Buildings, large boulders, and characters still block them. A mount
+cannot be dismissed while that would leave its rider on blocked terrain.
 
 ## Combat, moves, and progression
 
@@ -773,7 +952,9 @@ Claws remain available, but their accuracy/evasion components are omitted.
 Combat stance answers *whether* a partner should engage; its equipped moves
 answer *how*. Defensive partners answer nearby threats after combat begins.
 Aggressive partners seek valid targets. Catching stance preserves wild targets
-at 10% HP for capture instead of finishing them. At the floor, attacks continue
+at 10% HP for capture instead of finishing them, and shiny or DexNav-protected
+targets keep that floor in every stance. The floor binds your Pokémon, not you:
+your own weapons and bombs can still knock out a shiny. At the floor, attacks continue
 without damage so safe capture effects such as Sleep, Paralysis, and Freeze can
 still land; Poison and Burn do not. Peaceful partners ignore ordinary monsters
 and wild Pokémon while still participating in scripted trainer, rival, and boss
@@ -819,7 +1000,15 @@ rounded away.
 Training advances mainly through discovery, catching, affection, evolution,
 and a limited amount of daily chore credit. Battling advances when an owned
 Pokémon receives credit for victories, with extra value for the first victory
-against a species. Breeding advances through pair and Egg progression. Merely
+against a species. Breeding awards 25 XP when a pair produces an Egg and
+50 XP when an Egg hatches, with another 25 XP for your first hatch of each
+species. Breeding also covers the PokéRanch: petting a ranch resident awards
+2 XP, each resident's morning on the ranch 3 XP (up to 15 a day), and a
+species' first ranch morning another 20 XP. Breeding levels raise the odds
+that ranch residents leave finds, train, and bond each morning. These amounts
+use the Pokémon skill XP rate setting. Level 1 needs 100 XP at the default
+rate. Petting Barn residents, collecting Barn goods, or assigning a pair alone
+does not award Breeding XP. Merely
 throwing a Ball, opening menus, changing moves, or dealing damage without a
 victory does not replace the intended activity for those skills.
 
@@ -827,6 +1016,49 @@ Milestones run alongside skill levels. They reward collection breadth, distinct
 victories, hatched family roots, and research accomplishments with permanent
 benefits. Check both Journal pages when planning the next goal: a milestone may
 be closer and more useful than the next skill level.
+
+### Ranch toys
+
+Breeding level **2** unlocks the **Ranch Ball** recipe: 1 Stone, 1 Sap,
+and 1 Fiber, and the **White Ranch Frisbee** recipe: 5 Wood, 2 Sap,
+and 5 Fiber. At level **4**, craft a **Ranch Punching Bag** from 30 Fiber,
+20 Stone, and 1 Iron Bar; the separate **Red Ranch Punching Bag** recipe
+also uses 1 Red Mushroom.
+
+Three special frisbees arrive in one-time friendship letters: **Jas's Purple
+Frisbee** at **3 hearts** with Jas, **Vincent's Red Frisbee** at **3 hearts**
+with Vincent, and **Alex's Blue Frisbee**, blue with a yellow circle, at **4 hearts**
+with Alex. Check your mailbox the next morning. These gift colors use the same
+fetch behavior and keep their color when returned; only the white frisbee has
+a crafting recipe.
+
+Place toys in the farm yard near ranch residents or outdoor breeding pairs.
+Pokémon earn **2 XP** when they push, kick, or pick up a ball, and **5 XP**
+when they strike a bag. Each Pokémon can earn a reward from each toy type
+once every ten seconds. These rewards increase the Pokémon's level.
+
+Hold a frisbee and hold the action or tool button to charge, then release
+to throw toward the mouse cursor, up to thirteen tiles at full charge. Keyboard
+and controller buttons aim in the direction you face. Steer in flight with
+the movement keys or a mouse sweep. An available, awake ranch resident,
+breeding parent, or deployed partner runs to catch the disc or pick it up,
+then carries it back to your inventory. Completed returns award **2 XP**,
+with the same ten-second limit per Pokémon. Fetch with your deployed partner
+works in any outdoor location and inside breeding Barns; ranch residents stay
+inside their enclosure. Pokémon can't catch a throw during its first second
+in the air. Discs that land on water float slowly toward reachable shore,
+giving Water-type Pokémon time to swim out and retrieve them. If your
+backpack is full, the returned frisbee drops at your feet. Changing maps while
+a Pokémon carries your frisbee returns it to your bag. An interrupted
+fetch leaves a recoverable disc on the ground. Walk within one tile of a settled
+disc to pick it up automatically; if your backpack is full, it stays there.
+Saving also sets active discs safely on the ground.
+
+Interact with a bag to rotate it through four views. Its base stays planted
+while the body recoils away from the attacker. Pokémon below level 20 cause
+a light wobble, levels 20–49 cause a medium bend, and level 50 onward causes
+a heavy bend and rebound. Either bag color behaves the same. Weapon swings
+also animate the bag; use an axe or pickaxe to collect it.
 
 ### VS Seeker and Villager Battle Journal
 
@@ -940,8 +1172,9 @@ female and one male, or at least one Ditto. Bond improves compatibility and
 readiness but does not gate a valid pair. The menu supports stick or D-pad
 navigation, Confirm to choose, and Cancel to close.
 
-1. Assign a pair in the Barn menu.
-2. Care for the resident parents and allow readiness to reach 100.
+1. Assign a compatible pair in the Barn menu and turn **Breeding: On**.
+2. Care for the resident parents and allow readiness to reach 100 over several
+   mornings. Egg production awards Breeding XP even at skill level 0.
 3. Pick up the Egg from the Barn floor or collect its protected waiting copy.
 4. Carry the Egg while walking, or leave it for passive Barn incubation after
    that feature unlocks.
@@ -1002,6 +1235,8 @@ Willy's first Water-type donation opens the mail-favor chain. Its letter can
 arrive from Spring 5 onward and remains available in later seasons and years.
 Robin later asks for 25 Wood to repair the Pokémon request board. Once repaired,
 the mod can add a Pokémon posting when the ordinary Help Wanted board is empty.
+With the original **Help Wanted** mod (0.9.3), scheduled Pokémon requests join
+its expanded board without needing an empty vanilla day.
 
 One-time favors can leave donated Pokémon as permanent residents, unlock free
 healing or tools, award Eggs, and introduce summon relics. Letters have no
@@ -1013,7 +1248,7 @@ Pokémon, but the selected eligible Pokémon is still permanently given away.
 
 ## Multiplayer systems
 
-Every player should install the same Pelipper Town 1.2.1 build before joining;
+Every player should install the same Pelipper Town 1.2.6 build before joining;
 this release uses multiplayer protocol 14. A mismatched build is rejected so
 one player cannot silently run incompatible Pokémon state or interaction rules.
 
@@ -1208,8 +1443,11 @@ night while the farmer sleeps. It blesses the densest six-by-six crop patch,
 then remains on the farm for two days as a level-45 boss. Once attacked, Calyrex
 warns the farmer and places the whole party in Defensive stance. Catching it
 ends the natural blessing event; while healthy and in the party, **Verdant
-Crown** advances one plant-growth stage in a three-by-three patch each night
-without another cutscene.
+Crown** advances every unfinished regular crop in the densest three-by-three
+patch on the main farm by one growth stage each night, without another cutscene.
+Calyrex can stay inside its Ball. Enable Pokémon passives in the mod settings
+and Calyrex's passive in the Partner Journal; combat can be disabled. The boost
+does not stack with additional Calyrex and skips mature, dead, and wild-seed crops.
 
 At six hearts with Caroline, her letter grants a Crown Ball and its recipe. A
 Crown Ball summons level-50 Calyrex directly, using the same boss fight.
@@ -1367,8 +1605,10 @@ spends the day. Catching it is permanent.
 
 ### Mewtwo
 
-Reach displayed floor 99 of Skull Cavern. Shaft falls are clamped so they
-cannot skip the encounter floor. A level-100 Mewtwo appears there.
+Reach displayed floor 99 of Skull Cavern. Before your first encounter, shaft
+falls are clamped so they cannot skip that floor. A level-100 Mewtwo appears
+there. On later attempts, an escape ladder appears at your arrival tile right
+away, and shafts can skip the floor. This also applies to Crown rematches.
 
 Catching Mewtwo is permanent. Defeating it spends the day. While a Champion's
 Crown is worn, it can return there as a daily landmark rematch.
@@ -1393,9 +1633,11 @@ Latios, and Arceus. Deoxys also responds while the Crown is merely carried.
 Relic summons still require their consumable items because they have no fixed
 landmark.
 
-Each nonshiny Crown rematch resolved by catch or defeat builds one
-species-specific Legendary Resonance roll, up to 30 stored bonus rolls. A shiny
-resolution resets that species' Resonance.
+Each nonshiny legendary caught or defeated while its owner wears the Crown
+builds one species-specific Legendary Resonance roll, up to 30 stored bonus
+rolls. Relic-summoned legends such as Rayquaza, Groudon, and Kyogre also count;
+their summon items are still required. A shiny resolution resets that species'
+Resonance.
 
 ### Arceus
 
@@ -1427,8 +1669,23 @@ the final fixed encounter in the current progression.
 Use these tables for rules, unlocks, recipes, shops, fossils, story triggers,
 bosses, and troubleshooting. The filterable
 [Excel Master List](../Pelipper_Town_Master_List.xlsx) is better for
-species-level lookups such as habitats, passives, chores, encounters, and
-mounts.
+species-level lookups such as habitats, passives, chores, encounters, mounts,
+and Barn produce.
+
+### Barn produce master list
+
+The [Barn produce master list](BARN_PRODUCE_MASTER_LIST.md) describes the goods
+produced by every built-in Pokémon, with matching entries in the Excel file's
+**Barn Produce** tab. Species products take priority over primary-type defaults.
+Duck Pokémon leave Duck Feathers, rabbit Pokémon leave Rabbit's Feet, and
+fruit, flower, mushroom, dairy, honey, silk, and tree Pokémon have themed goods.
+Deerling and Sawsbuck change their forage with the season.
+
+Fed Barn residents produce one item overnight, including when **Breeding is
+Off**. Petting improves the quality of goods that support it: silver by default,
+gold at 150 bond, and iridium at 230 bond. Materials and artisan goods stay
+regular quality. Collect goods from the floor. Pokémon Eggs remain separate.
+PokéRanch residents use the same products for their chance-based morning finds.
 
 ### System master list
 
@@ -1529,6 +1786,24 @@ species in the Partner Journal summary:
 | Sinistea / Polteageist | 1% Antique, otherwise Phony; authenticity is inherited and survives evolution |
 | Rockruff / Lycanroc | Level 25 before 5 PM gives Midday, 5–6 PM gives Dusk, and 6 PM onward gives Midnight |
 
+Cherrim and Castform are the exceptions: their form is the weather rather than
+a trait of the individual, and it changes while they are out rather than being
+fixed at catch or evolution.
+
+| Family | Weather rule |
+| --- | --- |
+| Cherrim | Flower Gift opens it into Sunshine Form whenever the sky over it is clear, and closes it back to Overcast Form in rain, snow, or green rain. Windy days still count as clear. |
+| Castform | Forecast gives Sunny Form on a clear summer day, Rainy Form in rain, storms, or green rain, Snowy Form in snow, and Normal Form the rest of the time, including windy days and clear days outside summer. |
+
+Castform's Forecast also retypes it: Sunny Form fights as Fire, Rainy Form as
+Water, Snowy Form as Ice, and Normal Form as Normal. That drives same-type
+bonuses, the damage it deals and takes, and the type shown on its partner
+plate. Its Pokédex entry keeps the authored Normal typing.
+
+Weather is read per area, so either Pokémon carried to Ginger Island follows
+the island's sky, and a Groudon or Kyogre passive changes it while the Pokémon
+is out.
+
 An evolved mother passes its compatible Sea, seasonal, or authenticity form
 to the family's baby species. The visual forms use normal and shiny
 SpriteCollab sheets. SpriteCollab currently provides only one usable
@@ -1593,7 +1868,7 @@ accepts 1 Egg of any size/color + 1 Diamond; and Ice Stone is 5 Frozen Tears +
 
 #### Mega Evolution
 
-The built-in roster currently contains 669 form definitions representing 638
+The built-in roster currently contains 682 form definitions representing 648
 unique National Pokédex species. SpriteCollab tracks canonical Mega forms for
 59 of those species (61 forms because Charizard and Mewtwo each have two), but
 only forms with usable directional overworld art are enabled. Twenty-seven use
@@ -1746,6 +2021,13 @@ Gunther then guarantees the first research sighting in the listed area and
 gives the family eight times its normal encounter weight during the donation
 day and following day.
 
+For another boost, select a duplicate fossil in your hotbar and interact with
+Gunther at the museum counter. He consumes one fossil and renews the family's
+guaranteed sighting and eight-times encounter weight. This also works if you
+keep the original fossil on display. Unseen research sightings remain pending
+until that family's encounter is placed, even if you visit after the two-day
+window. Different fossils keep separate sighting promises.
+
 Turn off **Mod Options → Wild Pokémon → Fossils require research** to admit all
 nine families from the beginning. They still follow ordinary habitat, season,
 time, and year rules. Museum donation keeps its guaranteed sighting and boost.
@@ -1850,6 +2132,24 @@ recipe is one Diamond plus one Pearl. Catching the first rival before half
 health still calls the second, and resolving both calls Giratina. Catching or
 defeating Giratina drops a Champion's Crown and a Prismatic Shard.
 
+### The Sword and Shield Trial
+
+Own a Pokémon at **level 55 or higher**, either in your party or storage, to
+automatically unlock **The Sword and Shield Trial** in your quest log. Defeat
+**300 wild Pokémon** after becoming eligible; earlier defeats, catches, and
+trainer battles do not count. Keep a level-55 Pokémon while progressing the
+trial. Each farmer has their own counter, shown in the quest log.
+
+Finishing the trial unlocks both crafting recipes immediately, and Marlon
+sends the recipe letter the next morning:
+
+- **Sword Ball:** 1 Ultra Ball, 1 Fairy Plate, and 1 Steel Plate. Throw it on
+  open reachable land to summon **level-70 Zacian**.
+- **Shield Ball:** 1 Ultra Ball, 1 Fighting Plate, and 1 Steel Plate. Throw it
+  on open reachable land to summon **level-70 Zamazenta**.
+
+These summons are repeatable: craft and throw another ball for another attempt.
+
 #### Fixed and roaming encounters
 
 | Encounter | Unlock and location | Level | Catch rule |
@@ -1862,6 +2162,21 @@ defeating Giratina drops a Champion's Crown and a Prismatic Shard.
 | Deoxys | Mine the meteorite on the western Beach island | 55 | Permanent catch; defeat spends the day |
 | Solgaleo | Beach from noon onward on Summer 13-15 | 60 | Peaceful until attacked; permanent catch; defeat spends the day |
 | Lunala | Beach from 9:00 PM onward on Winter 13-15 | 60 | Peaceful until attacked; permanent catch; defeat spends the day |
+| Xerneas and Yveltal | Krobus 6 hearts; throw a Life-Death Seal outdoors | 68 | One appears at random, the other joins at half health |
+| Zacian | Complete the 300-Pokémon Sword and Shield Trial; throw a crafted Sword Ball | 70 | Repeatable summon |
+| Jirachi | Desert, Spring 13-14 and 18-19, outside the Desert Festival | 58 | Peaceful until attacked; permanent catch; defeat spends the window |
+| Shaymin | Cindersap Forest, Spring 22-23 and 25, around the Flower Dance | 35 | Peaceful until attacked; permanent catch; defeat spends the window |
+| Raikou | Railroad, Summer 8-10 | 60 | Peaceful until attacked; permanent catch; defeat spends the window |
+| Reshiram and Zekrom | Alex and Sebastian 6 hearts each; throw a Truth-Ideals Seal outdoors | 72 | One appears at random, the other joins at half health |
+| Entei | Caldera, Fall 8-10 | 60 | Peaceful until attacked; permanent catch; defeat spends the window |
+| Victini | Town square, Fall 14-15 and 17-18, outside the Fair | 58 | Peaceful until attacked; permanent catch; defeat spends the window |
+| Zamazenta | Complete the 300-Pokémon Sword and Shield Trial; throw a crafted Shield Ball | 70 | Repeatable summon |
+| Zeraora | Own a level-60 Pokémon, read the challenge letter, then visit the Farm | 70 | Defeat permits another challenge the next day |
+| Suicune | Mountain, Winter 10-12 | 60 | Peaceful until attacked; permanent catch; defeat spends the window |
+| Meloetta | Beach western sand, Winter 15-17, including the Night Market | 45 | Peaceful until attacked; two level-35 Wigglytuffs join at two-thirds health; permanent catch; defeat spends the window |
+| Manaphy | Beach, Winter 18-21, after the Night Market | 58 | Peaceful until attacked; permanent catch; defeat spends the window |
+| Phione Egg | Win against Willy's level-60 VS Seeker team | Egg | Repeatable on eligible rematches |
+| Rotom Egg | Win against Maru's level-60 VS Seeker team | Egg | Repeatable on eligible rematches |
 | Ho-Oh | Meet Wizard, catch 40; western Forest pond on Spring 26-28 | 55 to 70 | Permanent catch; defeat waits until next year |
 | Zapdos | Same quest; eastern Beach island on Summer 26-28 | 55 to 70 | Permanent catch; defeat waits until next year |
 | Moltres | Same quest; Caldera on Fall 26-28 | 55 to 70 | Permanent catch; defeat waits until next year |
@@ -1875,6 +2190,10 @@ defeating Giratina drops a Champion's Crown and a Prismatic Shard.
 The Four Signs start at level 55 and gain five levels for every other sign
 already caught or defeated. Emily gives the roaming-twin area clue at six
 hearts when the Great Ball recipe is known and the selected area is accessible.
+After a first legendary victory or capture, Marlon mails a Legendary Field
+Guide with three leads per page. Each lead becomes a precise field report after
+the farmer battles that species. Rayquaza remains an Emerald Ball summon; it
+has no seasonal field encounter.
 
 The normal Champion's Crown award requires 200 distinct caught species plus all
 three visiting-trainer rungs in all four seasons. Giratina provides a second
@@ -1901,6 +2220,17 @@ in the generated `config.json`.
 - enable or disable first-year scaling;
 - require fossil research or allow fossil families from the beginning;
 - choose Peaceful, Defensive, Authored, or Aggressive wild behavior;
+- set **Wild Pokémon damage** (`WildPokemonDamageMultiplier`) from 10–200%,
+  default 100%, for wild attacks against farmers and Pokémon, including bosses;
+- set **Farmer damage reduction** (`PokemonDamageToFarmerReductionPercent`)
+  from 0–100%, default 30%, to reduce Pokémon attack damage against farmers
+  before armor and other defenses. All Pokémon attacks deal 10% less damage,
+  stacking with this setting: a former 100-damage hit becomes 63 at the defaults.
+  The host controls farmer damage reduction in co-op;
+- set **Dungeon Pokémon density** (`MinePokemonDensityMultiplier`) from 0–200%,
+  default 100%, for ordinary Mines, Skull Cavern, and Volcano groups. Groups
+  scale to reachable floor area; 0% disables ordinary dungeon spawns. Scripted
+  populations keep their own rules. The host controls both sliders in co-op;
 - optionally make boss and legendary area attacks aim at deployed Pokémon
   before falling back to farmers;
 - toggle catchable Magikarp and the DexNav arrows; and
@@ -1995,3 +2325,32 @@ NPC in Mod Options. Changing or customizing the partner changes those tastes.
 Parties, skills, gifts, milestones, and several unlocks are farmer-specific.
 The host handles shared world encounters, museum state, and farm-wide save
 data.
+
+### Evolution flashes
+
+Evolution briefly flashes only the Pokémon sprite. To disable that effect,
+turn off **Evolution sprite flash** on the Appearance config page, or set
+`EnableEvolutionFlash` to `false` in `config.json`. The sounds and celebration
+still play. This setting is local to each player.
+
+## Legendary forms and Primal Orbs
+
+Dialga can switch between Standard, Origin, and Primal forms from the Commands
+page. Palkia and Giratina can switch between Standard and Origin forms. These choices stay
+with the individual across recalls and saves. Primal Dialga has 25% higher
+health and battle stats; Origin forms keep their ordinary gameplay stats.
+
+After you catch Groudon, the Wizard sends **The Red Orb**, asking you to donate
+4 Fire-type Pokémon at his tower. Catching Kyogre unlocks **The Blue Orb**,
+requesting 4 Water-type Pokémon. Duplicate species and dual types count.
+Donate one Pokémon at a time through the request menu; progress persists, and
+each request awards its orb on the fourth donation. Existing captures also
+qualify, and each farmer unlocks their own letters and rewards.
+
+Deploy Groudon or Kyogre and use the matching orb from your inventory, or carry
+it and select **Primal Form** on the Commands page. The orb is reusable and
+works once per day per farmer. Primal Reversion grants 25% more health and
+battle stats, and Primal Groudon is Ground/Fire. It ends at bedtime or fainting.
+Returning to Standard early does not reset the daily orb limit. Form changes
+preserve health percentage with downward rounding and are unavailable during
+trainer or player battles.

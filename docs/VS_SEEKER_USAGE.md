@@ -91,6 +91,7 @@ Counts are unique NPCs owning each species in any of their four tiers. The same 
 | corviknight | 2 | 5 |
 | dragonite | 1 | 5 |
 | dubwool | 2 | 5 |
+| farfetchd | 3 | 5 |
 | floette | 0 | 5 |
 | flygon | 1 | 5 |
 | froakie | 1 | 5 |
@@ -121,7 +122,6 @@ Counts are unique NPCs owning each species in any of their four tiers. The same 
 | drowzee | 1 | 4 |
 | empoleon | 0 | 4 |
 | excadrill | 1 | 4 |
-| farfetchd | 2 | 4 |
 | froslass | 0 | 4 |
 | gallade | 1 | 4 |
 | gengar | 2 | 4 |
@@ -148,6 +148,7 @@ Counts are unique NPCs owning each species in any of their four tiers. The same 
 | stoutland | 1 | 4 |
 | sudowoodo | 3 | 4 |
 | sunflora | 1 | 4 |
+| torkoal | 3 | 4 |
 | toxel | 1 | 4 |
 | tsareena | 1 | 4 |
 | vespiquen | 1 | 4 |
@@ -175,6 +176,7 @@ Counts are unique NPCs owning each species in any of their four tiers. The same 
 | crobat | 2 | 3 |
 | delphox | 1 | 3 |
 | dragonair | 1 | 3 |
+| drampa | 1 | 3 |
 | espeon | 1 | 3 |
 | farigiraf | 0 | 3 |
 | feebas | 1 | 3 |
@@ -206,7 +208,6 @@ Counts are unique NPCs owning each species in any of their four tiers. The same 
 | sneasler | 0 | 3 |
 | thwackey | 0 | 3 |
 | torchic | 1 | 3 |
-| torkoal | 2 | 3 |
 | torterra | 0 | 3 |
 | venusaur | 1 | 3 |
 | vileplume | 1 | 3 |
@@ -225,7 +226,6 @@ Counts are unique NPCs owning each species in any of their four tiers. The same 
 | camerupt | 1 | 2 |
 | chespin | 0 | 2 |
 | cinderace | 1 | 2 |
-| drampa | 0 | 2 |
 | drapion | 1 | 2 |
 | electrode | 0 | 2 |
 | fearow | 0 | 2 |
@@ -282,6 +282,7 @@ Counts are unique NPCs owning each species in any of their four tiers. The same 
 | simisage | 0 | 2 |
 | skarmory | 1 | 2 |
 | sliggoo | 0 | 2 |
+| slowbro | 2 | 2 |
 | slowpoke | 2 | 2 |
 | sneasel | 0 | 2 |
 | snorunt | 0 | 2 |
@@ -342,9 +343,12 @@ Counts are unique NPCs owning each species in any of their four tiers. The same 
 | galarian-rapidash | 0 | 1 |
 | galarian-slowking | 1 | 1 |
 | garbodor | 0 | 1 |
+| geodude | 1 | 1 |
 | girafarig | 0 | 1 |
 | goldeen | 0 | 1 |
+| golem | 1 | 1 |
 | gothitelle | 0 | 1 |
+| graveler | 1 | 1 |
 | grimer | 0 | 1 |
 | grookey | 0 | 1 |
 | hitmonchan | 1 | 1 |
@@ -364,6 +368,7 @@ Counts are unique NPCs owning each species in any of their four tiers. The same 
 | luxray | 0 | 1 |
 | magby | 1 | 1 |
 | magmar | 1 | 1 |
+| mankey | 1 | 1 |
 | maractus | 1 | 1 |
 | marowak | 0 | 1 |
 | monferno | 0 | 1 |
@@ -378,6 +383,7 @@ Counts are unique NPCs owning each species in any of their four tiers. The same 
 | paras | 1 | 1 |
 | phantump | 1 | 1 |
 | poochyena | 0 | 1 |
+| primeape | 1 | 1 |
 | quagsire | 1 | 1 |
 | rampardos | 0 | 1 |
 | samurott | 0 | 1 |
@@ -390,7 +396,6 @@ Counts are unique NPCs owning each species in any of their four tiers. The same 
 | sewaddle | 0 | 1 |
 | skeledirge | 0 | 1 |
 | skorupi | 1 | 1 |
-| slowbro | 1 | 1 |
 | slowking | 1 | 1 |
 | sobble | 0 | 1 |
 | solosis | 1 | 1 |
