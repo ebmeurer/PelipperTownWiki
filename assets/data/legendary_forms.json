@@ -1,0 +1,1075 @@
+{
+  "Format": "PelipperTown/1",
+  "Forms": [
+    {
+      "BaseSpeciesId": "kyogre",
+      "Presentation": {
+        "NationalDex": 382,
+        "Id": "primal-kyogre",
+        "FormId": "primal",
+        "DisplayName": "Primal Kyogre",
+        "SpritePath": "assets/pokemon/legendary-forms/primal-kyogre/overworld_stardew.png",
+        "ShinySpritePath": "assets/pokemon/legendary-forms/primal-kyogre/overworld_shiny_stardew.png",
+        "FrameWidth": 88,
+        "FrameHeight": 88,
+        "AnimationLayout": "PmdEightDirectionAtlas",
+        "HasDistinctSideFrames": true,
+        "Body": {
+          "FootAnchorX": 44.0,
+          "FootAnchorY": 48,
+          "VisibleHeightPixels": 45
+        },
+        "Animation": {
+          "Directions": 4,
+          "FramesPerDirection": 59,
+          "DirectionRows": [
+            1,
+            1,
+            0,
+            0,
+            3,
+            3,
+            2,
+            2
+          ],
+          "Clips": {
+            "walk": {
+              "StartFrame": 0,
+              "FrameCount": 10,
+              "FrameDurations": [
+                8,
+                8,
+                8,
+                8,
+                8,
+                8,
+                8,
+                8,
+                8,
+                8
+              ],
+              "Loop": true
+            },
+            "idle": {
+              "StartFrame": 10,
+              "FrameCount": 10,
+              "FrameDurations": [
+                10,
+                14,
+                14,
+                14,
+                14,
+                10,
+                14,
+                14,
+                14,
+                14
+              ],
+              "Loop": true
+            },
+            "attack": {
+              "StartFrame": 20,
+              "FrameCount": 10,
+              "FrameDurations": [
+                2,
+                6,
+                1,
+                1,
+                2,
+                2,
+                2,
+                2,
+                2,
+                2
+              ],
+              "Loop": false,
+              "Markers": {
+                "cast": 2,
+                "world-action": 10,
+                "recover": 14
+              }
+            },
+            "hurt": {
+              "StartFrame": 30,
+              "FrameCount": 2,
+              "FrameDurations": [
+                2,
+                8
+              ],
+              "Loop": false
+            },
+            "sleep": {
+              "StartFrame": 32,
+              "FrameCount": 6,
+              "FrameDurations": [
+                16,
+                12,
+                16,
+                16,
+                12,
+                16
+              ],
+              "Loop": true
+            },
+            "shoot": {
+              "StartFrame": 38,
+              "FrameCount": 11,
+              "FrameDurations": [
+                2,
+                6,
+                2,
+                2,
+                2,
+                2,
+                2,
+                2,
+                2,
+                2,
+                2
+              ],
+              "Loop": false,
+              "Markers": {
+                "cast": 0,
+                "world-action": 2,
+                "recover": 10
+              }
+            },
+            "charge": {
+              "StartFrame": 49,
+              "FrameCount": 10,
+              "FrameDurations": [
+                2,
+                2,
+                2,
+                2,
+                2,
+                2,
+                2,
+                2,
+                2,
+                2
+              ],
+              "Loop": false,
+              "Markers": {
+                "world-action": 10,
+                "recover": 18
+              }
+            }
+          }
+        },
+        "Encounter": {
+          "Enabled": false
+        },
+        "PortraitPath": "assets/pokemon/legendary-forms/primal-kyogre/portrait.png",
+        "MoodPortraitPaths": {},
+        "ShinyPortraitPath": "assets/pokemon/legendary-forms/primal-kyogre/portrait_shiny.png",
+        "ShinyMoodPortraitPaths": {}
+      },
+      "BattleStatMultiplier": 1.25,
+      "HealthMultiplier": 1.25
+    },
+    {
+      "BaseSpeciesId": "groudon",
+      "Presentation": {
+        "NationalDex": 383,
+        "Id": "primal-groudon",
+        "FormId": "primal",
+        "DisplayName": "Primal Groudon",
+        "SpritePath": "assets/pokemon/legendary-forms/primal-groudon/overworld_stardew.png",
+        "ShinySpritePath": "assets/pokemon/legendary-forms/primal-groudon/overworld_shiny_stardew.png",
+        "FrameWidth": 104,
+        "FrameHeight": 104,
+        "AnimationLayout": "PmdEightDirectionAtlas",
+        "HasDistinctSideFrames": true,
+        "Body": {
+          "FootAnchorX": 52.0,
+          "FootAnchorY": 56,
+          "VisibleHeightPixels": 54
+        },
+        "Animation": {
+          "Directions": 4,
+          "FramesPerDirection": 64,
+          "DirectionRows": [
+            1,
+            1,
+            0,
+            0,
+            3,
+            3,
+            2,
+            2
+          ],
+          "Clips": {
+            "walk": {
+              "StartFrame": 0,
+              "FrameCount": 4,
+              "FrameDurations": [
+                10,
+                12,
+                10,
+                12
+              ],
+              "Loop": true
+            },
+            "idle": {
+              "StartFrame": 4,
+              "FrameCount": 14,
+              "FrameDurations": [
+                60,
+                10,
+                2,
+                2,
+                2,
+                2,
+                2,
+                2,
+                2,
+                2,
+                2,
+                2,
+                2,
+                10
+              ],
+              "Loop": true
+            },
+            "attack": {
+              "StartFrame": 18,
+              "FrameCount": 10,
+              "FrameDurations": [
+                2,
+                6,
+                1,
+                1,
+                2,
+                2,
+                2,
+                2,
+                2,
+                2
+              ],
+              "Loop": false,
+              "Markers": {
+                "cast": 2,
+                "world-action": 10,
+                "recover": 14
+              }
+            },
+            "hurt": {
+              "StartFrame": 28,
+              "FrameCount": 2,
+              "FrameDurations": [
+                2,
+                8
+              ],
+              "Loop": false
+            },
+            "sleep": {
+              "StartFrame": 30,
+              "FrameCount": 2,
+              "FrameDurations": [
+                30,
+                35
+              ],
+              "Loop": true
+            },
+            "shoot": {
+              "StartFrame": 32,
+              "FrameCount": 12,
+              "FrameDurations": [
+                2,
+                2,
+                6,
+                2,
+                2,
+                2,
+                2,
+                2,
+                2,
+                2,
+                2,
+                2
+              ],
+              "Loop": false,
+              "Markers": {
+                "cast": 2,
+                "world-action": 4,
+                "recover": 12
+              }
+            },
+            "charge": {
+              "StartFrame": 44,
+              "FrameCount": 10,
+              "FrameDurations": [
+                2,
+                2,
+                2,
+                2,
+                2,
+                2,
+                2,
+                2,
+                2,
+                2
+              ],
+              "Loop": false,
+              "Markers": {
+                "world-action": 10,
+                "recover": 18
+              }
+            },
+            "strike": {
+              "StartFrame": 54,
+              "FrameCount": 10,
+              "FrameDurations": [
+                2,
+                6,
+                1,
+                1,
+                2,
+                2,
+                2,
+                2,
+                2,
+                2
+              ],
+              "Loop": false,
+              "Markers": {
+                "cast": 2,
+                "world-action": 10,
+                "recover": 14
+              }
+            }
+          }
+        },
+        "Encounter": {
+          "Enabled": false
+        },
+        "PortraitPath": "assets/pokemon/legendary-forms/primal-groudon/portrait.png",
+        "MoodPortraitPaths": {},
+        "ShinyPortraitPath": "assets/pokemon/legendary-forms/primal-groudon/portrait_shiny.png",
+        "ShinyMoodPortraitPaths": {},
+        "Types": [
+          "Ground",
+          "Fire"
+        ]
+      },
+      "BattleStatMultiplier": 1.25,
+      "HealthMultiplier": 1.25
+    },
+    {
+      "BaseSpeciesId": "dialga",
+      "Presentation": {
+        "NationalDex": 483,
+        "Id": "origin-dialga",
+        "FormId": "origin",
+        "DisplayName": "Origin Dialga",
+        "SpritePath": "assets/pokemon/legendary-forms/origin-dialga/overworld_stardew.png",
+        "ShinySpritePath": "assets/pokemon/legendary-forms/origin-dialga/overworld_shiny_stardew.png",
+        "FrameWidth": 144,
+        "FrameHeight": 144,
+        "AnimationLayout": "PmdEightDirectionAtlas",
+        "HasDistinctSideFrames": true,
+        "Body": {
+          "FootAnchorX": 72.0,
+          "FootAnchorY": 76,
+          "VisibleHeightPixels": 71
+        },
+        "Animation": {
+          "Directions": 4,
+          "FramesPerDirection": 60,
+          "DirectionRows": [
+            1,
+            1,
+            0,
+            0,
+            3,
+            3,
+            2,
+            2
+          ],
+          "Clips": {
+            "walk": {
+              "StartFrame": 0,
+              "FrameCount": 8,
+              "FrameDurations": [
+                8,
+                10,
+                8,
+                10,
+                8,
+                10,
+                8,
+                10
+              ],
+              "Loop": true
+            },
+            "idle": {
+              "StartFrame": 8,
+              "FrameCount": 6,
+              "FrameDurations": [
+                12,
+                12,
+                12,
+                12,
+                12,
+                12
+              ],
+              "Loop": true
+            },
+            "attack": {
+              "StartFrame": 14,
+              "FrameCount": 13,
+              "FrameDurations": [
+                2,
+                2,
+                2,
+                2,
+                2,
+                6,
+                1,
+                1,
+                2,
+                2,
+                2,
+                2,
+                2
+              ],
+              "Loop": false,
+              "Markers": {
+                "world-action": 17
+              }
+            },
+            "hurt": {
+              "StartFrame": 27,
+              "FrameCount": 2,
+              "FrameDurations": [
+                2,
+                8
+              ],
+              "Loop": false
+            },
+            "sleep": {
+              "StartFrame": 29,
+              "FrameCount": 8,
+              "FrameDurations": [
+                10,
+                9,
+                8,
+                14,
+                10,
+                9,
+                8,
+                14
+              ],
+              "Loop": true
+            },
+            "charge": {
+              "StartFrame": 37,
+              "FrameCount": 10,
+              "FrameDurations": [
+                2,
+                2,
+                2,
+                2,
+                2,
+                2,
+                2,
+                2,
+                2,
+                2
+              ],
+              "Loop": false,
+              "Markers": {
+                "world-action": 10,
+                "recover": 18
+              }
+            },
+            "strike": {
+              "StartFrame": 47,
+              "FrameCount": 13,
+              "FrameDurations": [
+                2,
+                2,
+                2,
+                2,
+                2,
+                6,
+                1,
+                1,
+                2,
+                2,
+                2,
+                2,
+                2
+              ],
+              "Loop": false,
+              "Markers": {
+                "world-action": 17
+              }
+            }
+          }
+        },
+        "Encounter": {
+          "Enabled": false
+        },
+        "PortraitPath": "assets/pokemon/legendary-forms/origin-dialga/portrait.png",
+        "MoodPortraitPaths": {},
+        "ShinyPortraitPath": "assets/pokemon/legendary-forms/origin-dialga/portrait_shiny.png",
+        "ShinyMoodPortraitPaths": {}
+      },
+      "BattleStatMultiplier": 1.0,
+      "HealthMultiplier": 1.0
+    },
+    {
+      "BaseSpeciesId": "dialga",
+      "Presentation": {
+        "NationalDex": 483,
+        "Id": "primal-dialga",
+        "FormId": "primal",
+        "DisplayName": "Primal Dialga",
+        "SpritePath": "assets/pokemon/legendary-forms/primal-dialga/overworld_stardew.png",
+        "ShinySpritePath": "assets/pokemon/legendary-forms/primal-dialga/overworld_shiny_stardew.png",
+        "FrameWidth": 128,
+        "FrameHeight": 128,
+        "AnimationLayout": "PmdEightDirectionAtlas",
+        "HasDistinctSideFrames": true,
+        "Body": {
+          "FootAnchorX": 64.0,
+          "FootAnchorY": 68,
+          "VisibleHeightPixels": 68
+        },
+        "Animation": {
+          "Directions": 4,
+          "FramesPerDirection": 46,
+          "DirectionRows": [
+            1,
+            1,
+            0,
+            0,
+            3,
+            3,
+            2,
+            2
+          ],
+          "Clips": {
+            "walk": {
+              "StartFrame": 0,
+              "FrameCount": 4,
+              "FrameDurations": [
+                12,
+                14,
+                12,
+                14
+              ],
+              "Loop": true
+            },
+            "idle": {
+              "StartFrame": 4,
+              "FrameCount": 2,
+              "FrameDurations": [
+                80,
+                45
+              ],
+              "Loop": true
+            },
+            "attack": {
+              "StartFrame": 6,
+              "FrameCount": 14,
+              "FrameDurations": [
+                2,
+                2,
+                6,
+                1,
+                1,
+                1,
+                2,
+                2,
+                2,
+                2,
+                2,
+                2,
+                1,
+                2
+              ],
+              "Loop": false,
+              "Markers": {
+                "world-action": 4,
+                "recover": 15
+              }
+            },
+            "hurt": {
+              "StartFrame": 20,
+              "FrameCount": 2,
+              "FrameDurations": [
+                2,
+                8
+              ],
+              "Loop": false
+            },
+            "sleep": {
+              "StartFrame": 22,
+              "FrameCount": 2,
+              "FrameDurations": [
+                30,
+                35
+              ],
+              "Loop": true
+            },
+            "shoot": {
+              "StartFrame": 24,
+              "FrameCount": 12,
+              "FrameDurations": [
+                1,
+                2,
+                8,
+                1,
+                2,
+                2,
+                2,
+                2,
+                2,
+                2,
+                2,
+                2
+              ],
+              "Loop": false,
+              "Markers": {
+                "cast": 1,
+                "world-action": 3,
+                "recover": 14
+              }
+            },
+            "charge": {
+              "StartFrame": 36,
+              "FrameCount": 10,
+              "FrameDurations": [
+                2,
+                2,
+                2,
+                2,
+                2,
+                2,
+                2,
+                2,
+                2,
+                2
+              ],
+              "Loop": false,
+              "Markers": {
+                "world-action": 10,
+                "recover": 18
+              }
+            }
+          }
+        },
+        "Encounter": {
+          "Enabled": false
+        },
+        "PortraitPath": "assets/pokemon/legendary-forms/primal-dialga/portrait.png",
+        "MoodPortraitPaths": {
+          "happy": "assets/pokemon/legendary-forms/primal-dialga/portrait_happy.png",
+          "tired": "assets/pokemon/legendary-forms/primal-dialga/portrait_tired.png",
+          "sleepy": "assets/pokemon/legendary-forms/primal-dialga/portrait_sleepy.png",
+          "focused": "assets/pokemon/legendary-forms/primal-dialga/portrait_focused.png",
+          "resting": "assets/pokemon/legendary-forms/primal-dialga/portrait_resting.png",
+          "hurt": "assets/pokemon/legendary-forms/primal-dialga/portrait_hurt.png",
+          "fainted": "assets/pokemon/legendary-forms/primal-dialga/portrait_fainted.png"
+        },
+        "ShinyPortraitPath": "assets/pokemon/legendary-forms/primal-dialga/portrait_shiny.png",
+        "ShinyMoodPortraitPaths": {
+          "happy": "assets/pokemon/legendary-forms/primal-dialga/portrait_shiny_happy.png",
+          "tired": "assets/pokemon/legendary-forms/primal-dialga/portrait_shiny_tired.png",
+          "sleepy": "assets/pokemon/legendary-forms/primal-dialga/portrait_shiny_sleepy.png",
+          "focused": "assets/pokemon/legendary-forms/primal-dialga/portrait_shiny_focused.png",
+          "resting": "assets/pokemon/legendary-forms/primal-dialga/portrait_shiny_resting.png",
+          "hurt": "assets/pokemon/legendary-forms/primal-dialga/portrait_shiny_hurt.png",
+          "fainted": "assets/pokemon/legendary-forms/primal-dialga/portrait_shiny_fainted.png"
+        }
+      },
+      "BattleStatMultiplier": 1.25,
+      "HealthMultiplier": 1.25
+    },
+    {
+      "BaseSpeciesId": "palkia",
+      "Presentation": {
+        "NationalDex": 484,
+        "Id": "origin-palkia",
+        "FormId": "origin",
+        "DisplayName": "Origin Palkia",
+        "SpritePath": "assets/pokemon/legendary-forms/origin-palkia/overworld_stardew.png",
+        "ShinySpritePath": "assets/pokemon/legendary-forms/origin-palkia/overworld_shiny_stardew.png",
+        "FrameWidth": 144,
+        "FrameHeight": 144,
+        "AnimationLayout": "PmdEightDirectionAtlas",
+        "HasDistinctSideFrames": true,
+        "Body": {
+          "FootAnchorX": 72.0,
+          "FootAnchorY": 76,
+          "VisibleHeightPixels": 73
+        },
+        "Animation": {
+          "Directions": 4,
+          "FramesPerDirection": 60,
+          "DirectionRows": [
+            1,
+            1,
+            0,
+            0,
+            3,
+            3,
+            2,
+            2
+          ],
+          "Clips": {
+            "walk": {
+              "StartFrame": 0,
+              "FrameCount": 8,
+              "FrameDurations": [
+                8,
+                10,
+                8,
+                10,
+                8,
+                10,
+                8,
+                10
+              ],
+              "Loop": true
+            },
+            "idle": {
+              "StartFrame": 8,
+              "FrameCount": 6,
+              "FrameDurations": [
+                12,
+                12,
+                12,
+                12,
+                12,
+                12
+              ],
+              "Loop": true
+            },
+            "attack": {
+              "StartFrame": 14,
+              "FrameCount": 13,
+              "FrameDurations": [
+                2,
+                2,
+                2,
+                2,
+                2,
+                6,
+                1,
+                1,
+                2,
+                2,
+                2,
+                2,
+                2
+              ],
+              "Loop": false,
+              "Markers": {
+                "world-action": 17
+              }
+            },
+            "hurt": {
+              "StartFrame": 27,
+              "FrameCount": 2,
+              "FrameDurations": [
+                2,
+                8
+              ],
+              "Loop": false
+            },
+            "sleep": {
+              "StartFrame": 29,
+              "FrameCount": 8,
+              "FrameDurations": [
+                10,
+                9,
+                8,
+                14,
+                10,
+                9,
+                8,
+                14
+              ],
+              "Loop": true
+            },
+            "charge": {
+              "StartFrame": 37,
+              "FrameCount": 10,
+              "FrameDurations": [
+                2,
+                2,
+                2,
+                2,
+                2,
+                2,
+                2,
+                2,
+                2,
+                2
+              ],
+              "Loop": false,
+              "Markers": {
+                "world-action": 10,
+                "recover": 18
+              }
+            },
+            "strike": {
+              "StartFrame": 47,
+              "FrameCount": 13,
+              "FrameDurations": [
+                2,
+                2,
+                2,
+                2,
+                2,
+                6,
+                1,
+                1,
+                2,
+                2,
+                2,
+                2,
+                2
+              ],
+              "Loop": false,
+              "Markers": {
+                "world-action": 17
+              }
+            }
+          }
+        },
+        "Encounter": {
+          "Enabled": false
+        },
+        "PortraitPath": "assets/pokemon/legendary-forms/origin-palkia/portrait.png",
+        "MoodPortraitPaths": {},
+        "ShinyPortraitPath": "assets/pokemon/legendary-forms/origin-palkia/portrait_shiny.png",
+        "ShinyMoodPortraitPaths": {}
+      },
+      "BattleStatMultiplier": 1.0,
+      "HealthMultiplier": 1.0
+    },
+    {
+      "BaseSpeciesId": "giratina",
+      "Presentation": {
+        "NationalDex": 487,
+        "Id": "origin-giratina",
+        "FormId": "origin",
+        "DisplayName": "Origin Giratina",
+        "SpritePath": "assets/pokemon/legendary-forms/origin-giratina/overworld_stardew.png",
+        "ShinySpritePath": "assets/pokemon/legendary-forms/origin-giratina/overworld_shiny_stardew.png",
+        "FrameWidth": 112,
+        "FrameHeight": 112,
+        "AnimationLayout": "PmdEightDirectionAtlas",
+        "HasDistinctSideFrames": true,
+        "Body": {
+          "FootAnchorX": 56.0,
+          "FootAnchorY": 60,
+          "VisibleHeightPixels": 49
+        },
+        "Animation": {
+          "Directions": 4,
+          "FramesPerDirection": 82,
+          "DirectionRows": [
+            1,
+            1,
+            0,
+            0,
+            3,
+            3,
+            2,
+            2
+          ],
+          "Clips": {
+            "walk": {
+              "StartFrame": 0,
+              "FrameCount": 16,
+              "FrameDurations": [
+                6,
+                6,
+                6,
+                6,
+                6,
+                6,
+                6,
+                6,
+                6,
+                6,
+                6,
+                6,
+                6,
+                6,
+                6,
+                6
+              ],
+              "Loop": true
+            },
+            "idle": {
+              "StartFrame": 16,
+              "FrameCount": 12,
+              "FrameDurations": [
+                8,
+                8,
+                8,
+                8,
+                8,
+                8,
+                8,
+                8,
+                8,
+                8,
+                8,
+                8
+              ],
+              "Loop": true
+            },
+            "attack": {
+              "StartFrame": 28,
+              "FrameCount": 14,
+              "FrameDurations": [
+                2,
+                2,
+                6,
+                1,
+                1,
+                1,
+                2,
+                2,
+                2,
+                2,
+                2,
+                2,
+                2,
+                2
+              ],
+              "Loop": false,
+              "Markers": {
+                "cast": 2,
+                "world-action": 4,
+                "recover": 15
+              }
+            },
+            "hurt": {
+              "StartFrame": 42,
+              "FrameCount": 2,
+              "FrameDurations": [
+                2,
+                8
+              ],
+              "Loop": false
+            },
+            "sleep": {
+              "StartFrame": 44,
+              "FrameCount": 2,
+              "FrameDurations": [
+                30,
+                35
+              ],
+              "Loop": true
+            },
+            "shoot": {
+              "StartFrame": 46,
+              "FrameCount": 12,
+              "FrameDurations": [
+                2,
+                2,
+                6,
+                1,
+                2,
+                2,
+                2,
+                2,
+                2,
+                2,
+                2,
+                2
+              ],
+              "Loop": false,
+              "Markers": {
+                "cast": 2,
+                "world-action": 4,
+                "recover": 13
+              }
+            },
+            "charge": {
+              "StartFrame": 58,
+              "FrameCount": 10,
+              "FrameDurations": [
+                2,
+                2,
+                2,
+                2,
+                2,
+                2,
+                2,
+                2,
+                2,
+                2
+              ],
+              "Loop": false,
+              "Markers": {
+                "world-action": 10,
+                "recover": 18
+              }
+            },
+            "strike": {
+              "StartFrame": 68,
+              "FrameCount": 14,
+              "FrameDurations": [
+                2,
+                2,
+                6,
+                1,
+                1,
+                1,
+                2,
+                2,
+                2,
+                2,
+                2,
+                2,
+                2,
+                2
+              ],
+              "Loop": false,
+              "Markers": {
+                "cast": 2,
+                "world-action": 4,
+                "recover": 15
+              }
+            }
+          }
+        },
+        "Encounter": {
+          "Enabled": false
+        },
+        "PortraitPath": "assets/pokemon/legendary-forms/origin-giratina/portrait.png",
+        "MoodPortraitPaths": {
+          "happy": "assets/pokemon/legendary-forms/origin-giratina/portrait_happy.png",
+          "tired": "assets/pokemon/legendary-forms/origin-giratina/portrait_tired.png",
+          "sleepy": "assets/pokemon/legendary-forms/origin-giratina/portrait_sleepy.png",
+          "focused": "assets/pokemon/legendary-forms/origin-giratina/portrait_focused.png",
+          "resting": "assets/pokemon/legendary-forms/origin-giratina/portrait_resting.png",
+          "hurt": "assets/pokemon/legendary-forms/origin-giratina/portrait_hurt.png",
+          "fainted": "assets/pokemon/legendary-forms/origin-giratina/portrait_fainted.png"
+        },
+        "ShinyPortraitPath": "assets/pokemon/legendary-forms/origin-giratina/portrait_shiny.png",
+        "ShinyMoodPortraitPaths": {
+          "happy": "assets/pokemon/legendary-forms/origin-giratina/portrait_shiny_happy.png",
+          "tired": "assets/pokemon/legendary-forms/origin-giratina/portrait_shiny_tired.png",
+          "sleepy": "assets/pokemon/legendary-forms/origin-giratina/portrait_shiny_sleepy.png",
+          "focused": "assets/pokemon/legendary-forms/origin-giratina/portrait_shiny_focused.png",
+          "resting": "assets/pokemon/legendary-forms/origin-giratina/portrait_shiny_resting.png",
+          "hurt": "assets/pokemon/legendary-forms/origin-giratina/portrait_shiny_hurt.png",
+          "fainted": "assets/pokemon/legendary-forms/origin-giratina/portrait_shiny_fainted.png"
+        }
+      },
+      "BattleStatMultiplier": 1.0,
+      "HealthMultiplier": 1.0
+    }
+  ]
+}

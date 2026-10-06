@@ -1,0 +1,266 @@
+{
+  "Source": "https://github.com/PMDCollab/SpriteCollab",
+  "Revision": "229085d8b7e2c453c1830ae0b972de726b84847f",
+  "LicenseUrl": "https://github.com/PMDCollab/SpriteCollab/blob/229085d8b7e2c453c1830ae0b972de726b84847f/LICENSE.md",
+  "Species": [
+    {
+      "NationalDex": 648,
+      "Id": "meloetta",
+      "DisplayName": "Meloetta",
+      "Sprite": [
+        {
+          "Contributor": "baronessfaron",
+          "Files": [
+            "Walk",
+            "Idle",
+            "Attack",
+            "Hurt",
+            "Sleep",
+            "Shoot",
+            "Charge"
+          ],
+          "Source": "PMDCollab_1",
+          "Status": "CUR",
+          "Timestamp": "2021-07-16 22:21:36.237290",
+          "Handle": "<@!544245909639397378>"
+        },
+        {
+          "Contributor": "baronessfaron",
+          "Files": [
+            "Walk",
+            "Idle",
+            "Attack",
+            "Hurt",
+            "Sleep",
+            "Shoot",
+            "Charge"
+          ],
+          "Source": "PMDCollab_1",
+          "Status": "CUR",
+          "Timestamp": "2023-01-04 22:16:15.671864",
+          "Handle": "<@!544245909639397378>"
+        },
+        {
+          "Contributor": "Ariakyu",
+          "Files": [
+            "Walk",
+            "Idle",
+            "Attack",
+            "Hurt",
+            "Sleep",
+            "Shoot",
+            "Charge"
+          ],
+          "Source": "CC_BY-NC_4",
+          "Status": "CUR",
+          "Timestamp": "2025-02-01 01:01:36.589085",
+          "Handle": "<@!417445868694667264>",
+          "Contact": "https://www.reddit.com/u/SoggyMinimum8386/s/0ULdU1GVNj"
+        },
+        {
+          "Contributor": "Ariakyu",
+          "Files": [
+            "Attack",
+            "Shoot"
+          ],
+          "Source": "CC_BY-NC_4",
+          "Status": "CUR",
+          "Timestamp": "2025-02-19 19:50:33.974385",
+          "Handle": "<@!417445868694667264>",
+          "Contact": "https://www.reddit.com/u/SoggyMinimum8386/s/0ULdU1GVNj"
+        }
+      ],
+      "Portrait": [
+        {
+          "Contributor": "Deleca7755",
+          "Files": [
+            "Normal"
+          ],
+          "Source": "PMDCollab_1",
+          "Status": "CUR",
+          "Timestamp": "2021-06-11 16:13:18.625199",
+          "Handle": "<@!273958644788363265>",
+          "Contact": "<https://www.deviantart.com/deleca-7755>"
+        },
+        {
+          "Contributor": "Deleca7755",
+          "Files": [
+            "Normal"
+          ],
+          "Source": "PMDCollab_1",
+          "Status": "CUR",
+          "Timestamp": "2021-06-16 05:35:55.495076",
+          "Handle": "<@!273958644788363265>",
+          "Contact": "<https://www.deviantart.com/deleca-7755>"
+        },
+        {
+          "Contributor": "Deleca7755",
+          "Files": [
+            "Normal"
+          ],
+          "Source": "PMDCollab_1",
+          "Status": "CUR",
+          "Timestamp": "2021-07-06 12:34:26.165261",
+          "Handle": "<@!273958644788363265>",
+          "Contact": "<https://www.deviantart.com/deleca-7755>"
+        },
+        {
+          "Contributor": "SkeleSpider",
+          "Files": [
+            "Happy",
+            "Sigh",
+            "Determined",
+            "Pain",
+            "Dizzy"
+          ],
+          "Source": "PMDCollab_1",
+          "Status": "CUR",
+          "Timestamp": "2022-10-02 10:24:13.285330",
+          "Handle": "<@!291732421332697098>",
+          "Contact": "https://linktr.ee/skelespider"
+        },
+        {
+          "Contributor": "SkeleSpider",
+          "Files": [
+            "Happy",
+            "Sigh",
+            "Determined",
+            "Pain",
+            "Dizzy"
+          ],
+          "Source": "PMDCollab_1",
+          "Status": "CUR",
+          "Timestamp": "2022-12-26 06:06:18.441075",
+          "Handle": "<@!291732421332697098>",
+          "Contact": "https://linktr.ee/skelespider"
+        },
+        {
+          "Contributor": "Ariakyu",
+          "Files": [
+            "Sigh",
+            "Determined",
+            "Dizzy"
+          ],
+          "Source": "CC_BY-NC_4",
+          "Status": "CUR",
+          "Timestamp": "2024-04-21 03:56:04.206161",
+          "Handle": "<@!417445868694667264>",
+          "Contact": "https://www.reddit.com/u/SoggyMinimum8386/s/0ULdU1GVNj"
+        },
+        {
+          "Contributor": "Ariakyu",
+          "Files": [
+            "Determined",
+            "Pain"
+          ],
+          "Source": "CC_BY-NC_4",
+          "Status": "CUR",
+          "Timestamp": "2024-04-21 06:33:07.745918",
+          "Handle": "<@!417445868694667264>",
+          "Contact": "https://www.reddit.com/u/SoggyMinimum8386/s/0ULdU1GVNj"
+        }
+      ],
+      "ShinySprite": [
+        {
+          "Contributor": "Morei",
+          "Files": [
+            "Walk",
+            "Idle",
+            "Attack",
+            "Hurt",
+            "Sleep",
+            "Shoot",
+            "Charge"
+          ],
+          "Source": "PMDCollab_1",
+          "Status": "CUR",
+          "Timestamp": "2022-05-29 18:05:42.412015",
+          "Handle": "<@!593113130213572610>",
+          "Contact": "https://bsky.app/profile/murpia57.bsky.social"
+        },
+        {
+          "Contributor": "baronessfaron",
+          "Files": [
+            "Walk",
+            "Idle",
+            "Attack",
+            "Hurt",
+            "Sleep",
+            "Shoot",
+            "Charge"
+          ],
+          "Source": "PMDCollab_1",
+          "Status": "CUR",
+          "Timestamp": "2023-01-05 00:44:57.227545",
+          "Handle": "<@!544245909639397378>"
+        },
+        {
+          "Contributor": "Ariakyu",
+          "Files": [
+            "Walk",
+            "Idle",
+            "Attack",
+            "Hurt",
+            "Sleep",
+            "Shoot",
+            "Charge"
+          ],
+          "Source": "CC_BY-NC_4",
+          "Status": "CUR",
+          "Timestamp": "2025-02-23 00:48:41.520074",
+          "Handle": "<@!417445868694667264>",
+          "Contact": "https://www.reddit.com/u/SoggyMinimum8386/s/0ULdU1GVNj"
+        }
+      ],
+      "ShinyPortrait": [
+        {
+          "Contributor": "Deleca7755",
+          "Files": [
+            "Normal"
+          ],
+          "Source": "PMDCollab_1",
+          "Status": "CUR",
+          "Timestamp": "2021-06-11 18:29:47.980439",
+          "Handle": "<@!273958644788363265>",
+          "Contact": "<https://www.deviantart.com/deleca-7755>"
+        },
+        {
+          "Contributor": "Deleca7755",
+          "Files": [
+            "Normal"
+          ],
+          "Source": "PMDCollab_1",
+          "Status": "CUR",
+          "Timestamp": "2021-07-06 19:16:43.729903",
+          "Handle": "<@!273958644788363265>",
+          "Contact": "<https://www.deviantart.com/deleca-7755>"
+        },
+        {
+          "Contributor": "Ariakyu",
+          "Files": [
+            "Sigh",
+            "Determined",
+            "Pain",
+            "Dizzy"
+          ],
+          "Source": "CC_BY-NC_4",
+          "Status": "CUR",
+          "Timestamp": "2024-04-21 07:09:17.003104",
+          "Handle": "<@!417445868694667264>",
+          "Contact": "https://www.reddit.com/u/SoggyMinimum8386/s/0ULdU1GVNj"
+        },
+        {
+          "Contributor": "Morei",
+          "Files": [
+            "Happy"
+          ],
+          "Source": "PMDCollab_2",
+          "Status": "OLD",
+          "Timestamp": "2023-08-06 05:53:56.681915",
+          "Handle": "<@!593113130213572610>",
+          "Contact": "https://bsky.app/profile/murpia57.bsky.social"
+        }
+      ]
+    }
+  ]
+}

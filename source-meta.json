@@ -5,5 +5,7 @@
   "generatedFrom": "PelipperTown 1.2.6 dataset supplied by user",
   "dataPolicy": "UI content is derived from the supplied JSON and README; unresolved values are not fabricated.",
   "includesLocalization": true,
-  "modVersion": "1.2.6"
+  "modVersion": "1.2.6",
+  "assetPolicy": "Only base Pokémon portrait.png assets are bundled for the static Wiki; other image assets are intentionally omitted.",
+  "bundledPokemonBasePortraits": 828
 }

@@ -19,3 +19,6 @@ This is a self-contained static wiki generated from the supplied Pelipper Town 1
 - `source-meta.json` — generation metadata
 
 The UI is data-driven. It does not create records that are absent from the supplied JSON. Unresolved references are shown as their original values rather than silently converted into invented entities.
+## Asset policy
+
+The packaged Wiki intentionally includes only the base `portrait.png` for each Pokémon asset folder. Other Pokémon expressions/animations, overworld sprites, item icons, NPC sprites, effects, and event artwork are not bundled because the Wiki does not require them.

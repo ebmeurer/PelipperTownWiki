@@ -1,0 +1,1020 @@
+{
+  "Source": "https://github.com/PMDCollab/SpriteCollab",
+  "Revision": "c32454093f6059b880e78da7ad3bed6b5f64cefb",
+  "LicenseUrl": "https://github.com/PMDCollab/SpriteCollab/blob/c32454093f6059b880e78da7ad3bed6b5f64cefb/LICENSE.md",
+  "Species": [
+    {
+      "NationalDex": 492,
+      "Id": "shaymin",
+      "DisplayName": "Shaymin",
+      "Portrait": [
+        {
+          "Contributor": "CHUNSOFT",
+          "Files": [
+            "Normal",
+            "Happy",
+            "Determined",
+            "Pain"
+          ],
+          "Source": "Unspecified",
+          "Status": "CUR",
+          "Timestamp": "2020-10-07 17:58:44.856943",
+          "Contact": "https://www.spike-chunsoft.com/",
+          "Revision": "c32454093f6059b880e78da7ad3bed6b5f64cefb"
+        },
+        {
+          "Contributor": "Mojo",
+          "Files": [
+            "Normal",
+            "Happy",
+            "Sigh",
+            "Determined",
+            "Pain",
+            "Dizzy"
+          ],
+          "Source": "PMDCollab_1",
+          "Status": "CUR",
+          "Timestamp": "2020-11-29 01:17:16.695153",
+          "Handle": "<@!314519507869761556>",
+          "Revision": "c32454093f6059b880e78da7ad3bed6b5f64cefb"
+        }
+      ],
+      "MoodSourceFiles": {
+        "happy": "Happy",
+        "tired": "Sigh",
+        "sleepy": "Sigh",
+        "focused": "Determined",
+        "resting": "Sigh",
+        "hurt": "Pain",
+        "fainted": "Dizzy"
+      },
+      "ShinyPortrait": [
+        {
+          "Contributor": "Tacocoa",
+          "Files": [
+            "Normal",
+            "Happy",
+            "Determined",
+            "Pain"
+          ],
+          "Source": "PMDCollab_1",
+          "Status": "CUR",
+          "Timestamp": "2020-10-07 17:58:44.856943",
+          "Handle": "<@!234720295292895232>",
+          "Contact": "<@234720295292895232>",
+          "Revision": "c32454093f6059b880e78da7ad3bed6b5f64cefb"
+        },
+        {
+          "Contributor": "Noo",
+          "Files": [
+            "Normal",
+            "Happy",
+            "Sigh",
+            "Determined",
+            "Pain",
+            "Dizzy"
+          ],
+          "Source": "PMDCollab_1",
+          "Status": "CUR",
+          "Timestamp": "2021-03-06 04:21:59.242154",
+          "Handle": "<@!217899432652308480>",
+          "Contact": "https://artfight.net/~NooNoo_Skidoo",
+          "Revision": "c32454093f6059b880e78da7ad3bed6b5f64cefb"
+        }
+      ],
+      "ShinyMoodSourceFiles": {
+        "happy": "Happy",
+        "tired": "Sigh",
+        "sleepy": "Sigh",
+        "focused": "Determined",
+        "resting": "Sigh",
+        "hurt": "Pain",
+        "fainted": "Dizzy"
+      }
+    },
+    {
+      "NationalDex": 385,
+      "Id": "jirachi",
+      "DisplayName": "Jirachi",
+      "Portrait": [
+        {
+          "Contributor": "CHUNSOFT",
+          "Files": [
+            "Normal"
+          ],
+          "Source": "Unspecified",
+          "Status": "CUR",
+          "Timestamp": "2020-10-07 17:58:44.525830",
+          "Contact": "https://www.spike-chunsoft.com/",
+          "Revision": "c32454093f6059b880e78da7ad3bed6b5f64cefb"
+        },
+        {
+          "Contributor": "Emmuffin",
+          "Files": [
+            "Normal",
+            "Happy",
+            "Sigh",
+            "Determined",
+            "Pain",
+            "Dizzy"
+          ],
+          "Source": "PMDCollab_1",
+          "Status": "CUR",
+          "Timestamp": "2021-11-10 18:12:08.915874",
+          "Handle": "<@!356635814668664832>",
+          "Contact": "https://twitter.com/Ernmuffin",
+          "Revision": "c32454093f6059b880e78da7ad3bed6b5f64cefb"
+        }
+      ],
+      "MoodSourceFiles": {
+        "happy": "Happy",
+        "tired": "Sigh",
+        "sleepy": "Sigh",
+        "focused": "Determined",
+        "resting": "Sigh",
+        "hurt": "Pain",
+        "fainted": "Dizzy"
+      },
+      "ShinyPortrait": [
+        {
+          "Contributor": "Chi",
+          "Files": [
+            "Normal"
+          ],
+          "Source": "PMDCollab_1",
+          "Status": "CUR",
+          "Timestamp": "2020-10-07 17:58:44.527825",
+          "Handle": "<@!95638225439166464>",
+          "Contact": "<@95638225439166464>",
+          "Revision": "c32454093f6059b880e78da7ad3bed6b5f64cefb"
+        },
+        {
+          "Contributor": "Emboarger",
+          "Files": [
+            "Normal",
+            "Happy",
+            "Sigh",
+            "Determined",
+            "Pain",
+            "Dizzy"
+          ],
+          "Source": "PMDCollab_1",
+          "Status": "CUR",
+          "Timestamp": "2021-07-02 17:43:34.481555",
+          "Handle": "<@!237286997645983744>",
+          "Revision": "c32454093f6059b880e78da7ad3bed6b5f64cefb"
+        },
+        {
+          "Contributor": "Emmuffin",
+          "Files": [
+            "Normal",
+            "Happy",
+            "Sigh",
+            "Determined",
+            "Pain",
+            "Dizzy"
+          ],
+          "Source": "PMDCollab_1",
+          "Status": "CUR",
+          "Timestamp": "2021-11-10 18:27:28.437358",
+          "Handle": "<@!356635814668664832>",
+          "Contact": "https://twitter.com/Ernmuffin",
+          "Revision": "c32454093f6059b880e78da7ad3bed6b5f64cefb"
+        },
+        {
+          "Contributor": "Noo",
+          "Files": [
+            "Normal",
+            "Happy",
+            "Sigh",
+            "Determined",
+            "Pain",
+            "Dizzy"
+          ],
+          "Source": "PMDCollab_1",
+          "Status": "CUR",
+          "Timestamp": "2022-02-16 06:28:06.709263",
+          "Handle": "<@!217899432652308480>",
+          "Contact": "https://artfight.net/~NooNoo_Skidoo",
+          "Revision": "c32454093f6059b880e78da7ad3bed6b5f64cefb"
+        }
+      ],
+      "ShinyMoodSourceFiles": {
+        "happy": "Happy",
+        "tired": "Sigh",
+        "sleepy": "Sigh",
+        "focused": "Determined",
+        "resting": "Sigh",
+        "hurt": "Pain",
+        "fainted": "Dizzy"
+      }
+    },
+    {
+      "NationalDex": 494,
+      "Id": "victini",
+      "DisplayName": "Victini",
+      "Portrait": [
+        {
+          "Contributor": "MonochromeKirby",
+          "Files": [
+            "Normal",
+            "Happy",
+            "Sigh",
+            "Determined",
+            "Pain",
+            "Dizzy"
+          ],
+          "Source": "PMDCollab_1",
+          "Status": "CUR",
+          "Timestamp": "2021-01-13 16:13:12.950454",
+          "Handle": "<@!324999377946935297>",
+          "Revision": "c32454093f6059b880e78da7ad3bed6b5f64cefb"
+        },
+        {
+          "Contributor": "baronessfaron",
+          "Files": [
+            "Normal",
+            "Happy",
+            "Sigh",
+            "Determined",
+            "Pain",
+            "Dizzy"
+          ],
+          "Source": "PMDCollab_1",
+          "Status": "CUR",
+          "Timestamp": "2022-11-19 06:54:26.589554",
+          "Handle": "<@!544245909639397378>",
+          "Revision": "c32454093f6059b880e78da7ad3bed6b5f64cefb"
+        }
+      ],
+      "MoodSourceFiles": {
+        "happy": "Happy",
+        "tired": "Sigh",
+        "sleepy": "Sigh",
+        "focused": "Determined",
+        "resting": "Sigh",
+        "hurt": "Pain",
+        "fainted": "Dizzy"
+      },
+      "ShinyPortrait": [
+        {
+          "Contributor": "MonochromeKirby",
+          "Files": [
+            "Normal",
+            "Happy",
+            "Sigh",
+            "Determined",
+            "Pain",
+            "Dizzy"
+          ],
+          "Source": "PMDCollab_1",
+          "Status": "CUR",
+          "Timestamp": "2021-01-13 16:50:47.011728",
+          "Handle": "<@!324999377946935297>",
+          "Revision": "c32454093f6059b880e78da7ad3bed6b5f64cefb"
+        },
+        {
+          "Contributor": "baronessfaron",
+          "Files": [
+            "Normal",
+            "Happy",
+            "Sigh",
+            "Determined",
+            "Pain",
+            "Dizzy"
+          ],
+          "Source": "PMDCollab_1",
+          "Status": "CUR",
+          "Timestamp": "2022-12-29 05:22:48.754812",
+          "Handle": "<@!544245909639397378>",
+          "Revision": "c32454093f6059b880e78da7ad3bed6b5f64cefb"
+        }
+      ],
+      "ShinyMoodSourceFiles": {
+        "happy": "Happy",
+        "tired": "Sigh",
+        "sleepy": "Sigh",
+        "focused": "Determined",
+        "resting": "Sigh",
+        "hurt": "Pain",
+        "fainted": "Dizzy"
+      }
+    },
+    {
+      "NationalDex": 490,
+      "Id": "manaphy",
+      "DisplayName": "Manaphy",
+      "Portrait": [
+        {
+          "Contributor": "CHUNSOFT",
+          "Files": [
+            "Normal",
+            "Happy"
+          ],
+          "Source": "Unspecified",
+          "Status": "CUR",
+          "Timestamp": "2022-09-01 03:46:20.033030",
+          "Contact": "https://www.spike-chunsoft.com/",
+          "Revision": "c32454093f6059b880e78da7ad3bed6b5f64cefb"
+        },
+        {
+          "Contributor": "Emmuffin",
+          "Files": [
+            "Sigh",
+            "Determined",
+            "Pain",
+            "Dizzy"
+          ],
+          "Source": "PMDCollab_1",
+          "Status": "CUR",
+          "Timestamp": "2022-09-01 05:10:05.613602",
+          "Handle": "<@!356635814668664832>",
+          "Contact": "https://twitter.com/Ernmuffin",
+          "Revision": "c32454093f6059b880e78da7ad3bed6b5f64cefb"
+        }
+      ],
+      "MoodSourceFiles": {
+        "happy": "Happy",
+        "tired": "Sigh",
+        "sleepy": "Sigh",
+        "focused": "Determined",
+        "resting": "Sigh",
+        "hurt": "Pain",
+        "fainted": "Dizzy"
+      },
+      "ShinyPortrait": [
+        {
+          "Contributor": "Emmuffin",
+          "Files": [
+            "Normal",
+            "Happy",
+            "Sigh",
+            "Determined",
+            "Pain",
+            "Dizzy"
+          ],
+          "Source": "PMDCollab_1",
+          "Status": "CUR",
+          "Timestamp": "2022-09-01 22:21:02.809071",
+          "Handle": "<@!356635814668664832>",
+          "Contact": "https://twitter.com/Ernmuffin",
+          "Revision": "c32454093f6059b880e78da7ad3bed6b5f64cefb"
+        }
+      ],
+      "ShinyMoodSourceFiles": {
+        "happy": "Happy",
+        "tired": "Sigh",
+        "sleepy": "Sigh",
+        "focused": "Determined",
+        "resting": "Sigh",
+        "hurt": "Pain",
+        "fainted": "Dizzy"
+      }
+    },
+    {
+      "NationalDex": 716,
+      "Id": "xerneas",
+      "DisplayName": "Xerneas",
+      "Portrait": [
+        {
+          "Contributor": "baronessfaron",
+          "Files": [
+            "Normal",
+            "Happy",
+            "Sigh",
+            "Determined",
+            "Pain",
+            "Dizzy"
+          ],
+          "Source": "PMDCollab_1",
+          "Status": "CUR",
+          "Timestamp": "2022-12-23 11:25:43.167699",
+          "Handle": "<@!544245909639397378>",
+          "Revision": "c32454093f6059b880e78da7ad3bed6b5f64cefb"
+        },
+        {
+          "Contributor": "◥θ┴θ◤",
+          "Files": [
+            "Normal",
+            "Happy",
+            "Sigh",
+            "Determined",
+            "Pain",
+            "Dizzy"
+          ],
+          "Source": "PMDCollab_1",
+          "Status": "CUR",
+          "Timestamp": "2022-12-27 22:07:13.595763",
+          "Handle": "<@!215638650434617345>",
+          "Contact": "DC:<@215638650434617345>",
+          "Revision": "c32454093f6059b880e78da7ad3bed6b5f64cefb"
+        }
+      ],
+      "MoodSourceFiles": {
+        "happy": "Happy",
+        "tired": "Sigh",
+        "sleepy": "Sigh",
+        "focused": "Determined",
+        "resting": "Sigh",
+        "hurt": "Pain",
+        "fainted": "Dizzy"
+      },
+      "ShinyPortrait": [
+        {
+          "Contributor": "ShyStarryRain",
+          "Files": [
+            "Normal"
+          ],
+          "Source": "PMDCollab_1",
+          "Status": "CUR",
+          "Timestamp": "2022-10-16 00:26:18.048547",
+          "Handle": "<@!576876006636519434>",
+          "Revision": "c32454093f6059b880e78da7ad3bed6b5f64cefb"
+        },
+        {
+          "Contributor": "ShyStarryRain",
+          "Files": [
+            "Normal",
+            "Happy",
+            "Sigh",
+            "Determined",
+            "Pain",
+            "Dizzy"
+          ],
+          "Source": "PMDCollab_1",
+          "Status": "CUR",
+          "Timestamp": "2022-12-29 05:22:59.670698",
+          "Handle": "<@!576876006636519434>",
+          "Revision": "c32454093f6059b880e78da7ad3bed6b5f64cefb"
+        },
+        {
+          "Contributor": "◥θ┴θ◤",
+          "Files": [
+            "Normal",
+            "Happy",
+            "Sigh",
+            "Determined",
+            "Pain",
+            "Dizzy"
+          ],
+          "Source": "PMDCollab_1",
+          "Status": "CUR",
+          "Timestamp": "2022-12-30 21:49:03.265371",
+          "Handle": "<@!215638650434617345>",
+          "Contact": "DC:<@215638650434617345>",
+          "Revision": "c32454093f6059b880e78da7ad3bed6b5f64cefb"
+        }
+      ],
+      "ShinyMoodSourceFiles": {
+        "happy": "Happy",
+        "tired": "Sigh",
+        "sleepy": "Sigh",
+        "focused": "Determined",
+        "resting": "Sigh",
+        "hurt": "Pain",
+        "fainted": "Dizzy"
+      }
+    },
+    {
+      "NationalDex": 717,
+      "Id": "yveltal",
+      "DisplayName": "Yveltal",
+      "Portrait": [
+        {
+          "Contributor": "Top_Kec",
+          "Files": [
+            "Normal",
+            "Happy",
+            "Sigh",
+            "Determined",
+            "Pain",
+            "Dizzy"
+          ],
+          "Source": "CC_BY-NC_4",
+          "Status": "CUR",
+          "Timestamp": "2025-06-06 17:33:32.234133",
+          "Handle": "<@!276369635304275968>",
+          "Contact": "@topkec.bsky.social",
+          "Revision": "c32454093f6059b880e78da7ad3bed6b5f64cefb"
+        }
+      ],
+      "MoodSourceFiles": {
+        "happy": "Happy",
+        "tired": "Sigh",
+        "sleepy": "Sigh",
+        "focused": "Determined",
+        "resting": "Sigh",
+        "hurt": "Pain",
+        "fainted": "Dizzy"
+      },
+      "ShinyPortrait": [
+        {
+          "Contributor": "Top_Kec",
+          "Files": [
+            "Normal",
+            "Happy",
+            "Sigh",
+            "Determined",
+            "Pain",
+            "Dizzy"
+          ],
+          "Source": "CC_BY-NC_4",
+          "Status": "CUR",
+          "Timestamp": "2025-06-06 17:43:06.327083",
+          "Handle": "<@!276369635304275968>",
+          "Contact": "@topkec.bsky.social",
+          "Revision": "c32454093f6059b880e78da7ad3bed6b5f64cefb"
+        },
+        {
+          "Contributor": "Top_Kec",
+          "Files": [
+            "Sigh",
+            "Pain"
+          ],
+          "Source": "CC_BY-NC_4",
+          "Status": "CUR",
+          "Timestamp": "2025-06-07 03:25:15.051901",
+          "Handle": "<@!276369635304275968>",
+          "Contact": "@topkec.bsky.social",
+          "Revision": "c32454093f6059b880e78da7ad3bed6b5f64cefb"
+        }
+      ],
+      "ShinyMoodSourceFiles": {
+        "happy": "Happy",
+        "tired": "Sigh",
+        "sleepy": "Sigh",
+        "focused": "Determined",
+        "resting": "Sigh",
+        "hurt": "Pain",
+        "fainted": "Dizzy"
+      }
+    },
+    {
+      "NationalDex": 643,
+      "Id": "reshiram",
+      "DisplayName": "Reshiram",
+      "Portrait": [
+        {
+          "Contributor": "Emmuffin",
+          "Files": [
+            "Normal",
+            "Happy",
+            "Sigh",
+            "Determined",
+            "Pain",
+            "Dizzy"
+          ],
+          "Source": "PMDCollab_1",
+          "Status": "CUR",
+          "Timestamp": "2023-03-04 02:24:25.288836",
+          "Handle": "<@!356635814668664832>",
+          "Contact": "https://twitter.com/Ernmuffin",
+          "Revision": "c32454093f6059b880e78da7ad3bed6b5f64cefb"
+        }
+      ],
+      "MoodSourceFiles": {
+        "happy": "Happy",
+        "tired": "Sigh",
+        "sleepy": "Sigh",
+        "focused": "Determined",
+        "resting": "Sigh",
+        "hurt": "Pain",
+        "fainted": "Dizzy"
+      },
+      "ShinyPortrait": [
+        {
+          "Contributor": "Emmuffin",
+          "Files": [
+            "Normal",
+            "Happy",
+            "Sigh",
+            "Determined",
+            "Pain",
+            "Dizzy"
+          ],
+          "Source": "PMDCollab_1",
+          "Status": "CUR",
+          "Timestamp": "2023-03-04 02:28:29.346226",
+          "Handle": "<@!356635814668664832>",
+          "Contact": "https://twitter.com/Ernmuffin",
+          "Revision": "c32454093f6059b880e78da7ad3bed6b5f64cefb"
+        },
+        {
+          "Contributor": "Emmuffin",
+          "Files": [
+            "Normal",
+            "Happy",
+            "Sigh",
+            "Determined",
+            "Pain",
+            "Dizzy"
+          ],
+          "Source": "PMDCollab_1",
+          "Status": "CUR",
+          "Timestamp": "2023-03-04 17:22:06.142936",
+          "Handle": "<@!356635814668664832>",
+          "Contact": "https://twitter.com/Ernmuffin",
+          "Revision": "c32454093f6059b880e78da7ad3bed6b5f64cefb"
+        }
+      ],
+      "ShinyMoodSourceFiles": {
+        "happy": "Happy",
+        "tired": "Sigh",
+        "sleepy": "Sigh",
+        "focused": "Determined",
+        "resting": "Sigh",
+        "hurt": "Pain",
+        "fainted": "Dizzy"
+      }
+    },
+    {
+      "NationalDex": 644,
+      "Id": "zekrom",
+      "DisplayName": "Zekrom",
+      "Portrait": [
+        {
+          "Contributor": "baronessfaron",
+          "Files": [
+            "Normal",
+            "Happy",
+            "Sigh",
+            "Determined",
+            "Pain",
+            "Dizzy"
+          ],
+          "Source": "PMDCollab_1",
+          "Status": "CUR",
+          "Timestamp": "2022-09-18 04:03:58.966437",
+          "Handle": "<@!544245909639397378>",
+          "Revision": "c32454093f6059b880e78da7ad3bed6b5f64cefb"
+        },
+        {
+          "Contributor": "baronessfaron",
+          "Files": [
+            "Normal",
+            "Happy",
+            "Sigh",
+            "Determined",
+            "Pain",
+            "Dizzy"
+          ],
+          "Source": "PMDCollab_2",
+          "Status": "CUR",
+          "Timestamp": "2023-08-15 01:57:30.014871",
+          "Handle": "<@!544245909639397378>",
+          "Revision": "c32454093f6059b880e78da7ad3bed6b5f64cefb"
+        }
+      ],
+      "MoodSourceFiles": {
+        "happy": "Happy",
+        "tired": "Sigh",
+        "sleepy": "Sigh",
+        "focused": "Determined",
+        "resting": "Sigh",
+        "hurt": "Pain",
+        "fainted": "Dizzy"
+      },
+      "ShinyPortrait": [
+        {
+          "Contributor": "CamusZekeSirius",
+          "Files": [
+            "Normal",
+            "Happy",
+            "Sigh",
+            "Determined",
+            "Pain",
+            "Dizzy"
+          ],
+          "Source": "PMDCollab_1",
+          "Status": "CUR",
+          "Timestamp": "2021-01-14 18:36:41.239157",
+          "Handle": "<@!533406104256905257>",
+          "Revision": "c32454093f6059b880e78da7ad3bed6b5f64cefb"
+        },
+        {
+          "Contributor": "baronessfaron",
+          "Files": [
+            "Normal",
+            "Happy",
+            "Sigh",
+            "Determined",
+            "Pain",
+            "Dizzy"
+          ],
+          "Source": "PMDCollab_2",
+          "Status": "CUR",
+          "Timestamp": "2023-08-23 00:48:18.042424",
+          "Handle": "<@!544245909639397378>",
+          "Revision": "c32454093f6059b880e78da7ad3bed6b5f64cefb"
+        }
+      ],
+      "ShinyMoodSourceFiles": {
+        "happy": "Happy",
+        "tired": "Sigh",
+        "sleepy": "Sigh",
+        "focused": "Determined",
+        "resting": "Sigh",
+        "hurt": "Pain",
+        "fainted": "Dizzy"
+      }
+    },
+    {
+      "NationalDex": 888,
+      "Id": "zacian",
+      "DisplayName": "Zacian",
+      "Portrait": [
+        {
+          "Contributor": "Emmuffin",
+          "Files": [
+            "Normal"
+          ],
+          "Source": "CC_BY-NC_4",
+          "Status": "CUR",
+          "Timestamp": "2024-10-26 17:01:13.068161",
+          "Handle": "<@!356635814668664832>",
+          "Contact": "https://twitter.com/Ernmuffin",
+          "Revision": "c32454093f6059b880e78da7ad3bed6b5f64cefb"
+        },
+        {
+          "Contributor": "Soulja",
+          "Files": [
+            "Happy",
+            "Sigh",
+            "Determined",
+            "Pain",
+            "Dizzy"
+          ],
+          "Source": "CC_BY-NC_4",
+          "Status": "CUR",
+          "Timestamp": "2024-10-26 18:13:44.839896",
+          "Handle": "<@!229131140903075840>",
+          "Contact": "https://twitter.com/OlSoulja",
+          "Revision": "c32454093f6059b880e78da7ad3bed6b5f64cefb"
+        }
+      ],
+      "MoodSourceFiles": {
+        "happy": "Happy",
+        "tired": "Sigh",
+        "sleepy": "Sigh",
+        "focused": "Determined",
+        "resting": "Sigh",
+        "hurt": "Pain",
+        "fainted": "Dizzy"
+      },
+      "ShinyPortrait": [
+        {
+          "Contributor": "Emmuffin",
+          "Files": [
+            "Normal"
+          ],
+          "Source": "CC_BY-NC_4",
+          "Status": "CUR",
+          "Timestamp": "2024-10-26 17:01:38.676071",
+          "Handle": "<@!356635814668664832>",
+          "Contact": "https://twitter.com/Ernmuffin",
+          "Revision": "c32454093f6059b880e78da7ad3bed6b5f64cefb"
+        },
+        {
+          "Contributor": "Emmuffin",
+          "Files": [
+            "Happy",
+            "Sigh",
+            "Determined",
+            "Pain",
+            "Dizzy"
+          ],
+          "Source": "CC_BY-NC_4",
+          "Status": "CUR",
+          "Timestamp": "2024-11-21 20:40:27.657719",
+          "Handle": "<@!356635814668664832>",
+          "Contact": "https://twitter.com/Ernmuffin",
+          "Revision": "c32454093f6059b880e78da7ad3bed6b5f64cefb"
+        }
+      ],
+      "ShinyMoodSourceFiles": {
+        "happy": "Happy",
+        "tired": "Sigh",
+        "sleepy": "Sigh",
+        "focused": "Determined",
+        "resting": "Sigh",
+        "hurt": "Pain",
+        "fainted": "Dizzy"
+      }
+    },
+    {
+      "NationalDex": 889,
+      "Id": "zamazenta",
+      "DisplayName": "Zamazenta",
+      "Portrait": [
+        {
+          "Contributor": "G〜",
+          "Files": [
+            "Normal"
+          ],
+          "Source": "CC_BY-NC_4",
+          "Status": "CUR",
+          "Timestamp": "2025-04-20 15:06:57.162933",
+          "Handle": "<@!350050109741858829>",
+          "Contact": "https://bsky.app/profile/justtr4sh.pmd.social",
+          "Revision": "c32454093f6059b880e78da7ad3bed6b5f64cefb"
+        }
+      ],
+      "MoodSourceFiles": {},
+      "ShinyPortrait": [
+        {
+          "Contributor": "G〜",
+          "Files": [
+            "Normal"
+          ],
+          "Source": "CC_BY-NC_4",
+          "Status": "CUR",
+          "Timestamp": "2025-04-20 20:38:53.404012",
+          "Handle": "<@!350050109741858829>",
+          "Contact": "https://bsky.app/profile/justtr4sh.pmd.social",
+          "Revision": "c32454093f6059b880e78da7ad3bed6b5f64cefb"
+        }
+      ],
+      "ShinyMoodSourceFiles": {}
+    },
+    {
+      "NationalDex": 489,
+      "Id": "phione",
+      "DisplayName": "Phione",
+      "Portrait": [
+        {
+          "Contributor": "CHUNSOFT",
+          "Files": [
+            "Normal"
+          ],
+          "Source": "Unspecified",
+          "Status": "CUR",
+          "Timestamp": "2020-10-07 17:58:44.848966",
+          "Contact": "https://www.spike-chunsoft.com/",
+          "Revision": "c32454093f6059b880e78da7ad3bed6b5f64cefb"
+        },
+        {
+          "Contributor": "Emmuffin",
+          "Files": [
+            "Normal",
+            "Happy",
+            "Sigh",
+            "Determined",
+            "Pain",
+            "Dizzy"
+          ],
+          "Source": "PMDCollab_1",
+          "Status": "CUR",
+          "Timestamp": "2021-02-12 22:21:15.576619",
+          "Handle": "<@!356635814668664832>",
+          "Contact": "https://twitter.com/Ernmuffin",
+          "Revision": "c32454093f6059b880e78da7ad3bed6b5f64cefb"
+        }
+      ],
+      "MoodSourceFiles": {
+        "happy": "Happy",
+        "tired": "Sigh",
+        "sleepy": "Sigh",
+        "focused": "Determined",
+        "resting": "Sigh",
+        "hurt": "Pain",
+        "fainted": "Dizzy"
+      },
+      "ShinyPortrait": [
+        {
+          "Contributor": "Anonymous",
+          "Files": [
+            "Normal"
+          ],
+          "Source": "PMDCollab_1",
+          "Status": "CUR",
+          "Timestamp": "2020-10-07 17:58:44.850959",
+          "Handle": "<@!200318546750865418>",
+          "Contact": "<@200318546750865418>",
+          "Revision": "c32454093f6059b880e78da7ad3bed6b5f64cefb"
+        },
+        {
+          "Contributor": "Emmuffin",
+          "Files": [
+            "Normal",
+            "Happy",
+            "Sigh",
+            "Determined",
+            "Pain",
+            "Dizzy"
+          ],
+          "Source": "PMDCollab_1",
+          "Status": "CUR",
+          "Timestamp": "2021-02-20 05:52:42.052225",
+          "Handle": "<@!356635814668664832>",
+          "Contact": "https://twitter.com/Ernmuffin",
+          "Revision": "c32454093f6059b880e78da7ad3bed6b5f64cefb"
+        }
+      ],
+      "ShinyMoodSourceFiles": {
+        "happy": "Happy",
+        "tired": "Sigh",
+        "sleepy": "Sigh",
+        "focused": "Determined",
+        "resting": "Sigh",
+        "hurt": "Pain",
+        "fainted": "Dizzy"
+      }
+    },
+    {
+      "NationalDex": 807,
+      "Id": "zeraora",
+      "DisplayName": "Zeraora",
+      "Portrait": [
+        {
+          "Contributor": "Emmuffin",
+          "Files": [
+            "Normal"
+          ],
+          "Source": "PMDCollab_1",
+          "Status": "CUR",
+          "Timestamp": "2022-07-17 01:56:38.824174",
+          "Handle": "<@!356635814668664832>",
+          "Contact": "https://twitter.com/Ernmuffin",
+          "Revision": "c32454093f6059b880e78da7ad3bed6b5f64cefb"
+        },
+        {
+          "Contributor": "Top_Kec",
+          "Files": [
+            "Normal",
+            "Happy",
+            "Sigh",
+            "Determined",
+            "Pain",
+            "Dizzy"
+          ],
+          "Source": "PMDCollab_2",
+          "Status": "CUR",
+          "Timestamp": "2023-06-16 03:31:10.621019",
+          "Handle": "<@!276369635304275968>",
+          "Contact": "@topkec.bsky.social",
+          "Revision": "c32454093f6059b880e78da7ad3bed6b5f64cefb"
+        }
+      ],
+      "MoodSourceFiles": {
+        "happy": "Happy",
+        "tired": "Sigh",
+        "sleepy": "Sigh",
+        "focused": "Determined",
+        "resting": "Sigh",
+        "hurt": "Pain",
+        "fainted": "Dizzy"
+      },
+      "ShinyPortrait": [
+        {
+          "Contributor": "Emmuffin",
+          "Files": [
+            "Normal"
+          ],
+          "Source": "PMDCollab_1",
+          "Status": "CUR",
+          "Timestamp": "2022-07-31 00:38:11.957406",
+          "Handle": "<@!356635814668664832>",
+          "Contact": "https://twitter.com/Ernmuffin",
+          "Revision": "c32454093f6059b880e78da7ad3bed6b5f64cefb"
+        },
+        {
+          "Contributor": "Emmuffin",
+          "Files": [
+            "Normal"
+          ],
+          "Source": "PMDCollab_1",
+          "Status": "CUR",
+          "Timestamp": "2022-07-31 00:38:16.780379",
+          "Handle": "<@!356635814668664832>",
+          "Contact": "https://twitter.com/Ernmuffin",
+          "Revision": "c32454093f6059b880e78da7ad3bed6b5f64cefb"
+        },
+        {
+          "Contributor": "Top_Kec",
+          "Files": [
+            "Happy",
+            "Sigh",
+            "Determined",
+            "Pain",
+            "Dizzy"
+          ],
+          "Source": "PMDCollab_2",
+          "Status": "CUR",
+          "Timestamp": "2023-06-16 11:31:57.414892",
+          "Handle": "<@!276369635304275968>",
+          "Contact": "@topkec.bsky.social",
+          "Revision": "c32454093f6059b880e78da7ad3bed6b5f64cefb"
+        }
+      ],
+      "ShinyMoodSourceFiles": {
+        "happy": "Happy",
+        "tired": "Sigh",
+        "sleepy": "Sigh",
+        "focused": "Determined",
+        "resting": "Sigh",
+        "hurt": "Pain",
+        "fainted": "Dizzy"
+      }
+    }
+  ]
+}

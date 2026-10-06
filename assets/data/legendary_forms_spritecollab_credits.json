@@ -1,0 +1,547 @@
+{
+  "Source": "https://github.com/PMDCollab/SpriteCollab",
+  "Revision": "229085d8b7e2c453c1830ae0b972de726b84847f",
+  "LicenseUrl": "https://github.com/PMDCollab/SpriteCollab/blob/229085d8b7e2c453c1830ae0b972de726b84847f/LICENSE.md",
+  "Species": [
+    {
+      "NationalDex": 382,
+      "BaseSpeciesId": "kyogre",
+      "Id": "primal-kyogre",
+      "DisplayName": "Primal Kyogre",
+      "SourceForm": "0001",
+      "SourceSpriteStatus": "complete",
+      "RuntimeClipFallbacks": {},
+      "Sprite": [
+        {
+          "Contributor": "baronessfaron",
+          "Files": [
+            "Walk",
+            "Idle",
+            "Attack",
+            "Hurt",
+            "Sleep",
+            "Shoot",
+            "Charge"
+          ],
+          "Source": "PMDCollab_2",
+          "Status": "CUR",
+          "Timestamp": "2023-08-15 00:27:48.333305",
+          "Handle": "<@!544245909639397378>"
+        }
+      ],
+      "Portrait": [
+        {
+          "Contributor": "Keldaan",
+          "Files": [
+            "Normal"
+          ],
+          "Source": "PMDCollab_1",
+          "Status": "CUR",
+          "Timestamp": "2022-06-18 06:15:44.036223",
+          "Handle": "<@!153547941401853952>",
+          "Contact": "https://github.com/keldaan-ag"
+        },
+        {
+          "Contributor": "Keldaan",
+          "Files": [
+            "Normal"
+          ],
+          "Source": "PMDCollab_1",
+          "Status": "CUR",
+          "Timestamp": "2022-06-20 00:31:34.294956",
+          "Handle": "<@!153547941401853952>",
+          "Contact": "https://github.com/keldaan-ag"
+        },
+        {
+          "Contributor": "baronessfaron",
+          "Files": [
+            "Normal"
+          ],
+          "Source": "PMDCollab_2",
+          "Status": "CUR",
+          "Timestamp": "2023-10-10 23:43:49.236780",
+          "Handle": "<@!544245909639397378>"
+        }
+      ],
+      "ShinySprite": [
+        {
+          "Contributor": "G〜",
+          "Files": [
+            "Walk",
+            "Idle",
+            "Attack",
+            "Hurt",
+            "Sleep",
+            "Shoot",
+            "Charge"
+          ],
+          "Source": "CC_BY-NC_4",
+          "Status": "CUR",
+          "Timestamp": "2024-11-07 21:25:56.806489",
+          "Handle": "<@!350050109741858829>",
+          "Contact": "https://bsky.app/profile/justtr4sh.pmd.social"
+        }
+      ],
+      "ShinyPortrait": [
+        {
+          "Contributor": "Emmuffin",
+          "Files": [
+            "Normal"
+          ],
+          "Source": "CC_BY-NC_4",
+          "Status": "CUR",
+          "Timestamp": "2025-05-05 16:55:56.255741",
+          "Handle": "<@!356635814668664832>",
+          "Contact": "https://twitter.com/Ernmuffin"
+        }
+      ]
+    },
+    {
+      "NationalDex": 383,
+      "BaseSpeciesId": "groudon",
+      "Id": "primal-groudon",
+      "DisplayName": "Primal Groudon",
+      "SourceForm": "0001",
+      "SourceSpriteStatus": "complete",
+      "RuntimeClipFallbacks": {},
+      "Sprite": [
+        {
+          "Contributor": "baronessfaron",
+          "Files": [
+            "Walk",
+            "Idle",
+            "Attack",
+            "Hurt",
+            "Sleep",
+            "Shoot",
+            "Charge"
+          ],
+          "Source": "PMDCollab_2",
+          "Status": "CUR",
+          "Timestamp": "2023-10-13 20:17:05.401442",
+          "Handle": "<@!544245909639397378>"
+        },
+        {
+          "Contributor": "baronessfaron",
+          "Files": [
+            "Walk",
+            "Idle",
+            "Attack",
+            "Shoot",
+            "Charge"
+          ],
+          "Source": "CC_BY-NC_4",
+          "Status": "CUR",
+          "Timestamp": "2024-11-08 01:29:21.789940",
+          "Handle": "<@!544245909639397378>"
+        }
+      ],
+      "Portrait": [
+        {
+          "Contributor": "Emmuffin",
+          "Files": [
+            "Normal"
+          ],
+          "Source": "PMDCollab_1",
+          "Status": "CUR",
+          "Timestamp": "2023-04-03 07:17:28.271215",
+          "Handle": "<@!356635814668664832>",
+          "Contact": "https://twitter.com/Ernmuffin"
+        }
+      ],
+      "ShinySprite": [
+        {
+          "Contributor": "PoliteHoppip",
+          "Files": [
+            "Walk",
+            "Idle",
+            "Attack",
+            "Hurt",
+            "Sleep",
+            "Shoot",
+            "Charge"
+          ],
+          "Source": "PMDCollab_2",
+          "Status": "CUR",
+          "Timestamp": "2024-02-19 04:26:18.492803",
+          "Handle": "<@!168414649039978496>"
+        },
+        {
+          "Contributor": "G〜",
+          "Files": [
+            "Walk",
+            "Idle",
+            "Attack",
+            "Hurt",
+            "Sleep",
+            "Shoot",
+            "Charge"
+          ],
+          "Source": "CC_BY-NC_4",
+          "Status": "CUR",
+          "Timestamp": "2024-11-08 03:08:02.105064",
+          "Handle": "<@!350050109741858829>",
+          "Contact": "https://bsky.app/profile/justtr4sh.pmd.social"
+        }
+      ],
+      "ShinyPortrait": [
+        {
+          "Contributor": "Emmuffin",
+          "Files": [
+            "Normal"
+          ],
+          "Source": "PMDCollab_1",
+          "Status": "CUR",
+          "Timestamp": "2023-04-07 04:19:41.884457",
+          "Handle": "<@!356635814668664832>",
+          "Contact": "https://twitter.com/Ernmuffin"
+        }
+      ]
+    },
+    {
+      "NationalDex": 483,
+      "BaseSpeciesId": "dialga",
+      "Id": "origin-dialga",
+      "DisplayName": "Origin Dialga",
+      "SourceForm": "0001",
+      "SourceSpriteStatus": "complete",
+      "RuntimeClipFallbacks": {},
+      "Sprite": [
+        {
+          "Contributor": "baronessfaron",
+          "Files": [
+            "Walk",
+            "Idle",
+            "Attack",
+            "Hurt",
+            "Sleep",
+            "Charge"
+          ],
+          "Source": "CC_BY-NC_4",
+          "Status": "CUR",
+          "Timestamp": "2024-07-31 01:16:19.299117",
+          "Handle": "<@!544245909639397378>"
+        },
+        {
+          "Contributor": "baronessfaron",
+          "Files": [
+            "Walk",
+            "Idle",
+            "Attack",
+            "Hurt",
+            "Sleep",
+            "Charge"
+          ],
+          "Source": "CC_BY-NC_4",
+          "Status": "CUR",
+          "Timestamp": "2024-09-22 19:49:54.899746",
+          "Handle": "<@!544245909639397378>"
+        }
+      ],
+      "Portrait": [
+        {
+          "Contributor": "Emmuffin",
+          "Files": [
+            "Normal"
+          ],
+          "Source": "PMDCollab_2",
+          "Status": "CUR",
+          "Timestamp": "2023-07-21 18:05:19.212834",
+          "Handle": "<@!356635814668664832>",
+          "Contact": "https://twitter.com/Ernmuffin"
+        }
+      ],
+      "ShinySprite": [
+        {
+          "Contributor": "Emmuffin",
+          "Files": [
+            "Walk",
+            "Idle",
+            "Attack",
+            "Hurt",
+            "Sleep",
+            "Charge"
+          ],
+          "Source": "CC_BY-NC_4",
+          "Status": "CUR",
+          "Timestamp": "2024-09-22 19:42:10.222148",
+          "Handle": "<@!356635814668664832>",
+          "Contact": "https://twitter.com/Ernmuffin"
+        }
+      ],
+      "ShinyPortrait": [
+        {
+          "Contributor": "Emmuffin",
+          "Files": [
+            "Normal"
+          ],
+          "Source": "PMDCollab_2",
+          "Status": "CUR",
+          "Timestamp": "2023-07-22 03:25:56.684533",
+          "Handle": "<@!356635814668664832>",
+          "Contact": "https://twitter.com/Ernmuffin"
+        }
+      ]
+    },
+    {
+      "NationalDex": 483,
+      "BaseSpeciesId": "dialga",
+      "Id": "primal-dialga",
+      "DisplayName": "Primal Dialga",
+      "SourceForm": "0002",
+      "SourceSpriteStatus": "complete",
+      "RuntimeClipFallbacks": {},
+      "Sprite": [
+        {
+          "Contributor": "CHUNSOFT",
+          "Files": [
+            "Walk",
+            "Idle",
+            "Attack",
+            "Hurt",
+            "Sleep",
+            "Shoot",
+            "Charge"
+          ],
+          "Source": "Unspecified",
+          "Status": "CUR",
+          "Timestamp": "2021-05-07 09:39:49.963774",
+          "Contact": "https://www.spike-chunsoft.com/"
+        }
+      ],
+      "Portrait": [
+        {
+          "Contributor": "CHUNSOFT",
+          "Files": [
+            "Normal"
+          ],
+          "Source": "Unspecified",
+          "Status": "CUR",
+          "Timestamp": "2020-11-05 14:11:28.421598",
+          "Contact": "https://www.spike-chunsoft.com/"
+        },
+        {
+          "Contributor": "G〜",
+          "Files": [
+            "Happy",
+            "Sigh",
+            "Determined",
+            "Pain",
+            "Dizzy"
+          ],
+          "Source": "PMDCollab_2",
+          "Status": "CUR",
+          "Timestamp": "2023-06-15 20:52:31.469367",
+          "Handle": "<@!350050109741858829>",
+          "Contact": "https://bsky.app/profile/justtr4sh.pmd.social"
+        }
+      ],
+      "ShinySprite": [
+        {
+          "Contributor": "CHUNSOFT",
+          "Files": [
+            "Walk",
+            "Idle",
+            "Attack",
+            "Hurt",
+            "Sleep",
+            "Shoot",
+            "Charge"
+          ],
+          "Source": "Unspecified",
+          "Status": "CUR",
+          "Timestamp": "2021-05-07 09:39:49.963774",
+          "Contact": "https://www.spike-chunsoft.com/",
+          "Note": "No distinct shiny Primal sprite exists at the pinned revision; the normal Primal atlas is reused."
+        }
+      ],
+      "ShinyPortrait": [
+        {
+          "Contributor": "CHUNSOFT",
+          "Files": [
+            "Normal"
+          ],
+          "Source": "Unspecified",
+          "Status": "CUR",
+          "Timestamp": "2020-11-05 14:11:28.421598",
+          "Contact": "https://www.spike-chunsoft.com/"
+        },
+        {
+          "Contributor": "G〜",
+          "Files": [
+            "Happy",
+            "Sigh",
+            "Determined",
+            "Pain",
+            "Dizzy"
+          ],
+          "Source": "PMDCollab_2",
+          "Status": "CUR",
+          "Timestamp": "2023-06-15 20:52:31.469367",
+          "Handle": "<@!350050109741858829>",
+          "Contact": "https://bsky.app/profile/justtr4sh.pmd.social"
+        }
+      ]
+    },
+    {
+      "NationalDex": 484,
+      "BaseSpeciesId": "palkia",
+      "Id": "origin-palkia",
+      "DisplayName": "Origin Palkia",
+      "SourceForm": "0001",
+      "SourceSpriteStatus": "complete",
+      "RuntimeClipFallbacks": {},
+      "Sprite": [
+        {
+          "Contributor": "baronessfaron",
+          "Files": [
+            "Walk",
+            "Idle",
+            "Attack",
+            "Hurt",
+            "Sleep",
+            "Charge"
+          ],
+          "Source": "CC_BY-NC_4",
+          "Status": "CUR",
+          "Timestamp": "2024-08-08 02:45:10.010304",
+          "Handle": "<@!544245909639397378>"
+        }
+      ],
+      "Portrait": [
+        {
+          "Contributor": "Emmuffin",
+          "Files": [
+            "Normal"
+          ],
+          "Source": "PMDCollab_2",
+          "Status": "CUR",
+          "Timestamp": "2023-06-16 19:18:54.302222",
+          "Handle": "<@!356635814668664832>",
+          "Contact": "https://twitter.com/Ernmuffin"
+        }
+      ],
+      "ShinySprite": [
+        {
+          "Contributor": "Emmuffin",
+          "Files": [
+            "Walk",
+            "Idle",
+            "Attack",
+            "Hurt",
+            "Sleep",
+            "Charge"
+          ],
+          "Source": "CC_BY-NC_4",
+          "Status": "CUR",
+          "Timestamp": "2024-09-22 19:42:33.830419",
+          "Handle": "<@!356635814668664832>",
+          "Contact": "https://twitter.com/Ernmuffin"
+        }
+      ],
+      "ShinyPortrait": [
+        {
+          "Contributor": "Emmuffin",
+          "Files": [
+            "Normal"
+          ],
+          "Source": "PMDCollab_2",
+          "Status": "CUR",
+          "Timestamp": "2023-06-18 19:15:41.458217",
+          "Handle": "<@!356635814668664832>",
+          "Contact": "https://twitter.com/Ernmuffin"
+        }
+      ]
+    },
+    {
+      "NationalDex": 487,
+      "BaseSpeciesId": "giratina",
+      "Id": "origin-giratina",
+      "DisplayName": "Origin Giratina",
+      "SourceForm": "0001",
+      "SourceSpriteStatus": "complete",
+      "RuntimeClipFallbacks": {},
+      "Sprite": [
+        {
+          "Contributor": "CHUNSOFT",
+          "Files": [
+            "Walk",
+            "Idle",
+            "Attack",
+            "Hurt",
+            "Sleep",
+            "Shoot",
+            "Charge"
+          ],
+          "Source": "Unspecified",
+          "Status": "CUR",
+          "Timestamp": "2020-10-07 17:58:44.842982",
+          "Contact": "https://www.spike-chunsoft.com/"
+        }
+      ],
+      "Portrait": [
+        {
+          "Contributor": "CHUNSOFT",
+          "Files": [
+            "Normal"
+          ],
+          "Source": "Unspecified",
+          "Status": "CUR",
+          "Timestamp": "2020-10-07 17:58:44.843978",
+          "Contact": "https://www.spike-chunsoft.com/"
+        },
+        {
+          "Contributor": "baronessfaron",
+          "Files": [
+            "Happy",
+            "Sigh",
+            "Determined",
+            "Pain",
+            "Dizzy"
+          ],
+          "Source": "CC_BY-NC_4",
+          "Status": "CUR",
+          "Timestamp": "2024-03-12 00:31:57.258032",
+          "Handle": "<@!544245909639397378>"
+        }
+      ],
+      "ShinySprite": [
+        {
+          "Contributor": "Emmuffin",
+          "Files": [
+            "Walk",
+            "Idle",
+            "Attack",
+            "Hurt",
+            "Sleep",
+            "Shoot",
+            "Charge"
+          ],
+          "Source": "PMDCollab_2",
+          "Status": "CUR",
+          "Timestamp": "2023-08-04 05:48:33.072581",
+          "Handle": "<@!356635814668664832>",
+          "Contact": "https://twitter.com/Ernmuffin"
+        }
+      ],
+      "ShinyPortrait": [
+        {
+          "Contributor": "Magu",
+          "Files": [
+            "Normal",
+            "Happy",
+            "Sigh",
+            "Determined",
+            "Pain",
+            "Dizzy"
+          ],
+          "Source": "CC_BY-NC_4",
+          "Status": "CUR",
+          "Timestamp": "2025-01-22 20:00:26.543145",
+          "Handle": "<@!108260609241423872>",
+          "Contact": "@magu_boi"
+        }
+      ]
+    }
+  ]
+}

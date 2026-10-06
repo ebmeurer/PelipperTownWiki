@@ -110,8 +110,16 @@ for(const [formId,form] of forms){
 }
 for(const list of megaFormsBySpecies.values()) list.sort((a,b)=>a.name.localeCompare(b.name));
 function imageFor(x){
+  // The Wiki intentionally bundles only each Pokémon's base portrait.png.
+  // Resolve any recorded portrait/sprite path to that same folder's base portrait.
   const candidates=[x?.PortraitPath,x?.SpritePath,x?.Presentation?.PortraitPath,x?.Presentation?.SpritePath];
-  for(const p of candidates) if(p) return rawPath(p);
+  for(const p of candidates){
+    if(!p) continue;
+    const raw=rawPath(p);
+    if(!String(raw).startsWith('assets/pokemon/')) continue;
+    const base=String(raw).replace(/\/(?:[^/]+)$/, '/portrait.png');
+    if(base) return base;
+  }
   return null;
 }
 function typeOfEntity(x){
